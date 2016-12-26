@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +37,9 @@ public class MemberService {
 	}
 
 	public MemberBean register(MemberBean bean) {
+		
+		
+		
 		MemberBean result = null;
 		if (bean != null) {
 			result = memberDAO.insert(bean);

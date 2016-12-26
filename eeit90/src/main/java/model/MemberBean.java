@@ -34,35 +34,10 @@ public class MemberBean  implements Serializable {
 	private String account_google;		//google帳號
 	private String account_facebook;	//facebook帳號
 	
-//	public MemberBean(){
-//	
-//}
-//
-//public MemberBean(int member_no, String account, String pwd, String name, String nickname, Date birth, String hobby,
-//		int member_ststus, int gender, int account_status, Blob member_photo, Date suspended, String account_google,
-//		String account_facebook) {
-//	super();
-//	this.member_no = member_no;
-//	this.account = account;
-//	this.pwd= pwd;
-//	this.name = name;
-//	this.nickname = nickname;
-//	this.birth = birth;
-//	this.hobby = hobby;
-//	this.member_ststus = member_ststus;
-//	this.gender = gender;
-//	this.account_status = account_status;
-//	this.member_photo = member_photo;
-//	this.suspended = suspended;
-//	this.account_google = account_google;
-//	this.account_facebook = account_facebook;
-//}
 	
 	
 	
-	public int getMember_no() {
-		return member_no;
-	}
+	
 	@Override
 	public String toString() {
 		return "MemberBean [member_no=" + member_no + ", account=" + account + ", pwd=" + pwd + ", name=" + name
@@ -70,6 +45,12 @@ public class MemberBean  implements Serializable {
 				+ member_status + ", gender=" + gender + ", account_status=" + account_status + ", member_photo="
 				+ member_photo + ", suspended=" + suspended + ", account_email=" + account_email + ", account_google="
 				+ account_google + ", account_facebook=" + account_facebook + "]";
+	}
+	public int getMember_no() {
+		return member_no;
+	}
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
 	}
 	public String getAccount() {
 		return account;
@@ -155,9 +136,34 @@ public class MemberBean  implements Serializable {
 	public void setAccount_facebook(String account_facebook) {
 		this.account_facebook = account_facebook;
 	}
-	public void setMember_no(int member_no) {
-		this.member_no = member_no;
-	}
+	
+//	public MemberBean(){
+//	
+//}
+//
+//public MemberBean(int member_no, String account, String pwd, String name, String nickname, Date birth, String hobby,
+//		int member_ststus, int gender, int account_status, Blob member_photo, Date suspended, String account_google,
+//		String account_facebook) {
+//	super();
+//	this.member_no = member_no;
+//	this.account = account;
+//	this.pwd= pwd;
+//	this.name = name;
+//	this.nickname = nickname;
+//	this.birth = birth;
+//	this.hobby = hobby;
+//	this.member_ststus = member_ststus;
+//	this.gender = gender;
+//	this.account_status = account_status;
+//	this.member_photo = member_photo;
+//	this.suspended = suspended;
+//	this.account_google = account_google;
+//	this.account_facebook = account_facebook;
+//}
+	
+	
+	
+	
 	
 
 	
