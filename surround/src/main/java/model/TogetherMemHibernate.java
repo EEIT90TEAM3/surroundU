@@ -124,8 +124,26 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 		return false;
 	}
 
-	
-	
-	
+
+	@Override
+	public List<TogetherMemBean> selectTogetherNo(int together_no) {
+		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=?");
+		query.setParameter(0,together_no);
+		return (List<TogetherMemBean>) query.getResultList();
+	}
+
+
+	@Override
+	public boolean selectMemberNo(int together_no, int member_no) {
+		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and member_no=?");
+		query.setParameter(0,together_no);
+		query.setParameter(1, member_no);
+		if(query.getResultList()!=null){
+			return true;
+		}
+		return false;
+	}
+
+
 	
 }

@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,14 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Query;
 import javax.persistence.Table;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -49,13 +42,13 @@ public class MemberBean implements Serializable{
 	private String account_google;//*Google帳號
 	private String account_facebook;//*Facebook帳號
 	//private Set<SaleBean> saleBean = new HashSet<SaleBean>();
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no",targetEntity = AccuseBean.class)
 	private Set<AccuseBean> accuseBean=new HashSet<AccuseBean>();
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no",targetEntity = SaleBean.class)
 	private Set<SaleBean> saleBean = new HashSet<SaleBean>();
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no",targetEntity = TogetherBean.class)
 	private Set<TogetherBean> togetherBean=new HashSet<TogetherBean>();
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="member_no",targetEntity = TogetherMemBean.class)
 	private Set<TogetherMemBean> togetherMemBean=new HashSet<TogetherMemBean>();
 	
 

@@ -81,14 +81,6 @@ public class ReportService {
 	
     
     
-    @Transactional
-   	public List<ReportBean> selectAllReport(){  //查詢所有檢舉表格
-   		
-    	List<ReportBean> beanlist = reportDao.select();
-   		   	
-   	  return beanlist;
-   		
-   	}//end of selectAllReport
-	
+  
 	
 }

@@ -41,8 +41,27 @@ public class MemberService {
 		MemberBean bean = memberDAO.select(account);
 		if (bean != null) {
 			if (pwd != null && pwd.length() != 0) {
-				String pass = bean.getPwd(); 
-				if (pass.equals(pwd)) {
+				String pass = bean.getPwd();  //取得密碼			
+				
+				 if (pass.equals(pwd) ) {
+					return bean;
+				}
+			}
+		}
+		return null;
+	}
+	
+	
+	@Transactional
+	public MemberBean backendlogin(String account, String pwd) {  //後台登錄
+		MemberBean bean = memberDAO.select(account);
+		if (bean != null) {
+			if (pwd != null && pwd.length() != 0) {
+				String pass = bean.getPwd();  //取得密碼
+				
+				 int  status = bean.getAccount_status(); //取得權限
+				
+				 if (pass.equals(pwd) && status==99) {
 					return bean;
 				}
 			}

@@ -27,7 +27,9 @@ public class TogetherDAOHibernate implements TogetherDAO {
 	public static void main(String[] args) {
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("beans.config.xml");
-		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
+		SessionFactory
+		
+		sessionFactory = (SessionFactory) context.getBean("sessionFactory");
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
 			TogetherDAO dao=(TogetherDAO)context.getBean("togetherDao");
@@ -135,5 +137,29 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		return false;
 	}
 	
+	@Override
+	public List<TogetherBean> selectStatus(MemberBean member_no,int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=? and member_no=?");
+		query.setParameter(0,together_status);
+		query.setParameter(1, member_no);
+		return (List<TogetherBean>) query.getResultList();
+		
+	}
+	
+    //沒用到
+	@Override
+	public TogetherBean selectStatus(int together_no, int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=? and together_no=?");
+		query.setParameter(0,together_status);
+		query.setParameter(1, together_no);
+		return (TogetherBean) query.getResultList();
+	}
+	@Override
+	public List<TogetherBean> selectStatus(int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=?");
+		query.setParameter(0,together_status);
+		return (List<TogetherBean>) query.getResultList();
+	}
 
+	
 }

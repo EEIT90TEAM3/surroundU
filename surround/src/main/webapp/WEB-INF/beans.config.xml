@@ -6,28 +6,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-
-	<!--  一般java專案
-	<bean id="dataSource" 
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
-		<property name="url" value="jdbc:sqlserver://localhost:1433;database=EEIT90"></property>
-		<property name="username" value="sa"></property>
-		<property name="password" value="sa123456"></property>
-	</bean>
--->
 	
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/surround"></property>
 	</bean>
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	
+	
+	<bean id="sessionFactory" destroy-method="destroy"
+			class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:hibernate.cfg.xml">
-		   
-		</property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
+	
 	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -35,8 +25,19 @@
 	
 	<tx:annotation-driven  transaction-manager="transactionManager"/>
 	
-	
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="model"></context:component-scan>
+	
+	
+	
+	<bean id="sdFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd"></constructor-arg>
+	</bean>
+	
+	<bean id="sdFormatTogether" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd HH:mm"></constructor-arg>
+	</bean>
+
+
 
 </beans>

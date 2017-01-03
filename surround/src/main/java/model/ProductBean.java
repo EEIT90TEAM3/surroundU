@@ -1,8 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Blob;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,14 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Query;
 import javax.persistence.Table;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 @Entity
 @Table(name="PRODUCT",catalog="EEIT90", schema="DBO")
 public class ProductBean implements Serializable{
@@ -31,8 +22,8 @@ public class ProductBean implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int product_no;/*擺攤物品編號*/
 	
-	@ManyToOne(fetch=FetchType.LAZY) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
-	@JoinColumn(name = "sale_no")  //指定用來join table的column
+	@ManyToOne(fetch=FetchType.LAZY,targetEntity = SaleBean.class) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
+	@JoinColumn(name ="sale_no")  //指定用來join table的column
 	private SaleBean sale_no;/*擺攤文章編號*/
 	private String product_name;/*商品*/
 	private String product_memo;/*描述*/

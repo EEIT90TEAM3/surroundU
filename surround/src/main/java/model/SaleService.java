@@ -20,6 +20,7 @@ public class SaleService {
 	@Autowired
 	private SaleDAO saleDAO;
 	
+	
 
 	@Transactional
 	public List<SaleBean> select(SaleBean bean) {
@@ -54,4 +55,11 @@ public class SaleService {
 		}
 		return result;
 	}
+	
+	@Transactional
+	public List<SaleBean> selectMap(){
+		List<SaleBean> rs = saleDAO.select();
+		return rs;
+	}
+	
 }

@@ -7,6 +7,8 @@ public interface ReportDAO {
 	ReportBean select(int report_no);
 	
 	List<ReportBean> select(MemberBean member_no,int report_status);
+	
+	List<ReportBean> selectByStatus(int report_status);
 
 	List<ReportBean> select();
 

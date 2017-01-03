@@ -16,7 +16,7 @@ public interface AccuseDAO {
 	AccuseBean insert(AccuseBean bean);
 
 	AccuseBean update(MemberBean member_no,String accuse_type, String accuse_topic, Date accuse_post_time,
-			int accuse_status, Date accuse_deal_time, int sale_no, int group_no,int accuse_no);
+			int accuse_status, Date accuse_deal_time, int sale_no, int group_no,String accuseService,int accuse_no);
     
 	boolean delete(int id);  //刪除是否要用隱藏?
 }

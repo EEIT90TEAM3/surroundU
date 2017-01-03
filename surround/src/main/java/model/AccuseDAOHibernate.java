@@ -168,7 +168,7 @@ public class AccuseDAOHibernate implements AccuseDAO {
 
 	@Override
 	public AccuseBean update(MemberBean member_no,String accuse_type, String accuse_topic, Date accuse_post_time,
-			int accuse_status, Date accuse_deal_time, int sale_no, int group_no,int accuse_no) {
+			int accuse_status, Date accuse_deal_time, int sale_no, int group_no,String accuse_deal_memo,int accuse_no) {
 		
 		
 		AccuseBean bean = this.getSession().get(AccuseBean.class, accuse_no);
@@ -181,11 +181,18 @@ public class AccuseDAOHibernate implements AccuseDAO {
         bean.setAccuse_deal_time(accuse_deal_time);
         bean.setSale_no(sale_no);
         bean.setGroup_no(group_no);
+        bean.setAccuse_deal_memo(accuse_deal_memo);
+        bean.setAccuse_no(accuse_no);
+        this.getSession().merge(bean);
+        
 		} 
         
+		System.out.println("bean:"+bean.getAccuse_topic());
+		System.out.println("bean:"+bean.getAccuse_status());
+		System.out.println("bean:"+bean.getAccuse_deal_memo());
         
 		
-		return null;
+		return bean;
 	}
 
 

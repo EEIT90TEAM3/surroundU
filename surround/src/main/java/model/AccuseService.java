@@ -93,34 +93,6 @@ public class AccuseService {
 	}//end of postAccuse
 	
 	
-	public List<AccuseBean> selectAllAccuse(){  //查詢所有檢舉表格
-		
-	  List<AccuseBean> result = accuseDao.select();
-		
-	
-	  return result;
-		
-	}
-	
-	
-	public List<AccuseBean> selectNotProcess(){  //查詢已處理檢舉表格
-		
-		  List<AccuseBean> result = accuseDao.selectByStatus(0);
-			
-		  return result;
-			
-	}
-	
-	
-	
-	
-	public List<AccuseBean> selectProcessed(){  //查詢已處理檢舉表格
-		
-		  List<AccuseBean> result = accuseDao.selectByStatus(1);
-			
-		
-		  return result;
-			
-		}
+
 	
 }

@@ -12,6 +12,9 @@ public interface TogetherDAO {
 			int together_status,float together_lng,float together_lat);
 	boolean delete(int together_no);
 	
+	List<TogetherBean> selectStatus(MemberBean member_no,int together_status);
+	TogetherBean selectStatus(int together_no,int together_status);
+	List<TogetherBean> selectStatus(int together_status);
 
 }
 

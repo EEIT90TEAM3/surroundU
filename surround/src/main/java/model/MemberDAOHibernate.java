@@ -66,5 +66,26 @@ public class MemberDAOHibernate implements MemberDAO {
 		//		return (MemberBean) query.getSingleResult();
 		return null;
 	}
+	
+	
+	@Override
+	public List<MemberBean> selectAll() {   //查詢MEMBER所有表格資料
+        
+		Query query = this.getSession().createQuery("from MemberBean");
+        
+        return (List<MemberBean>)query.getResultList();
+
+	}
+	
+	@Override
+	public List<MemberBean> selectMemberByAccuseStatus(int account_status) {   //查詢MEMBER所有表格資料
+        
+		Query query = this.getSession().createQuery("from MemberBean where account_status=?");
+        query.setParameter(0, account_status);
+		
+		
+        return (List<MemberBean>)query.getResultList();
+
+	}
 
 }

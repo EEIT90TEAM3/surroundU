@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>surround</display-name>
-   <context-param>
+  <display-name>SurroundWeb</display-name>
+  
+  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/beans.config.xml</param-value>
   </context-param>
+  
+  
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.controller</url-pattern>
+  </servlet-mapping>
+  
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  
   <filter>
     <filter-name>OpenSessionInViewFilter</filter-name>
     <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
@@ -16,6 +33,8 @@
       <param-value>sessionFactory</param-value>
     </init-param>
   </filter>
+  
+  
   <filter-mapping>
     <filter-name>OpenSessionInViewFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -26,25 +45,9 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Unshareable</res-sharing-scope>
   </resource-ref>
-  <!--  
-  	<servlet>
-		<servlet-name>mvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>mvc</servlet-name>
-		<url-pattern>*.controller</url-pattern>
-	</servlet-mapping>
-  -->
   
   
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>postaccuse.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

@@ -100,6 +100,18 @@ public class ReportDAOHibernate implements ReportDAO {
 	}
 	
 	@Override
+	public List<ReportBean> selectByStatus(int report_status) {   //由文章狀態查詢表格
+		 Query query = this.getSession().createQuery("from ReportBean where report_status=?");
+		 query.setParameter(0, report_status);
+		 
+		 
+		 List<ReportBean> rs =  query.getResultList();
+		 
+		 
+		 return rs;
+	}
+	
+	@Override
 	public List<ReportBean> select() {   //查詢REPORT所有表格資料
         Query query = this.getSession().createQuery("from ReportBean");
         
@@ -126,8 +138,7 @@ public class ReportDAOHibernate implements ReportDAO {
         bean.setReport_memo(report_memo);
         bean.setReport_time(report_time);
         bean.setReport_status(report_status);
-        bean.setReport_memo(report_deal_memo);
-
+        bean.setReport_deal_memo(report_deal_memo);
 		} 
 		return null;
 	}

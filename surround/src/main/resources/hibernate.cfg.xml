@@ -6,8 +6,8 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.show_sql">true</property>
-     <!--     <property name="hibernate.current_session_context_class">thread</property>
-        -->
+<!--         <property name="hibernate.current_session_context_class">thread</property> -->
+        
 		<mapping class="model.AccuseBean" />   <!-- Hibernate annotation 所對應之bean -->
         <mapping class="model.ReportBean" />
         <mapping class="model.MemberBean" />

@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,15 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Query;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 
@@ -37,7 +29,7 @@ public class SaleBean implements Serializable{
 	@Id //主鍵	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)   //2.再用@GeneratedValue的generator屬性指定要用哪個generator
 	private int sale_no;  /*擺攤文章編號*/
-	@ManyToOne(fetch=FetchType.LAZY) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
+	@ManyToOne(fetch=FetchType.LAZY,targetEntity = MemberBean.class) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "member_no")  //指定用來join table的column
 	private MemberBean member_no; /*會員編號*/
 	private String sale_topic ;/*主題*/
@@ -52,7 +44,7 @@ public class SaleBean implements Serializable{
 	private float sale_lng;/*經度*/
 	private float sale_lat;/*緯度*/
 	//@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="sale_no")
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sale_no")//避免fk無法刪掉 
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sale_no",targetEntity=ProductBean.class)//避免fk無法刪掉 
 	private Set<ProductBean> productBean = new HashSet<ProductBean>();
 
     //測試程式
@@ -130,11 +122,20 @@ public class SaleBean implements Serializable{
 //			((ConfigurableApplicationContext) context).close();
 //		}
 //	}
+		@Override
+	public String toString() {
+		return "SaleBean [sale_no=" + sale_no + ", member_no=" + member_no + ", sale_topic=" + sale_topic
+				+ ", sale_name=" + sale_name + ", sale_locate=" + sale_locate + ", sale_time=" + sale_time
+				+ ", sale_memo=" + sale_memo + ", sale_post_time=" + sale_post_time + ", sale_delete_time="
+				+ sale_delete_time + ", sale_modify_time=" + sale_modify_time + ", sale_status=" + sale_status
+				+ ", sale_lng=" + sale_lng + ", sale_lat=" + sale_lat + ", productBean=" + productBean + "]";
+	}
 	
 	
 	public int getSale_no() {
 		return sale_no;
 	}
+
 	public void setSale_no(int sale_no) {
 		this.sale_no = sale_no;
 	}
