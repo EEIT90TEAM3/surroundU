@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 	<bean id="postaccuse.error" class="org.springframework.web.servlet.view.RedirectView"> 此種傳遞方式為新開網頁,不會傳遞session資料  -->
+<!-- 		<property name="contextRelative" value="true"></property> -->
+<!-- 		<property name="url" value="/postaccuse.jsp"></property> -->
+<!-- 	</bean> -->
+	
+    <bean id="postaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/postaccuse.jsp"></property>
+	</bean>
+	
+	<bean id="postaccuse.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/accusesuccess.jsp"></property>
+	</bean>
+	
+	<bean id="postaccuse.already" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/accusealready.jsp"></property>
+	</bean>
+	
+	<bean id="postreport.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/postreport.jsp"></property>
+	</bean>
+	
+	<bean id="postreport.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/reportsuccess.jsp"></property>
+	</bean>
+
+    <bean id="postreport.exceed" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/reportexceed.jsp"></property>
+	</bean>	
+
+    <bean id="accuse.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendaccusejQuery.jsp"></property>
+	</bean>
+	
+	<bean id="report.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendreportjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="member.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendmemberjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="doaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/doaccuseview.jsp"></property>
+	</bean>
+	
+	<bean id="dealaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/dealaccuseviewjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="backendlogin.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendindexjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="backendlogin.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/secure/backendlogin.jsp"></property>
+	</bean>
+	
+	<bean id="login.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/menu.jsp"></property>
+	</bean>
+	
+	<bean id="login.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/secure/login.jsp"></property>
+	</bean>
+	
+	
+	
+
+
+</beans>
