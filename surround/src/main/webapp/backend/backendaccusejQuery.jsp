@@ -137,7 +137,7 @@
 									<td>未處理</td>
 									</c:if>
 									<c:if test="${element.accuse_status!=0}">
-									<td>已處理</td>
+                                    <td>已處理</td>
 									</c:if>
 									
 									<td>${element.accuse_deal_memo}</td>

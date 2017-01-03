@@ -1,6 +1,9 @@
 package model;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +82,7 @@ public class TogetherService {
     @Transactional
     public TogetherBean insert(TogetherBean bean){
     	TogetherBean result =null;
+    	bean.setTogether_post_time(new java.util.Date());
     	if(bean!=null){
     		result=togetherDao.insert(bean);
     	}
@@ -88,6 +92,24 @@ public class TogetherService {
     @Transactional
     public TogetherBean update(TogetherBean bean){
     	TogetherBean result =null;
+    	bean.setTogether_modify_time(new java.util.Date());
+    	System.out.println("=================service Bean===============");
+    	System.out.println(bean.getTogether_no()+",Together_no");
+    	System.out.println(bean.getMember_no()+",Member_no");
+    	System.out.println(bean.getTogether_topic()+",Together_topic");
+    	System.out.println(bean.getTogether_lat()+",Together_lat");
+    	System.out.println(bean.getTogether_lng()+",Together_lng");
+    	System.out.println(bean.getTogether_locate()+",Together_locate");
+    	System.out.println(bean.getTogether_memo()+",Together_memo");
+    	System.out.println(bean.getTogether_name()+",Together_name");
+    	System.out.println(bean.getTogether_people()+",Together_people");
+    	System.out.println(bean.getTogether_status()+",Together_status");
+    	System.out.println(bean.getTogether_delete_time()+",Together_delete_time");
+    	System.out.println(bean.getTogether_modify_time()+",Together_modify_time");
+    	System.out.println(bean.getTogether_post_time()+",Together_post_time");
+    	System.out.println(bean.getTogether_when()+",Together_when");
+    	System.out.println(bean.getTogether_when_end()+",Together_when_end");
+    	System.out.println("=================end========================");
     	if(bean!=null){
     		result=togetherDao.update(bean.getTogether_no(), bean.getMember_no(), bean.getTogether_topic(), bean.getTogether_name(), bean.getTogether_locate(), bean.getTogether_when(),bean.getTogether_when_end(), bean.getTogether_people(), bean.getTogether_memo(), bean.getTogether_post_time(), bean.getTogether_delete_time(), bean.getTogether_modify_time(), bean.getTogether_status(), bean.getTogether_lat(), bean.getTogether_lng());
     	}
@@ -108,5 +130,42 @@ public class TogetherService {
 	    
 	   return togetherDao.selectByStatus(0);
    }
+   
+   
+   public List<TogetherBean>  togetherStatusChange(MemberBean memberBean){
+	   List<TogetherBean> result=null;
+	   if(memberBean!=null){
+	   Set<TogetherBean> togetherBean=memberBean.getTogetherBean();
+		Calendar date = Calendar.getInstance();
+		Date today = date.getTime();
+		   for(TogetherBean i : togetherBean){
+			   if(i.getTogether_status()==0){
+			       if(i.getTogether_when_end().before(today)){
+				       i.setTogether_status(1);
+			       }
+			   }
+		   }
+		   result=togetherDao.selectStatus(memberBean,0);
+	   }
+	   return result;
+   }   
     
+   public TogetherBean togetherStatusDelete(TogetherBean bean){
+	   TogetherBean result=null;
+	   if(bean!=null){
+		   bean.setTogether_status(1);
+		   bean.setTogether_delete_time(new java.util.Date());
+		   result=togetherDao.update(bean.getTogether_no(), bean.getMember_no(), bean.getTogether_topic(), bean.getTogether_name(), bean.getTogether_locate(), bean.getTogether_when(),bean.getTogether_when_end(), bean.getTogether_people(), bean.getTogether_memo(), bean.getTogether_post_time(), bean.getTogether_delete_time(), bean.getTogether_modify_time(), bean.getTogether_status(), bean.getTogether_lat(), bean.getTogether_lng());
+	   }
+	   System.out.println("============================");
+	   
+	   return result;
+   }
+    
+   public List<TogetherBean> togetherSelectStatus(){
+	   List<TogetherBean> result=null;
+	   result=togetherDao.selectStatus(0);
+	   return result;
+   }
+
 }

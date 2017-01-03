@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/xxx"></property>
+		<property name="jndiName" value="java:comp/env/jdbc/surround"></property>
 	</bean>
 	
 	
@@ -32,6 +32,11 @@
 	
 	<bean id="sdFormat" class="java.text.SimpleDateFormat">
 		<constructor-arg value="yyyy-MM-dd"></constructor-arg>
+	</bean>
+	
+	<bean id="sdFormatTogether" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd HH:mm"></constructor-arg>
+
 	</bean>
 
 

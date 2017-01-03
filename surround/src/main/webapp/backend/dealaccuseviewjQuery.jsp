@@ -177,6 +177,7 @@
 	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>   
 	<script src="<c:url value="/js/lightbox.js"/>"></script>   
 	<script>
+
  	$(function() {
 
 // 		$('#buttonGet').click(function(){
@@ -200,6 +201,7 @@
 		
 		
 	});
+
 	
 	</script>
 	

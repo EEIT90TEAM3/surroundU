@@ -84,10 +84,9 @@ public class DealReportController {
 			
 			}
 			
-			
-		    
+
 			return "report.display";
-		
+
 		    
 	}
 }

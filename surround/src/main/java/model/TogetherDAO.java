@@ -12,9 +12,14 @@ public interface TogetherDAO {
 			java.util.Date together_post_time,java.util.Date together_delete_time,java.util.Date together_modify_time,
 			int together_status,float together_lng,float together_lat);
 	
-	TogetherBean updateStatus(int together_no,int together_status);
-	boolean delete(int together_no);
 	
+	boolean delete(int together_no);
+	TogetherBean updateStatus(int together_no,int together_status);
+	List<TogetherBean> selectStatus(MemberBean member_no,int together_status);
+	TogetherBean selectStatus(int together_no,int together_status);
+	List<TogetherBean> selectStatus(int together_status);
+	
+
 
 }
 

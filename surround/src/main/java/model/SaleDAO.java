@@ -17,6 +17,7 @@ public interface SaleDAO {
 	
 	SaleBean updateByStatus(int sale_no,int sale_status);
 
+
 	boolean delete(int sale_no);
 
 }

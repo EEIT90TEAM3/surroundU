@@ -236,6 +236,7 @@ public class BackendService {
     	  TogetherBean rs = togetherDao.select(bean.getGroup_no());
     	      	  
     	  return rs;
+
       }
       
         

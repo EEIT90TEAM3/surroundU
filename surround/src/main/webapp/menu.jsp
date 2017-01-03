@@ -6,17 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 	
 	<!-- jQuery -->
-	<script src="src/jquery211.js" type="text/javascript"></script>
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
 	<!-- SmartMenus jQuery plugin -->
-	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
 	<!-- SmartMenus core CSS (required) -->
-	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
 	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
-	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
-	<script src="src/lay/layer.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="src/lay/layer.css">
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
+
 
 
 <style type="text/css">
@@ -177,7 +179,7 @@ $(document).ready(function() {
         </li>
         <li><a href="#">我的活動</a>
           <ul>
-            <li><a href="#">我的約團</a>
+            <li><a href="<c:url value='/TogetherDetailsServlet'/>">我的約團</a>
              <!-- <ul>
                 <li><a href="#">Gizmo Basic</a></li>
                 <li><a href="#">Gizmo Standard</a></li>
@@ -197,9 +199,11 @@ $(document).ready(function() {
               </ul>-->
             </li>
             <li><a href="#">Time Machines</a></li>
+            <li><a href="<c:url value='/pages/together.jsp'/>">新增約團</a><li>
           </ul>
           <li><a href="#">我的好友</a>
-          <li><a href="#">文章列表</a>
+          <li><a href="<c:url value='TogetherTotal.controller'/>">文章列表</a>
+
         </li>
       </ul>
       

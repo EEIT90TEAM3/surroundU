@@ -86,7 +86,9 @@
 						<h6>Hello~ ${user.account}  歡迎來到管理者介面</h6>
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
-				<form method="GET" action ="<c:url value="/backend.controller"/>" target="_blank">
+
+				<form method="GET" action ="<c:url value="/backend.controller"/>">
+
 					  <table >
 					    <tr>
 							<td align="left"><input type="submit" name="backendaction" value="會員列表-全部" class="btn btn-info"></td>

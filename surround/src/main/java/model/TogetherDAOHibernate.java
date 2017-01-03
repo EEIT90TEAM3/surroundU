@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.SystemPropertyUtils;
+
 
 import model.MemberBean;
 import model.TogetherDAO;
@@ -90,16 +90,7 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		return (List<TogetherBean>) query.getResultList();
 	}
 	
-	@Override
-	public List<TogetherBean> selectByStatus(int together_status) {
-		Query query=this.getSession().createQuery("from TogetherBean where together_status=?");
-		query.setParameter(0, together_status);
-		
-		
-		
-		return (List<TogetherBean>) query.getResultList();
-	}
-	
+
 	
 
 	@Override
@@ -139,6 +130,50 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		
 		return update;
 	}
+
+	@Override
+	public boolean delete(int together_no) {
+		TogetherBean delete=this.getSession().get(TogetherBean.class,together_no);
+		if(delete!=null){
+		this.getSession().delete(delete);
+		return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public List<TogetherBean> selectStatus(MemberBean member_no,int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=? and member_no=?");
+		query.setParameter(0,together_status);
+		query.setParameter(1, member_no);
+		return (List<TogetherBean>) query.getResultList();
+		
+	}
+	
+    //沒用到
+	@Override
+	public TogetherBean selectStatus(int together_no, int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=? and together_no=?");
+		query.setParameter(0,together_status);
+		query.setParameter(1, together_no);
+		return (TogetherBean) query.getResultList();
+	}
+	@Override
+	public List<TogetherBean> selectStatus(int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=?");
+		query.setParameter(0,together_status);
+		return (List<TogetherBean>) query.getResultList();
+	}
+
+	@Override
+	public List<TogetherBean> selectByStatus(int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=?");
+		query.setParameter(0, together_status);
+		
+		
+		
+		return (List<TogetherBean>) query.getResultList();
+	}
 	
 	public TogetherBean updateStatus(int together_no,int together_status){
 		
@@ -153,17 +188,6 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		
 				
 		return rs;
-	}
-	
-
-	@Override
-	public boolean delete(int together_no) {
-		TogetherBean delete=this.getSession().get(TogetherBean.class,together_no);
-		if(delete!=null){
-		this.getSession().delete(delete);
-		return true;
-		}
-		return false;
 	}
 	
 

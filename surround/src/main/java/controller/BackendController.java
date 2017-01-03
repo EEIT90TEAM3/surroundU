@@ -101,9 +101,11 @@ public class BackendController {
 				return "member.display";
 			}
 		    
+
 		    if("會員列表-停權會員".equals(backendaction)){   //如果是按"會員列表"的submit
 				
 				List<MemberBean> rs = backendService.selectAccusedMember();
+
 				
 				model.addAttribute("selectmember",rs);
 				

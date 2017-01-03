@@ -58,7 +58,9 @@ public class SaleService {
 	
 	@Transactional
 	public List<SaleBean> selectMap(){
+
 		List<SaleBean> rs = saleDAO.selectByStatus(0);
+
 		return rs;
 	}
 	

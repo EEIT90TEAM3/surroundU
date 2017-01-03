@@ -1,5 +1,7 @@
 package model;
 
+
+import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -81,4 +83,18 @@ public class TogetherMemService {
 		}
 		return result;
 	}
+	
+	public boolean togetherMemPeopleVerify(int together_no){
+		List<TogetherMemBean> result = null;
+		if(together_no>0){
+			result=togetherMemDao.selectTogetherNo(together_no);
+			int quantity=result.size();
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+
 }
