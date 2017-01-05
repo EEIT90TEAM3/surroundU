@@ -122,20 +122,33 @@
 						</tr>
 						<tr>
 							<th>性別</th>
-							<th>${param.gender}</th>
+							<c:if test="${param.gender==1}">
+							<td>男</td>
+							</c:if>
+							<c:if test="${param.gender==0}">
+							<td>女</td>
+							</c:if>
 						</tr>
-						<tr> 
-							<th>帳號狀態</th> 
-							<th>${param.account_status} </th>
+						<tr>        
+						    <th>帳號狀態</th>
+							        <c:if test="${param.account_status==0}">
+									<th>正常</th>
+									</c:if>
+									<c:if test="${param.account_status==1}">
+									<th>暫時停權</th>
+									</c:if>
+									<c:if test="${param.account_status==2}">
+									<th>永久停權</th>
+									</c:if>
+									<c:if test="${param.account_status==99}">
+									<th>管理者</th>
+							        </c:if>
 				 	    </tr> 
 						<tr>
 							<th>電子郵件</th>
 							<th>${param.account_email}</th>
 						</tr>
-						<tr>
-							<th>帳號權限</th>
-							<th>${param.member_status}</th>
-						</tr>
+
 						
 					</table>
 				    

@@ -47,6 +47,10 @@
 /* 			color: #339; */
 /* 		}   */
 </style>
+
+
+
+
 </head>
 <body>
    <div class="container">
@@ -141,8 +145,14 @@
 									</c:if>
 									
 									<td>${element.accuse_deal_memo}</td>
+									
+									<c:if test="${element.accuse_status==0}">
 									<td><a href="${path}"><input type="button" name="doaccuseaction" value="處理"/></a></td> 
-						 
+						            </c:if>
+						            <c:if test="${element.accuse_status!=0}">
+                                    <td></td>
+									</c:if>
+						              
 								</tr>
 					            
 							</c:forEach>

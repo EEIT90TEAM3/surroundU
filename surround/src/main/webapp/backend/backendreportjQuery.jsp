@@ -135,7 +135,15 @@
 									</c:if>
 									
 									<td>${element.report_deal_memo}</td>
+									
+									<c:if test="${element.report_status==0}">
 									<td><a href="${path}"><input type="button" name="doaccuseaction" value="處理" onclick="location.href='<c:url value="/doaccuse.controller"/>'"/></a></td>
+									</c:if>
+									<c:if test="${element.report_status!=0}">
+                                    <td></td>
+									</c:if>
+									
+									
 									
 								</tr>
 							</c:forEach>

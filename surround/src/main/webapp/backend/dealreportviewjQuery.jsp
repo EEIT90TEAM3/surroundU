@@ -130,10 +130,6 @@
 							<th>${param.report_time}</th>
 							<input type="hidden" name="report_time" value="${param.report_time}">
 					    </tr>
-					    <tr>
-							<th>文章連結</th>
-							<th><input type="button"  value="觀看文章內容" ></th>
-						</tr>
 						<tr>
 							<th>處理狀態</th>
 							<th><input type="radio" name="reportyesorno" value="1" > 完成處理<br>

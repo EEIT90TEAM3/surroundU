@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.BackendService;
+import model.ProductBean;
 import model.SaleBean;
+import model.SaleService;
 import model.TogetherBean;
 
 @Controller
@@ -23,6 +26,7 @@ public class LookAcuseController {
     
 	@Autowired
 	BackendService backendService;
+	
 	
 	@RequestMapping
 	public String service(
@@ -59,18 +63,29 @@ public class LookAcuseController {
 		
 		//呼叫Model
 	    if(!accuse_topic.isEmpty()){
-	    	if("擺攤".equals(accuse_topic)){
+	    	if("擺攤".equals(accuse_topic)){ //如果檢舉文章為擺攤文章
 	    	   
 	    		System.out.println("呼叫擺攤Model");
-	    		SaleBean bean = backendService.lookAccuseOfSale(caccuseno);
-	    	    System.out.println(bean);
+	    		
+	    		SaleBean sbean = backendService.lookAccuseOfSale(caccuseno);  //查詢出檢舉之擺攤文章
+	    		
+	    		List<ProductBean> plistbean = backendService.lookAccuseOfProduct(caccuseno);  //查詢出檢舉之擺攤文章所包含的物品資料
+	    		
+	    	    System.out.println(sbean);
+	    	    
+	    	    model.addAttribute("lookaccusesale",sbean);
+	    	    model.addAttribute("lookaccuseproduct",plistbean);
 	    	   
+	    	    return "lookaccusesale.success";
 	    	}
 	    	
-            if("約團".equals(accuse_topic)){
+            if("約團".equals(accuse_topic)){  //如果檢舉文章違約團
                 System.out.println("呼叫約團Model");
             	TogetherBean bean = backendService.lookAccuseOfTogether(caccuseno);
             	System.out.println(bean);
+            	model.addAttribute("lookaccusetogether",bean);
+            	
+            	return "lookaccusetogether.success";
 	    	}
 	    	
 	    	

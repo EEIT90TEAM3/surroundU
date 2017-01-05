@@ -107,8 +107,6 @@
 								<th>編號</th>
 								<th>會員帳號</th>
 								<th>暱稱</th>
-								<th>生日</th>
-								<th>興趣</th>
 								<th>性別</th>
 								<th>電子郵件</th>
 								<th>帳號狀態</th>
@@ -119,7 +117,7 @@
 							<c:forEach var="element" items="${selectmember}">
 								<c:url value="/backend/dealmemberviewjQuery.jsp" var="path">
 									<c:param name="member_no" value="${element.member_no}" />
-									<c:param name="accoount" value="${element.account}" />
+									<c:param name="account" value="${element.account}" />
 									<c:param name="nickname" value="${element.nickname}" />
 									<c:param name="birth" value="${element.birth}" />
 									<c:param name="hobby" value="${element.hobby}" />
@@ -132,8 +130,6 @@
 									<td>${element.member_no}</td>
 									<td>${element.account}</td>
 									<td>${element.nickname}</td>
-									<td>${element.birth}</td>
-									<td>${element.hobby}</td>
 									
 									<c:if test="${element.gender==1}">
 									<td>男</td>

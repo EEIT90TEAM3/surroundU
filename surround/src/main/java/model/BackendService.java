@@ -21,6 +21,8 @@ public class BackendService {
 	private TogetherDAO togetherDao;
 	@Autowired
 	private SaleDAO saleDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	
 	 public List<AccuseBean> selectAllAccuse(){  //查詢所有檢舉表格
@@ -220,12 +222,33 @@ public class BackendService {
       //依檢舉文章編號查詢文章編號,後以查詢擺攤文章內容
       public SaleBean lookAccuseOfSale(int accuse_no){
     	  
-    	  AccuseBean bean = accuseDao.select(accuse_no);
+    	  AccuseBean bean = accuseDao.select(accuse_no);    	  
     	  
     	  SaleBean rs = saleDAO.select(bean.getSale_no());
     	  
     	  return rs;
       }
+      
+      
+     //依據擺攤文章編號,以查詢出擺攤文章中的PRODUCT表格資料
+      public List<ProductBean> lookAccuseOfProduct(int accuse_no){
+    	  
+    	  AccuseBean bean = accuseDao.select(accuse_no);  
+    	  
+    	  SaleBean sbean = new SaleBean();
+    	  
+    	  sbean.setSale_no(bean.getSale_no());
+    	  
+    	  List<ProductBean> rs = productDAO.selectBySale(sbean);
+    	  
+    	  return rs;
+    	  
+      }
+      
+      
+      
+      
+      
       
       //依檢舉文章編號查詢文章編號,後以查詢約團文章內容
       public TogetherBean lookAccuseOfTogether(int accuse_no){

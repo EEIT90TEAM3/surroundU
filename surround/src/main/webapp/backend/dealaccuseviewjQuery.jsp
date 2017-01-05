@@ -47,6 +47,16 @@
 /* 			color: #339; */
 /* 		}   */
 </style>
+ <script type="text/javascript">
+		 function openWindow()
+		 {
+		 mynewwindow = window.open('<c:url value="/lookAccuse.controller?accuse_no=${param.accuse_no}&accuse_topic=${param.accuse_topic}"/>','_new','scrollbars=yes,status=yes,width=600,height=400,dependent=no,directories=no,menubar=yes,personalbar=no'); 
+		 } 
+ 
+ 
+ </script>
+
+
 </head>
 <body>
    <div class="container">
@@ -98,6 +108,15 @@
 						</tr>
 					</table>
 				 </form>
+				 <br>
+				 
+<%-- 			<form mothed="get" action="<c:url value="/lookAccuse.controller"/>"  >	 --%>
+			
+				
+				
+				
+			
+				
 			<form mothed="get" action="<c:url value="/dealaccuse.controller"/>" >
 				   <table class="table table-bordered table-striped table-hover">		
 						
@@ -125,17 +144,18 @@
 							<th>${param.accuse_post_time}</th>
 							<input type="hidden" name="accuse_post_time" value="${param.accuse_post_time}">
 						</tr>
+						<tr>		
+				
 						<tr>
-						
-							<th>文章連結</th>
-							<th><input type="button"  value="觀看文章內容" id="buttonLook"></th>
-							
-						<!-- <th><input type="button"  value="觀看文章內容" id="buttonLook"></th> -->	
-						</tr>
+						   <th>查看文章</th>
+						   <th><input type="button"  value="觀看文章內容" id="buttonLook" class="btn btn-danger" onclick="openWindow()"></th>
+					<!-- <th><input type="button"  value="觀看文章內容" id="buttonLook"></th> -->	
+					    </tr>
+					    
 						<tr>
 						   <th>處理結果</th>
 						   <th><input type="radio" name="accuseyesorno" value="2" > 檢舉成立<br>
-				  		       <input type="radio" name="accuseyesorno" value="1"> 檢舉不成立<br>
+				  		       <input type="radio" name="accuseyesorno" value="1" checked> 檢舉不成立<br>
 				  		     </th>
 				  		     <h6>${error.accuse_status}</h6>
 				        </tr>
@@ -191,16 +211,18 @@
 // 		});
 		
 		
-	$('#buttonLook').click(function(){
+// 	$('#buttonLook').click(function(){
 				
-			$.get("<c:url value="/lookAccuse.controller"/>",{"accuse_no":"${param.accuse_no}","accuse_topic":"${param.accuse_topic}"},window.open("index.jsp","_blank","top=50,left=100,width=500,height=500")
-			);
+// 			$.get("<c:url value="/lookAccuse.controller"/>",{"accuse_no":"${param.accuse_no}","accuse_topic":"${param.accuse_topic}"},
+					
+// 					window.open("index.jsp","_blank","top=50,left=100,width=500,height=500")
+// 			);
 
-		});
+// 		});
 
 		
 		
-	});
+// 	});
 
 	
 	</script>

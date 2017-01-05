@@ -141,12 +141,15 @@ $(document).ready(function() {
 				    map: map,
 				    icon:"<c:url value="/img/mapicon/hotfoodcheckpoint.png"/>",
 				    title: 'Eating!'
-				    });
+				    }).addListener('click',clickontest);
 				    	 
 			    </c:forEach>
 			     
         	
-        	
+			    function clickontest(){
+			    	alert("testclick");
+			    };
+        	     
       
     }
       

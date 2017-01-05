@@ -139,6 +139,15 @@ public class ProductDAOHibernate implements ProductDAO{
 		}
 		return false;
 	}
+	
+	@Override
+	public List<ProductBean> selectBySale(SaleBean sale_no) {
+		Query query = this.getSession().createQuery("from ProductBean where sale_no=?");
+		query.setParameter(0, sale_no);
+		
+		return (List<ProductBean>) query.getResultList();
+	}
+	
 
 
 }
