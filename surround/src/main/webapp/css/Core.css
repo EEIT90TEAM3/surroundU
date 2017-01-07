@@ -1,0 +1,9 @@
+/*CSS reset*/
+html, head, body, hr, input, label,
+table, thead, tbody, tfoot, tr, th, td, caption
+{
+	margin: 0 auto;
+	padding: 0;
+	text-decoration: none;
+	font-family: "微軟正黑體", "Microsoft JhengHei", "PMingLiU", "Arial Unicode MS", "MS Trebuchet", sans-serif;
+}
