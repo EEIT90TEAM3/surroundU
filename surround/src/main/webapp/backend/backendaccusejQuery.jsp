@@ -81,7 +81,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -102,6 +102,7 @@
 						</tr>
 					</table>
 				 </form>
+				 <br>
 				       <!-- 檢舉文章列表 -->
 					  <c:if test="${not empty selectaccuse}">
 						<table class="table table-bordered table-striped table-hover">
@@ -119,7 +120,17 @@
 							</thead>
 							<tbody>
 							<c:forEach var="element" items="${selectaccuse}">
-								<c:url value="/backend/dealaccuseviewjQuery.jsp" var="path">
+								<c:url value="/backend/dealaccuseviewjQuery.jsp" var="path1">
+									<c:param name="accuse_no" value="${element.accuse_no}" />
+									<c:param name="account" value="${element.member_no.account}" />
+									<c:param name="accuse_topic" value="${element.accuse_topic}" />
+									<c:param name="accuse_type" value="${element.accuse_type}" />
+									<c:param name="accuse_post_time" value="${element.accuse_post_time}" />
+									<c:param name="accuse_status" value="${element.accuse_status}" />
+									<c:param name="accuse_deal_memo" value="${element.accuse_deal_memo}" />
+								</c:url>
+								
+								<c:url value="/backend/detailaccuseviewjQuery.jsp" var="path2">
 									<c:param name="accuse_no" value="${element.accuse_no}" />
 									<c:param name="account" value="${element.member_no.account}" />
 									<c:param name="accuse_topic" value="${element.accuse_topic}" />
@@ -147,10 +158,11 @@
 									<td>${element.accuse_deal_memo}</td>
 									
 									<c:if test="${element.accuse_status==0}">
-									<td><a href="${path}"><input type="button" name="doaccuseaction" value="處理"/></a></td> 
+									<td><a href="${path1}"><input type="button" name="doaccuseaction" value="處理" class="btn btn-success"/></a></td> 
 						            </c:if>
 						            <c:if test="${element.accuse_status!=0}">
-                                    <td></td>
+						            <td><a href="${path2}"><input type="button" name="doaccuseaction" value="明細" class="btn btn-primary"/></a></td>
+                              
 									</c:if>
 						              
 								</tr>

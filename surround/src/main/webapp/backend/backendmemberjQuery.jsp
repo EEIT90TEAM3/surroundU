@@ -77,7 +77,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -100,6 +100,7 @@
 					 
 				      </table>
 			   </form>
+			   <br>
 					<c:if test="${not empty selectmember}">
 						<table class="table table-bordered table-striped table-hover">
 							<thead>
@@ -122,9 +123,9 @@
 									<c:param name="birth" value="${element.birth}" />
 									<c:param name="hobby" value="${element.hobby}" />
 									<c:param name="gender" value="${element.gender}" />
-									<c:param name="account_status" value="${element.member_status}" />
+									<c:param name="member_status" value="${element.member_status}" />
 									<c:param name="account_email" value="${element.account_email}" />
-									<c:param name="member_status" value="${element.account_status}" />
+									<c:param name="account_status" value="${element.account_status}" />
 								</c:url>
 								<tr>
 									<td>${element.member_no}</td>
@@ -145,16 +146,16 @@
 									<td>正常</td>
 									</c:if>
 									<c:if test="${element.account_status==1}">
-									<td>暫時停權</td>
+									<td>停權</td>
 									</c:if>
 									<c:if test="${element.account_status==2}">
-									<td>永久停權</td>
+									<td>停權</td>
 									</c:if>
 									<c:if test="${element.account_status==99}">
 									<td>管理者</td>
 									</c:if>
 									
-									<td><a href="${path}"><input type="button" name="doaccuseaction" value="進階" /></a></td>
+									<td><a href="${path}"><input type="button" name="doaccuseaction" value="管理" class="btn btn-primary"/></a></td>
 									
 								</tr>
 							</c:forEach>

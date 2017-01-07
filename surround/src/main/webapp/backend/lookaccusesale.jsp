@@ -60,7 +60,7 @@
 									<td>${element.product_name}</td>
 									<td>${element.product_memo}</td>
 									<td>${element.product_price}</td>
-									<td></td>
+									<td><img src="<c:url value="${element.product_pic}"/>" style="width:200px;height:150px;"></a></td>
 							
 									
 								</tr>

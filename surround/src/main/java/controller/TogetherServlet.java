@@ -300,7 +300,7 @@ public class TogetherServlet extends HttpServlet{
 				request.setAttribute("insert", result);
 			}
 			request.getRequestDispatcher(
-					"/menu.jsp").forward(request, response);
+					"/GoogleMap.jsp").forward(request, response);
 			
 		} else if("Update".equals(prodaction)) {
 			int together_no=0;
@@ -326,7 +326,7 @@ public class TogetherServlet extends HttpServlet{
 				request.setAttribute("update", result);
 			}
 			request.getRequestDispatcher(
-					"/menu.jsp").forward(request, response);
+					"/GoogleMap.jsp").forward(request, response);
 		} else if("Delete".equals(prodaction)) {
 			int together_no=0;
 			if(temp4!=null && temp4.length()!=0){
@@ -352,7 +352,7 @@ public class TogetherServlet extends HttpServlet{
 				request.setAttribute("delete", 1);
 			}
 			request.getRequestDispatcher(
-					"/menu.jsp").forward(request, response);
+					"/GoogleMap.jsp").forward(request, response);
 			
 		} else  {
 			errors.put("action", "Unknown Action:"+prodaction);

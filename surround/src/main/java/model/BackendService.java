@@ -263,6 +263,17 @@ public class BackendService {
       }
       
         
+      
+      public MemberBean switchAccountStatus(String account,int account_status){
+    	  
+    	 MemberBean bean1 = memberDao.select(account);
+    	 
+    	 MemberBean bean2 = memberDao.update(bean1, account_status);
+    	 
+    	 return bean2;
+    	  
+    	  
+      }
 		
 		
 		

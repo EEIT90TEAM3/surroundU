@@ -38,6 +38,6 @@
   </resource-ref>
 
   <welcome-file-list>
-    <welcome-file>postaccuse.jsp</welcome-file>
+    <welcome-file>/secure/backendlogingWeb.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

@@ -87,5 +87,21 @@ public class MemberDAOHibernate implements MemberDAO {
         return (List<MemberBean>)query.getResultList();
 
 	}
+	
+	
+	@Override
+	public MemberBean update(MemberBean memberbean,int account_status){
+		
+		MemberBean bean = this.getSession().get(MemberBean.class, memberbean.getMember_no());
+		
+		if(bean!=null){
+			bean.setAccount_status(account_status);
+			
+			return bean;
+		}
+		
+		    return null;
+		
+	}
 
 }

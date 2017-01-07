@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 
 @Entity
 @Table(name="SALE",catalog="EEIT90", schema="DBO")
@@ -28,24 +30,24 @@ public class SaleBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id //主鍵	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)   //2.再用@GeneratedValue的generator屬性指定要用哪個generator
-	private int sale_no;  /*擺攤文章編號*/
+	@Expose private int sale_no;  /*擺攤文章編號*/
 	@ManyToOne(fetch=FetchType.LAZY,targetEntity = MemberBean.class) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "member_no")  //指定用來join table的column
-	private MemberBean member_no; /*會員編號*/
-	private String sale_topic ;/*主題*/
-	private String sale_name;/*擺攤名稱*/
-	private String sale_locate;/*地點*/
-	private java.util.Date sale_time;/*時間*/
-	private String sale_memo;/*備註*/
-	private java.util.Date sale_post_time;/*發文時間*/
-	private java.util.Date sale_delete_time;/*刪除時間*/
-	private java.util.Date sale_modify_time;/*修改時間*/
-	private int sale_status;/*文章狀態*/
-	private float sale_lng;/*經度*/
-	private float sale_lat;/*緯度*/
+	@Expose private MemberBean member_no; /*會員編號*/
+	@Expose private String sale_topic ;/*主題*/
+	@Expose private String sale_name;/*擺攤名稱*/
+	@Expose private String sale_locate;/*地點*/
+	@Expose private java.util.Date sale_time;/*時間*/
+	@Expose private String sale_memo;/*備註*/
+	@Expose private java.util.Date sale_post_time;/*發文時間*/
+	@Expose private java.util.Date sale_delete_time;/*刪除時間*/
+	@Expose private java.util.Date sale_modify_time;/*修改時間*/
+	@Expose private int sale_status;/*文章狀態*/
+	@Expose private String sale_lng;/*經度*/
+	@Expose private String sale_lat;/*緯度*/
 	//@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="sale_no")
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sale_no",targetEntity=ProductBean.class)//避免fk無法刪掉 
-	private Set<ProductBean> productBean = new HashSet<ProductBean>();
+	@Expose private Set<ProductBean> productBean = new HashSet<ProductBean>();
 
     //測試程式
 //	public static void main(String[] args) {
@@ -122,14 +124,14 @@ public class SaleBean implements Serializable{
 //			((ConfigurableApplicationContext) context).close();
 //		}
 //	}
-		@Override
-	public String toString() {
-		return "SaleBean [sale_no=" + sale_no + ", member_no=" + member_no + ", sale_topic=" + sale_topic
-				+ ", sale_name=" + sale_name + ", sale_locate=" + sale_locate + ", sale_time=" + sale_time
-				+ ", sale_memo=" + sale_memo + ", sale_post_time=" + sale_post_time + ", sale_delete_time="
-				+ sale_delete_time + ", sale_modify_time=" + sale_modify_time + ", sale_status=" + sale_status
-				+ ", sale_lng=" + sale_lng + ", sale_lat=" + sale_lat + ", productBean=" + productBean + "]";
-	}
+//		@Override
+//	public String toString() {
+//		return "SaleBean [sale_no=" + sale_no + ", member_no=" + member_no + ", sale_topic=" + sale_topic
+//				+ ", sale_name=" + sale_name + ", sale_locate=" + sale_locate + ", sale_time=" + sale_time
+//				+ ", sale_memo=" + sale_memo + ", sale_post_time=" + sale_post_time + ", sale_delete_time="
+//				+ sale_delete_time + ", sale_modify_time=" + sale_modify_time + ", sale_status=" + sale_status
+//				+ ", sale_lng=" + sale_lng + ", sale_lat=" + sale_lat + ", productBean=" + productBean + "]";
+//	}
 	
 	
 	public int getSale_no() {
@@ -201,16 +203,16 @@ public class SaleBean implements Serializable{
 	public void setSale_status(int sale_status) {
 		this.sale_status = sale_status;
 	}
-	public float getSale_lng() {
+	public String getSale_lng() {
 		return sale_lng;
 	}
-	public void setSale_lng(float sale_lng) {
+	public void setSale_lng(String sale_lng) {
 		this.sale_lng = sale_lng;
 	}
-	public float getSale_lat() {
+	public String getSale_lat() {
 		return sale_lat;
 	}
-	public void setSale_lat(float sale_lat) {
+	public void setSale_lat(String sale_lat) {
 		this.sale_lat = sale_lat;
 	}	
 

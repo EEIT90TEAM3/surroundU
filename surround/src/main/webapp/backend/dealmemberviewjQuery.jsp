@@ -77,7 +77,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -98,15 +98,17 @@
 					 
 				      </table>
 			   </form>
-			   <form>
+			   <br>
+			   <form method="GET" action ="<c:url value="/backendMember.controller"/>">
 				   <table  class="table table-bordered table-striped table-hover">		
 						<tr>
 							<th>編號</th>
 							<th>${param.member_no}</th>
-		
+		                    <input type="hidden" name="member_no" value="${param.member_no}">
 						<tr>
 							<th>會員帳號</th>
 							<th>${param.account}</th>
+							<input type="hidden" name="account" value="${param.account}">
 						</tr>
 						<tr>
 							<th>暱稱</th>
@@ -147,6 +149,27 @@
 						<tr>
 							<th>電子郵件</th>
 							<th>${param.account_email}</th>
+						</tr>
+                        <tr>
+							
+							<c:if test="${param.account_status == 1}">
+							<th><input id="buttonGet1" type="submit" name="backendaction" value="解除停權" /></th>
+							</c:if>
+							<c:if test="${param.account_status == 2}">
+							<th><input id="buttonGet1" type="submit" name="backendaction" value="解除停權" /></th>
+							</c:if>
+							<c:if test="${param.account_status == 0}">
+							<th><input id="buttonGet1" type="submit" name="backendaction" value="停權" /></th>
+							</c:if>
+							
+                            <c:if test="${param.account_status != 99}">
+							<th><input id="buttonGet2" type="submit" name="backendaction" value="給予管理員權限" /></th>
+							</c:if>
+							
+							<c:if test="${param.account_status == 99}">
+							<th><input id="buttonGet3" type="submit" name="backendaction" value="解除管理員權限" /></th>
+							</c:if>
+							
 						</tr>
 
 						
