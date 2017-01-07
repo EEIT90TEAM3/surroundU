@@ -98,13 +98,13 @@ public class LoginServlet {
 			method={RequestMethod.GET, RequestMethod.POST}
 	)
 	public String fbservice(String prodaction, MemberBean bean, BindingResult bindingResult, Model model, HttpSession session,HttpServletRequest request) {
-		System.out.println("cc");
-				 String code = request.getParameter("code");
+		System.out.println("log request ok");
+		String code = request.getParameter("code");
 
 		 String token = null;
 		 try {
 			    //拿到一個長授權
-	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://localhost:8080/WebSurroundSpring/secure/fblogin.controller&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
+	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/secure/fblogin.controller&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
 	            URL u = new URL(g);
 	            URLConnection c = u.openConnection();
 	            System.out.println(c);

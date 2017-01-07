@@ -116,9 +116,8 @@ public class SaleServlet extends HttpServlet {
 							String filename = header.substring(header.indexOf("filename=\"") + 10,
 									header.lastIndexOf("\""));
 							this.filename=filename;
-							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/WebSurroundSpring/src/main/webapp/img/" + filename);
+							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/repository/WebSurroundSpring/src/main/webapp/img/" + filename);
 							byte[] buffer = new byte[1024];
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {

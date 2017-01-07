@@ -241,7 +241,7 @@
       		        maxmin: true, //开启最大化最小化按钮
       		        area: ['500px', '400px'],
   //傳入經緯度參數iFrame
-      		        content: ['/WebSurroundSpring/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
+      		        content: ['/surround/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
       		     
       			});
       		});   

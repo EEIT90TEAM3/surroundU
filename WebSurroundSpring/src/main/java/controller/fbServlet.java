@@ -35,11 +35,11 @@ public class fbServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String code = request.getParameter("code");
-
+		 System.out.println("fb request ok");
 		 String token = null;
 		 try {
 			    //拿到一個web短授權
-	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://localhost:8080/WebSurroundSpring/fbServlet&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
+	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/fbServlet&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
 	            URL u = new URL(g);
 	            URLConnection c = u.openConnection();
 	            System.out.println(c);
