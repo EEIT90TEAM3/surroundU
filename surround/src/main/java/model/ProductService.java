@@ -9,12 +9,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
+
 	public static void main(String[] args) {
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("beans.config.xml");
 		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
 		try {
 			SaleService saleService = (SaleService) context.getBean("saleService");
+
 		} finally {
 			sessionFactory.close();
 			((ConfigurableApplicationContext) context).close();

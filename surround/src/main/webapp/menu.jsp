@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 	
 	<!-- jQuery -->
+
 	<script src="src/jquery211.js" type="text/javascript"></script>
 	<!-- SmartMenus jQuery plugin -->
 	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>

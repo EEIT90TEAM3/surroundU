@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+
 import java.sql.Blob;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.google.gson.annotations.Expose;
 @Entity
-@Table(name="PRODUCT")
+@Table(name="PRODUCT",catalog="EEIT90", schema="DBO")
 public class ProductBean implements Serializable{
 	/**
 	 * 
@@ -43,46 +44,7 @@ public class ProductBean implements Serializable{
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
 			Session session = sessionFactory.getCurrentSession();
-//單筆查詢	
-//			ProductBean memb = session.get(ProductBean.class,2);
-//			System.out.print(memb.getProduct_no()+",");
-//			System.out.print(memb.getSale_no().getSale_no()+",");
-//			System.out.print(memb.getProduct_name()+",");
-//			System.out.print(memb.getProduct_memo()+",");
-//			System.out.print(memb.getProduct_price()+",");
-//			System.out.print(memb.getProduct_pic()+",");
-//			System.out.print(memb.getProduct_status()+",");
-//多筆查詢	
-			Query query = session.createQuery("from ProductBean");
-			List<ProductBean> list = query.getResultList();
-			for (ProductBean aDept : list) {
-				System.out.print(aDept.getProduct_no()+",");
-				System.out.print(aDept.getSale_no().getSale_no()+",");
-				System.out.print(aDept.getProduct_name()+",");
-				System.out.print(aDept.getProduct_memo()+",");
-				System.out.print(aDept.getProduct_price()+",");
-				System.out.print(aDept.getProduct_pic()+",");
-				System.out.print(aDept.getProduct_status()+",");
-				System.out.println();}
-			//新增或修改			
-			model.SaleBean saleBean = new model.SaleBean();
-			saleBean.setSale_no(2);
-				ProductBean productBean = new ProductBean(); //會員POJO
-			//	productBean.setProduct_no(5);
-				productBean.setSale_no(saleBean);
-				productBean.setProduct_name("這是修改你知道的");
-				productBean.setProduct_memo("這是修改你知道的");
-				productBean.setProduct_price(20000);
-				productBean.setProduct_pic(null);
-				productBean.setProduct_status(0);
-				session.save(productBean);//新增
-//				session.merge(productBean);//修改
-			
-//刪除
-//			ProductBean saledelete = session.get(ProductBean.class,3);
-//			session.delete(saledelete);	
-			
-			
+
 			sessionFactory.getCurrentSession().getTransaction().commit();
 		} finally {
 			sessionFactory.close();
@@ -99,6 +61,7 @@ public class ProductBean implements Serializable{
 	}
 	@ManyToOne(fetch=FetchType.LAZY) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "sale_no")  //指定用來join table的column
+
 	public SaleBean getSale_no() {
 		return sale_no;
 	}

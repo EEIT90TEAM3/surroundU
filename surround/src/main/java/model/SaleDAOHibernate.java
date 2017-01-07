@@ -24,6 +24,7 @@ public class SaleDAOHibernate implements SaleDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+
 	public static void main(String[] args) {
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("beans.config.xml");
@@ -185,7 +186,33 @@ public class SaleDAOHibernate implements SaleDAO {
 			}
 			return update;
 		}
-	public boolean delete(int sale_no) {
+
+
+	
+	public List<SaleBean> selectByStatus(int sale_status) {
+		Query query = this.getSession().createQuery("from SaleBean where sale_status=?");
+		query.setParameter(0, sale_status);
+			
+		
+		return (List<SaleBean>) query.getResultList();
+	}
+
+		public SaleBean updateByStatus(int sale_no,int sale_status) {
+			
+			SaleBean rs = this.getSession().get(SaleBean.class, sale_no);
+			
+			if(rs!=null){
+				rs.setSale_status(sale_status);
+	 	
+			}
+		    
+			System.out.println("更改後的togetherbean:"+rs);
+			
+					
+			return rs;
+		}
+
+		public boolean delete(int sale_no) {
 		SaleBean bean=this.getSession().get(SaleBean.class, sale_no);
 		if(bean!=null){
 			this.getSession().delete(bean);

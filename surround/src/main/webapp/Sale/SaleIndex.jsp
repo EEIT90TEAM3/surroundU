@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
+
 	
 	<script src="${request.contextPath}src/jquery111.js" type="text/javascript"></script>
 	<script src="${request.contextPath}src/lay/layer.js" type="text/javascript"></script>
@@ -84,6 +85,7 @@
 
               });
                 </script>
+
       <font color="red" size="-1">${errors.sale_time}</font>
       <br/>
       

@@ -38,6 +38,7 @@ public class SaleServlet extends HttpServlet {
 	String filename=null;
 	@Override
 	public void init() throws ServletException {
+
 		sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		ServletContext application = this.getServletContext();
 		WebApplicationContext context = 
@@ -118,7 +119,7 @@ public class SaleServlet extends HttpServlet {
 							this.filename=filename;
 							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/surround/src/main/webapp/img/" + filename);
+							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/repository/surround/src/main/webapp/img/" + filename);
 							byte[] buffer = new byte[1024];
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {
@@ -153,6 +154,7 @@ public class SaleServlet extends HttpServlet {
 						} catch (ParseException e) {
 							e.printStackTrace();
 							errors.put("sale_time", "請輸入 yyyy-MM-dd HH:mm");
+
 						} 
 					}
 					

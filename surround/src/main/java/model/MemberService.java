@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
+
 	@Transactional
 	public MemberBean fblogin(MemberBean bean) {
 		MemberBean bean1=null;
@@ -49,6 +50,22 @@ public class MemberService {
 		 result = memberDAO.insert(bean);
 		}
 		return result;
+	}
+	@Transactional
+	public MemberBean backendlogin(String account, String pwd) {  //後台登錄
+		MemberBean bean = memberDAO.select(account);
+		if (bean != null) {
+			if (pwd != null && pwd.length() != 0) {
+				String pass = bean.getPwd();  //取得密碼
+				
+				 int  status = bean.getAccount_status(); //取得權限
+				
+				 if (pass.equals(pwd) && status==99) {
+					return bean;
+				}
+			}
+		}
+		return null;
 	}
 
 }

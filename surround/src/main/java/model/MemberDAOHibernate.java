@@ -22,32 +22,7 @@ public class MemberDAOHibernate implements MemberDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-//	public static void main(String[] args) {
-//		ApplicationContext context =
-//				new ClassPathXmlApplicationContext("beans.config.xml");
-//		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
-//	
-//		try {
-//			sessionFactory.getCurrentSession().beginTransaction();
-//			
-//			MemberDAO memberDAO = (MemberDAO) context.getBean("MemberDAO");		
-//			MemberBean memb = memberDAO.select("Nobi");
-//			System.out.println(memb.getAccount());
-//			System.out.println(memb.getMember_status());
-//			System.out.println(memb.getPwd());
-//			
-//			
-//			sessionFactory.getCurrentSession().getTransaction().commit();
-//		
-//		} finally {
-//			sessionFactory.close();
-//			((ConfigurableApplicationContext) context).close();
-//		}
-//	}
-//	
-//	
-//	
-	
+
 
 	@Override
 	public MemberBean select(String account) {
@@ -79,6 +54,45 @@ public class MemberDAOHibernate implements MemberDAO {
 		Query query = this.getSession().createQuery("from MemberBean where account_facebook like :name");		
 		query.setParameter("name",bean.getAccount_facebook());
 		return (MemberBean) query.getSingleResult();
+
+	
+	}
+	
+	
+	@Override
+	public List<MemberBean> selectAll() {   //查詢MEMBER所有表格資料
+        
+		Query query = this.getSession().createQuery("from MemberBean");
+        
+        return (List<MemberBean>)query.getResultList();
+
+	}
+	
+	@Override
+	public List<MemberBean> selectMemberByAccuseStatus(int account_status) {   //查詢MEMBER所有表格資料
+        
+		Query query = this.getSession().createQuery("from MemberBean where account_status=?");
+        query.setParameter(0, account_status);
+		
+		
+        return (List<MemberBean>)query.getResultList();
+
+	}
+	
+	
+	@Override
+	public MemberBean update(MemberBean memberbean,int account_status){
+		
+		MemberBean bean = this.getSession().get(MemberBean.class, memberbean.getMember_no());
+		
+		if(bean!=null){
+			bean.setAccount_status(account_status);
+			
+			return bean;
+		}
+		
+		    return null;
+		
 	}
 
 }

@@ -26,55 +26,7 @@ public class ProductDAOHibernate implements ProductDAO{
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
 			ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
-//單筆查詢		
-//			ProductBean memb = productDAO.select(3);
-//			System.out.print(memb.getProduct_no()+",");
-//			System.out.print(memb.getSale_no().getSale_no()+",");
-//			System.out.print(memb.getProduct_name()+",");
-//			System.out.print(memb.getProduct_memo()+",");
-//			System.out.print(memb.getProduct_price()+",");
-//			System.out.print(memb.getProduct_pic()+",");
-//			System.out.print(memb.getProduct_status()+",");
-			//多筆查詢	
-//			List<ProductBean> listSale = productDAO.select();
-//			for (ProductBean aDept : listSale) {
-//				System.out.print(aDept.getProduct_no()+",");
-//				System.out.print(aDept.getSale_no().getSale_no()+",");
-//				System.out.print(aDept.getProduct_name()+",");
-//				System.out.print(aDept.getProduct_memo()+",");
-//				System.out.print(aDept.getProduct_price()+",");
-//				System.out.print(aDept.getProduct_pic()+",");
-//				System.out.print(aDept.getProduct_status()+",");
-//				System.out.println();
-//				}
-//搜尋物品
-			ProductBean productBeanBeanpro = new ProductBean();
-			productBeanBeanpro.setProduct_name("衣服");
-			List<ProductBean> ppp=productDAO.select(productBeanBeanpro);	
-			for(ProductBean prb :ppp){
-			System.out.print(prb.getProduct_no() + ",");
-			System.out.print(prb.getProduct_name() + ",");
-			}
 
-			
-//新增	
-//修改
-//			model.SaleBean saleBean = new model.SaleBean(); // 部門POJO
-//			saleBean.setSale_no(4);
-//			ProductBean productBeanBean = new ProductBean(); //會員POJO
-//			productBeanBean.setProduct_no(1);
-//			productBeanBean.setSale_no(saleBean);
-//			productBeanBean.setProduct_name("製造部test");
-//			productBeanBean.setProduct_memo("中國江西s");
-//			productBeanBean.setProduct_price(123);
-//			productBeanBean.setProduct_pic(null);
-//			productBeanBean.setProduct_status(0);
-////			productDAO.insert(productBeanBean);	
-//			productDAO.update(productBeanBean);	
-			
-//		刪除
-//			productDAO.delete(3);
-//
 			sessionFactory.getCurrentSession().getTransaction().commit();
 		} finally {
 			sessionFactory.close();
@@ -137,6 +89,17 @@ public class ProductDAOHibernate implements ProductDAO{
 		}
 		return false;
 	}
+
+	
+	@Override
+	public List<ProductBean> selectBySale(SaleBean sale_no) {
+		Query query = this.getSession().createQuery("from ProductBean where sale_no=?");
+		query.setParameter(0, sale_no);
+		
+		return (List<ProductBean>) query.getResultList();
+	}
+	
+
 
 
 }

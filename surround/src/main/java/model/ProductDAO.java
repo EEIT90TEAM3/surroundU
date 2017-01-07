@@ -16,5 +16,8 @@ public interface ProductDAO {
 	ProductBean update(ProductBean bean);
 
 	boolean delete(int product_no);
+	
+	List<ProductBean> selectBySale(SaleBean sale_no);
+
 
 }
