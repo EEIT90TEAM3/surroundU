@@ -54,13 +54,11 @@ public class MemberService {
 	public MemberBean update(MemberBean bean) {
 		MemberBean result = null;
 		if (bean != null) {
-			result = memberDao.update(bean.getNickname(),bean.getHobby(), bean.getAccount());
+			result = memberDao.update(bean.getNickname(), bean.getHobby(), bean.getAccount());
 		}
 		return result;
 
 	}
-
-	
 
 	@Transactional
 	public boolean delete(MemberBean bean) {
@@ -101,6 +99,7 @@ public class MemberService {
 			}
 		}
 		return false;
+
 	}
 
 }
