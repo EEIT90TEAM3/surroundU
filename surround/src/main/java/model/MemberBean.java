@@ -3,6 +3,31 @@ package model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Query;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.google.gson.annotations.Expose;
+
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,6 +41,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name="MEMBER",catalog="EEIT90", schema="DBO")
 @Component(value="memberBean")
@@ -27,16 +54,16 @@ public class MemberBean implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int	member_no;	//會員編號
-	private String account;	//*帳號
+	@Expose private String account;	//*帳號
 	private String pwd;	//*密碼
 	private String name; //*姓名
-	private String nickname; //*暱稱
+	@Expose private String nickname; //*暱稱
 	private java.util.Date birth;//*生日
 	private String hobby;//*興趣
 	private int member_status;//*上線狀態
 	private int gender; //*性別(0為female,1為male)*/ 
 	private int account_status;/*帳號狀態(0為正常,1為暫時停用,2為永久停用,99為管理員)*/ 
-	private Blob member_photo;//*會員照片*
+	private byte[] member_photo;//*會員照片*
 	private java.util.Date suspended;//*停權結束日期
 	private String account_email;//*Email帳號
 	private String account_google;//*Google帳號
@@ -265,10 +292,12 @@ public class MemberBean implements Serializable{
 	public void setAccount_status(int account_status) {
 		this.account_status = account_status;
 	}
-	public Blob getMember_photo() {
+	//修改為byte[]
+	public byte[] getMember_photo() {
 		return member_photo;
 	}
-	public void setMember_photo(Blob member_photo) {
+	//修改為byte[]
+	public void setMember_photo(byte[] member_photo) {
 		this.member_photo = member_photo;
 	}
 	public java.util.Date getSuspended() {

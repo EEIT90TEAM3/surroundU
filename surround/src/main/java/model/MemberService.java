@@ -15,43 +15,42 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
-	
-	//測試程式
-//	public static void main(String[] args) {
-//		ApplicationContext context =
-//				new ClassPathXmlApplicationContext("beans.config.xml");
-//		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
-//		try {
-//			sessionFactory.getCurrentSession().beginTransaction();
-//			MemberService memberService = (MemberService) context.getBean("memberService");
-//			MemberBean mem=memberService.login("Doraemon", "2112");
-//			System.out.println(mem.getAccount());
-//			System.out.println(mem.getMember_no());
-//			System.out.println(mem.getMember_status());
-//			
-//		} finally {
-//			sessionFactory.close();
-//			((ConfigurableApplicationContext) context).close();
-//		}
-//		
-//	}
-	
+
+	@Transactional
+	public MemberBean fblogin(MemberBean bean) {
+		MemberBean bean1=null;
+		try {
+			bean1 = memberDAO.fbselect(bean);
+		} catch (Exception e) {
+			System.out.println("aa");
+			memberDAO.insert(bean);
+			bean1 = memberDAO.fbselect(bean);
+		}
+		
+		return bean1;
+	}
 	@Transactional
 	public MemberBean login(String account, String pwd) {
+		System.out.println("aa");
 		MemberBean bean = memberDAO.select(account);
 		if (bean != null) {
 			if (pwd != null && pwd.length() != 0) {
-				String pass = bean.getPwd();  //取得密碼			
-				
-				 if (pass.equals(pwd) ) {
+				String pass = bean.getPwd(); 
+				if (pass.equals(pwd)) {
 					return bean;
 				}
 			}
 		}
 		return null;
 	}
-	
-	
+	@Transactional
+	public MemberBean register(MemberBean bean) {	
+		MemberBean result = null;
+		if (bean != null) {
+		 result = memberDAO.insert(bean);
+		}
+		return result;
+	}
 	@Transactional
 	public MemberBean backendlogin(String account, String pwd) {  //後台登錄
 		MemberBean bean = memberDAO.select(account);

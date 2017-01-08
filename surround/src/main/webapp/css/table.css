@@ -4,9 +4,9 @@ table {
 	font-size: 12px;
 	margin: 45px;
 	width: 480px;
-	text-align: left;
+	text-align: right;
 	border-collapse: collapse;
-	position: relative;
+	position: fixed;
 	left: 50px; 
 }
 

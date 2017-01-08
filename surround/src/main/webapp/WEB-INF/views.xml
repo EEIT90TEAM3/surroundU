@@ -8,7 +8,7 @@
 <!-- 		<property name="contextRelative" value="true"></property> -->
 <!-- 		<property name="url" value="/postaccuse.jsp"></property> -->
 <!-- 	</bean> -->
-	
+
     <bean id="postaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/accuse/postaccuse.jsp"></property>
 	</bean>
@@ -58,41 +58,44 @@
 	</bean>
 	
 	<bean id="backendlogin.error" class="org.springframework.web.servlet.view.InternalResourceView">
-		<property name="url" value="/secure/backendlogingWeb.jsp"></property>
+		<property name="url" value="/secure/backendlogin.jsp"></property>
 	</bean>
 	
-	<bean id="login.success" class="org.springframework.web.servlet.view.RedirectView">
-		<property name="contextRelative" value="true"></property>
-		<property name="url" value="/GoogleMap.jsp"></property>
+	<bean id="login.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/menu.jsp"></property>
 	</bean>
 	
-		<bean id="login.error" class="org.springframework.web.servlet.view.InternalResourceView">
-		<property name="url" value="/secure/logWeb.jsp"></property>
+	<bean id="login.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/secure/login.jsp"></property>
 	</bean>
 	
-
-	<bean id="Fblogin.success" class="org.springframework.web.servlet.view.RedirectView">
-		<property name="contextRelative" value="true"></property>
-		<property name="url" value="/GoogleMap.jsp"></property>
-	</bean>
-
+	
+	
+	
+	
+	<!-- together -->
 	<bean id="together.success" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/pages/togetherTotal.jsp"></property>
 	</bean>
-	
-	<bean id="lookaccusesale.success" class="org.springframework.web.servlet.view.InternalResourceView">
-		<property name="url" value="/backend/lookaccusesale.jsp"></property>
+	<bean id="togetherMem.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/togetherMemDetails.jsp"></property>
 	</bean>
 	
-	<bean id="lookaccusetogether.success" class="org.springframework.web.servlet.view.InternalResourceView">
-		<property name="url" value="/backend/lookaccusetogether.jsp"></property>
+	<bean id="MytogetherMem.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/myJoinTogether.jsp"></property>
 	</bean>
-	
-	
+
+
 	<bean id="backendpwdchange.error" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/backend/backendchangepwdjQuery.jsp"></property>
 	</bean>
 	
+
+	<bean id="together_end.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/together_end.jsp"></property>
+	</bean>
+	<!-- together -->
+
 
 
 

@@ -19,4 +19,5 @@ public interface ProductDAO {
 	
 	List<ProductBean> selectBySale(SaleBean sale_no);
 
+
 }

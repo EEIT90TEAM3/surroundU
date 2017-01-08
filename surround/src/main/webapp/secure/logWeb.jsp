@@ -44,13 +44,11 @@
    padding:20px;
    width:300px;
 }
-
 .lower-block span{font-size:16px;}
 .lower-block span{margin-left:5px}
 .form-signin2{
 	display:none;
 }
-
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -141,7 +139,7 @@
 	 	<div class="log">
 	 	 <div> 
  	<%
-    String fbURL = "https://www.facebook.com/v2.8/dialog/oauth?client_id=275346536213447&redirect_uri=http://localhost:8080/WebSurroundSpring/secure/fblogin.controller&scope=email";
+    String fbURL = "https://www.facebook.com/v2.8/dialog/oauth?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/secure/fblogin.controller&scope=email";
 %>
  	<a href="<%= fbURL %>"><img src="img/fb.png" onmouseout="this.src='img/fb.png'" onmouseover="this.src='img/fbshow.png'" border="0"  width="260" /></a>
  	</div>
@@ -197,65 +195,45 @@
 <script>
 //影片js
 $( document ).ready(function() {
-
     scaleVideoContainer();
-
     initBannerVideoSize('.video-container .poster img');
     initBannerVideoSize('.video-container .filter');
     initBannerVideoSize('.video-container video');
-
     $(window).on('resize', function() {
         scaleVideoContainer();
         scaleBannerVideoSize('.video-container .poster img');
         scaleBannerVideoSize('.video-container .filter');
         scaleBannerVideoSize('.video-container video');
     });
-
 });
-
 function scaleVideoContainer() {
-
     var height = $(window).height() + 5;
     var unitHeight = parseInt(height) + 'px';
     $('.homepage-hero-module').css('height',unitHeight);
-
 }
-
 function initBannerVideoSize(element){
-
     $(element).each(function(){
         $(this).data('height', $(this).height());
         $(this).data('width', $(this).width());
     });
-
     scaleBannerVideoSize(element);
-
 }
-
 function scaleBannerVideoSize(element){
-
     var windowWidth = $(window).width(),
     windowHeight = $(window).height() + 5,
     videoWidth,
     videoHeight;
-
     console.log(windowHeight);
-
     $(element).each(function(){
         var videoAspectRatio = $(this).data('height')/$(this).data('width');
-
         $(this).width(windowWidth);
-
         if(windowWidth < 1000){
             videoHeight = windowHeight;
             videoWidth = videoHeight / videoAspectRatio;
             $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
-
             $(this).width(videoWidth).height(videoHeight);
         }
-
         $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
-
     });
 }
 $('#signup1').click(function(){

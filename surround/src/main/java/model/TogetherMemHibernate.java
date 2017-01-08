@@ -102,14 +102,19 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 
 	@Override
 	public TogetherMemBean update(int togethermem_no, TogetherBean together_no, MemberBean member_no, int togethermem_status,
-			Date togethermem_time) {
+			Date togethermem_time,java.util.Date togethermem_time_okay) {
+		System.out.println("====dao====");
+		System.out.println(togethermem_no);
 		TogetherMemBean update=this.getSession().get(TogetherMemBean.class, togethermem_no);
+		System.out.println(update);
 		if(update!=null){
+			
 			update.setMember_no(member_no);
 			update.setTogether_no(together_no);
 			update.setTogethermem_status(togethermem_status);
 			update.setTogethermem_time(togethermem_time);
-			
+			update.setTogethermem_time_okay(togethermem_time_okay);
+			System.out.println("====dao====");
 		}
 		return update;
 	}
@@ -127,25 +132,64 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 
 
 	@Override
-	public List<TogetherMemBean> selectTogetherNo(int together_no) {
-		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=?");
+	public List<TogetherMemBean> selectTogetherNo(TogetherBean together_no) {
+		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and togethermem_status< ?");
 		query.setParameter(0,together_no);
+		//申請狀態(0-申請中,1-已加入,2-拒絕,3-隱藏(刪除)....)
+		query.setParameter(1,2);
+		//System.out.println(together_no);
+		List<TogetherMemBean> aaa=(List<TogetherMemBean>) query.getResultList();
+//		for(TogetherMemBean ccc: aaa){
+//			System.out.println(ccc.getTogether_no());
+//		}
 		return (List<TogetherMemBean>) query.getResultList();
 	}
 
-
+    //判斷有無加過團
 	@Override
-	public boolean selectMemberNo(int together_no, int member_no) {
+	public boolean selectMemberNo(TogetherBean together_no, MemberBean member_no) {
+		
+		//System.out.println(together_no+"selectNO"+member_no+"selectme");
 		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and member_no=?");
 		query.setParameter(0,together_no);
 		query.setParameter(1, member_no);
-		if(query.getResultList()!=null){
+		System.out.println("有沒有加入過");
+		System.out.println(query.getResultList().size());
+		if(query.getResultList().size()==0){
+			System.out.println("沒加入");
 			return true;
 		}
 		return false;
 	}
 
+	@Override
+	public List<TogetherMemBean> selectTogetherMemStatus(TogetherBean together_no, MemberBean member_no) {
+		System.out.println("=========5678=============");
+		
+		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and member_no=?");
+		query.setParameter(0,together_no);
+		query.setParameter(1, member_no);
+		System.out.println("=========5678=============");
+		return (List<TogetherMemBean>) query.getResultList();
+	}
 
+    //申請狀態(0-申請中,1-已加入,2-拒絕,3-隱藏(刪除)....)
+	@Override
+	public List<TogetherMemBean> selectTogetherMemDetails(TogetherBean together_no) {
+		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and togethermem_status< ?");
+		query.setParameter(0,together_no);
+		query.setParameter(1,3);
+		return (List<TogetherMemBean>) query.getResultList();
+	}
+
+
+	@Override
+	public List<TogetherMemBean> selectMyTogetherMemDetails(MemberBean member_no) {
+		Query query=this.getSession().createQuery("from TogetherMemBean where member_no=? and togethermem_status< ?");
+		query.setParameter(0,member_no);
+		query.setParameter(1,2);
+		return (List<TogetherMemBean>) query.getResultList();
+	}
 
 	
 }

@@ -8,16 +8,16 @@
 <title>Insert title here</title>
 	
 	<!-- jQuery -->
-	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
-	<!-- SmartMenus jQuery plugin -->
-	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
-	<!-- SmartMenus core CSS (required) -->
-	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
-	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
-	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
-	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
-	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
 
+	<script src="src/jquery211.js" type="text/javascript"></script>
+	<!-- SmartMenus jQuery plugin -->
+	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
+	<!-- SmartMenus core CSS (required) -->
+	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
+	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
+	<script src="src/lay/layer.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="src/lay/layer.css">
 
 
 	<style type="text/css">

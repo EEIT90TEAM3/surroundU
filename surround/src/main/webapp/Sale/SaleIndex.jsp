@@ -7,9 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
+
+	
 	<script src="${request.contextPath}src/jquery111.js" type="text/javascript"></script>
 	<script src="${request.contextPath}src/lay/layer.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="${request.contextPath}src/lay/skin/default/layer.css">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script src="${request.contextPath}src/date/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+	<script src="${request.contextPath}src/date/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="${request.contextPath}src/date/jquery-ui-timepicker-addon.css">
+<style>
+    
+    body {font: 62.5% "Trebuchet MS", sans-serif; margin: 20px;}
+</style>
 </head>
 <body>
 
@@ -32,7 +44,47 @@
       <br/>
       
       <label class="fontSize" >時間：</label>
-      <input type="text" name="sale_time" value="${param.sale_time}"  class="fieldWidth" style="width: 180px;">
+      <input type="text" name="sale_time" id="datetimepicker1" value="${param.sale_time}"  class="fieldWidth" style="width: 180px;">
+      <script language="JavaScript">
+              $(document).ready(function(){ 
+            	  var opt={
+            		        //以下為日期選擇器部分
+            		        dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+            		        dayNamesMin:["日","一","二","三","四","五","六"],
+            		        monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+            		        monthNamesShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+            		        prevText:"上月",
+            		        nextText:"次月",
+            		        weekHeader:"週",
+            		        showMonthAfterYear:true,
+            		        dateFormat:"yy-mm-dd",
+            		        //以下為時間選擇器部分
+            		        timeOnlyTitle:"選擇時分秒",
+            		        timeText:"時間",
+            		        hourText:"時",
+            		        minuteText:"分",
+            		        secondText:"秒",
+            		        millisecText:"毫秒",
+            		        timezoneText:"時區",
+            		        currentText:"現在時間",
+            		        closeText:"確定",
+            		        amNames:["上午","AM","A"],
+            		        pmNames:["下午","PM","P"],
+            			  //showSecond:true,
+            		        timeFormat:"HH:mm",
+            		      //stepMinute:5,   //分鐘間隔
+            	            stepSecond:10,
+            	            dafaultDate: new Date(),
+                            minDate: "0", maxDate: "60",
+            	            addSliderAccess:true, 
+                            sliderAccessArgs:{touchonly:false} 
+            		        };
+            		      $("#datetimepicker1").datetimepicker(opt);
+            		  
+            		      
+              });
+                </script>
+
       <font color="red" size="-1">${errors.sale_time}</font>
       <br/>
       

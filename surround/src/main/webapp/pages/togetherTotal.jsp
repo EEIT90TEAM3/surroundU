@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,17 +12,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <c:if test="${not empty selectStatis}">
 <table>
 	<thead>
 	<tr>
 		<th>主題</th>
 		<th>約團名稱</th>
+		<th>主揪人</th>
 		<th>地點</th>
 		<th>活動時間</th>
 		<th>活動結束時間</th>
 		<th>限定人數</th>
 		<th>備註</th>
+		<th></th>
 		<th></th>
 	</tr>
 	</thead>
@@ -43,17 +47,19 @@
 			<c:param name="together_lng" value="${element.together_lng}" />
 			<c:param name="together_lat" value="${element.together_lat}" />
 			<c:param name="member_no" value="${element.member_no.member_no}" />
+			<c:param name="nickname" value="${element.member_no.nickname}" />
 		</c:url>
-		
 	<tr>
 		<td>${element.together_topic}</td>
 		<td>${element.together_name}</td>
+		<td>${element.member_no.nickname}</td>
 		<td>${element.together_locate}</td>
-		<td>${element.together_when}</td>
-		<td>${element.together_when_end}</td>
+		<td>${fn:substring(element.together_when,0,19)}</td>
+		<td>${fn:substring(element.together_when_end,0,19)}</td>
 		<td>${element.together_people}</td>
 		<td>${element.together_memo}</td>
 		<td><a href="${path}" ><input type="submit" name="prodaction" value="加入"></a></td>
+		<td></td>
 	</tr>
 	</c:forEach>
 	</tbody>

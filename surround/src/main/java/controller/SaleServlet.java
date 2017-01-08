@@ -38,7 +38,8 @@ public class SaleServlet extends HttpServlet {
 	String filename=null;
 	@Override
 	public void init() throws ServletException {
-		sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		ServletContext application = this.getServletContext();
 		WebApplicationContext context = 
 				WebApplicationContextUtils.getWebApplicationContext(application);
@@ -56,8 +57,8 @@ public class SaleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//接收資料
 		request.setCharacterEncoding("UTF-8");
-		String sale = request.getParameter("sale");
-		String sale_topic = request.getParameter("sale_topic");
+				String sale = request.getParameter("sale");
+				String sale_topic = request.getParameter("sale_topic");
 				String sale_name = request.getParameter("sale_name");
 				String sale_locate = request.getParameter("sale_locate");
 				String sale_time = request.getParameter("sale_time");
@@ -118,7 +119,7 @@ public class SaleServlet extends HttpServlet {
 							this.filename=filename;
 							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/WebSurroundSpring/src/main/webapp/img/" + filename);
+							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/repository/surround/src/main/webapp/img/" + filename);
 							byte[] buffer = new byte[1024];
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {
@@ -152,7 +153,8 @@ public class SaleServlet extends HttpServlet {
 							date = sdFormat.parse(sale_time);
 						} catch (ParseException e) {
 							e.printStackTrace();
-							errors.put("sale_time", "請輸入 YYYY-MM-DD");
+							errors.put("sale_time", "請輸入 yyyy-MM-dd HH:mm");
+
 						} 
 					}
 					
