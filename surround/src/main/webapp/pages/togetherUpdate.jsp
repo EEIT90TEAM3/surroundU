@@ -41,6 +41,7 @@
 		<input type="hidden" name="together_status" value="${param.together_status}" />
 		<input type="hidden" name="together_lng" value="${param.together_lng}" />
 		<input type="hidden" name="together_lat" value="${param.together_lat}" />
+		<input type="hidden" name="together_people" value="${param.together_people}" />
 	</tr>
 	<tr>
 		<td>名稱 : </td>
@@ -108,9 +109,9 @@
 	</tr>
 	
 	<tr>
-		<td>限制人數 : </td>
-		<td><input type="text" id="together_people" name="together_people" value="${param.together_people}"></td>
-		<td>${errors.together_people}</td>
+		<td>限制人數 (人數無法修改): </td>
+		<td>${param.together_people}</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>備註 : </td>

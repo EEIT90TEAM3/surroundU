@@ -165,7 +165,8 @@ public class SaleDAOHibernate implements SaleDAO {
 		return this.getSession().get(SaleBean.class, sale_no);
 	}
 	public List<SaleBean> select() {
-		Query query = this.getSession().createQuery("from SaleBean");
+		Query query = this.getSession().createQuery("from SaleBean where sale_status=:status");
+		query.setParameter("status",1);
 		return (List<SaleBean>) query.getResultList();
 	}
 	public SaleBean insert(SaleBean bean) {

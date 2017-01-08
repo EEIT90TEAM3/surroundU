@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
@@ -113,14 +114,18 @@ function clearForm() {
 		<td>${errors.together_people}</td>
 	</tr>
 	<tr>
+	    <td>(新增後，人數將無法修改)</td>
+	</tr>
+	<tr>
 		<td>備註 : </td>
 		<td><input type="text" name="together_memo" value="${param.together_memo}"></td>
 		<td>${errors.together_memo}</td>
 	</tr>
-	
+	<input type=hidden name="lat" value="${param.lat}"  class="fieldWidth" style="width: 320px;">
+      <input type=hidden name="lng" value="${param.lng}"  class="fieldWidth" style="width: 320px;">
 	<tr>
 		<td>
-			<input type="submit" name="prodaction" value="送出">
+			<input type="submit" id="closeIframe" name="prodaction" value="送出">
 		</td>
 		<td>
 			<input type="button" value="清除所有欄位資料" onclick="clearForm()">

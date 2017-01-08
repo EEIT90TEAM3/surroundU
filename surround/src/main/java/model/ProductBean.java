@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.google.gson.annotations.Expose;
 @Entity
 @Table(name="PRODUCT",catalog="EEIT90", schema="DBO")
 public class ProductBean implements Serializable{
@@ -20,16 +22,16 @@ public class ProductBean implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int product_no;/*擺攤物品編號*/
+	@Expose private int product_no;/*擺攤物品編號*/
 	
 	@ManyToOne(fetch=FetchType.LAZY,targetEntity = SaleBean.class) //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name ="sale_no")  //指定用來join table的column
 	private SaleBean sale_no;/*擺攤文章編號*/
-	private String product_name;/*商品*/
-	private String product_memo;/*描述*/
-	private int product_price;/*價格*/
-	private String product_pic;/*圖片*/
-	private int product_status;/*物品狀態(0存在,1隱藏2刪除)*/
+	@Expose private String product_name;/*商品*/
+	@Expose private String product_memo;/*描述*/
+	@Expose private int product_price;/*價格*/
+	@Expose private String product_pic;/*圖片*/
+	@Expose private int product_status;/*物品狀態(0存在,1隱藏2刪除)*/
 	
 	
 	//測試程式

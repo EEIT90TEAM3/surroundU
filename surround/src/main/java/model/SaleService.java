@@ -20,13 +20,30 @@ public class SaleService {
 	@Autowired
 	private SaleDAO saleDAO;
 	
-	
-
+	@Transactional
+	public List<SaleBean> select() {
+		List<SaleBean> result = null;
+			result = saleDAO.select();
+//			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+//			String jsonStr = gson.toJson(result);
+//			System.out.println(jsonStr);
+		
+		return result;
+	}
 	@Transactional
 	public List<SaleBean> select(SaleBean bean) {
 		List<SaleBean> result = null;
 		if (bean != null) {
 			result = saleDAO.select(bean);
+		}
+		return result;
+	}
+	
+	@Transactional
+	public SaleBean select(int sale_no) {
+		SaleBean result = null;
+		if (sale_no !=0) {
+			result = saleDAO.select(sale_no);
 		}
 		return result;
 	}
@@ -55,11 +72,4 @@ public class SaleService {
 		}
 		return result;
 	}
-	
-	@Transactional
-	public List<SaleBean> selectMap(){
-		List<SaleBean> rs = saleDAO.select();
-		return rs;
-	}
-	
 }

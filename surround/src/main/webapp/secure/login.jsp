@@ -11,12 +11,9 @@
 <title>Login</title>
 </head>
 <body>
-
+<div>
 <h3>Login</h3>
-
-
-
-<form action="<c:url value="/login.controller" />" method="post">
+<form action="<c:url value="/secure/login.controller" />" method="get">
 <table>
 	<tr>
 		<td>ID : </td>
@@ -25,7 +22,7 @@
 	</tr>
 	<tr>
 		<td>PWD : </td>
-		<td><input type="password" name="pwd" value="${param.pwd}"></td>
+		<td><input type="text" name="pwd" value="${param.pwd}"></td>
 		<td>${errors.pwd}</td>
 	</tr>
 	<tr>
@@ -34,6 +31,6 @@
 	</tr>
 </table>
 </form>
-
+</div>
 </body>
 </html>

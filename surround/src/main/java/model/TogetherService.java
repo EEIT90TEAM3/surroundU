@@ -148,7 +148,25 @@ public class TogetherService {
 		   result=togetherDao.selectStatus(memberBean,0);
 	   }
 	   return result;
+   }
+   
+   public List<TogetherBean>  togetherStatusChangeAll(){
+	   List<TogetherBean> result=null;
+
+		   List<TogetherBean> bean =togetherDao.select();
+		Calendar date = Calendar.getInstance();
+		Date today = date.getTime();
+		   for(TogetherBean i : bean){
+			   if(i.getTogether_status()==0){
+			       if(i.getTogether_when_end().before(today)){
+				       i.setTogether_status(1);
+			       }
+		   }
+		   result=togetherDao.selectStatus(0);
+	   }
+	   return result;
    }   
+   
     
    public TogetherBean togetherStatusDelete(TogetherBean bean){
 	   TogetherBean result=null;

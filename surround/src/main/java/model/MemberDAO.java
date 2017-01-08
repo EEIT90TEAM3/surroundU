@@ -9,4 +9,7 @@ public interface MemberDAO {
 	List<MemberBean> selectAll();
 	
 	List<MemberBean> selectMemberByAccuseStatus(int account_status);
+	
+	//together要用
+	MemberBean selectMember_no(int member_no);
 }

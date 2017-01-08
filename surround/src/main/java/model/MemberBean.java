@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name="MEMBER",catalog="EEIT90", schema="DBO")
 @Component(value="memberBean")
@@ -27,10 +29,10 @@ public class MemberBean implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int	member_no;	//會員編號
-	private String account;	//*帳號
+	@Expose private String account;	//*帳號
 	private String pwd;	//*密碼
 	private String name; //*姓名
-	private String nickname; //*暱稱
+	@Expose private String nickname; //*暱稱
 	private java.util.Date birth;//*生日
 	private String hobby;//*興趣
 	private int member_status;//*上線狀態

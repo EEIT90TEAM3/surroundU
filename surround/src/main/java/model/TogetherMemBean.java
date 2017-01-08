@@ -41,8 +41,9 @@ public class TogetherMemBean implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY,targetEntity = MemberBean.class)
 	@JoinColumn(name="member_no")
 	private MemberBean member_no;					 /*會員編號*/
-	private int togethermem_status;  		 /*申請狀態(申請中,已加入,拒絕....)*/
+	private int togethermem_status;  		        /*申請狀態(申請中,已加入,拒絕....)*/
 	private java.util.Date togethermem_time;
+	private java.util.Date togethermem_time_okay;   /*確認申請時間*/
 	
     //測試程式
 //	public static void main(String[] args) {
@@ -154,6 +155,15 @@ public class TogetherMemBean implements Serializable{
 		this.togethermem_time = togethermem_time;
 	}
 
-	
+
+	public java.util.Date getTogethermem_time_okay() {
+		return togethermem_time_okay;
+	}
+
+
+	public void setTogethermem_time_okay(java.util.Date togethermem_time_okay) {
+		this.togethermem_time_okay = togethermem_time_okay;
+	}
+
 	
 }
