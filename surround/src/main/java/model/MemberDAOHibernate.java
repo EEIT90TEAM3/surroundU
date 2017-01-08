@@ -103,5 +103,22 @@ public class MemberDAOHibernate implements MemberDAO {
 		    return null;
 		
 	}
+	
+	@Override
+	public MemberBean update(MemberBean memberbean,String newpwd){
+		
+		MemberBean bean = this.getSession().get(MemberBean.class, memberbean.getMember_no());
+		
+		System.out.println("bean:"+bean);
+		
+		if(bean!=null){
+			bean.setPwd(newpwd);
+			
+			return bean;
+		}
+		
+		    return null;
+		
+	}
 
 }

@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -20,8 +22,7 @@ import model.ReportBean;
 import model.ReportService;
 
 @Controller
-@RequestMapping(path={"/backend.controller"},
-		method={RequestMethod.GET, RequestMethod.POST})
+@RequestMapping
 public class BackendController {
 	@Autowired
 	@Resource(name = "accuseService")
@@ -36,7 +37,8 @@ public class BackendController {
 	private BackendService backendService;
 	
 	
-	@RequestMapping
+	@RequestMapping(path={"/backend.controller"},
+			method={RequestMethod.GET, RequestMethod.POST})
 	public String service( @RequestParam(name="backendaction") String backendaction,
 			               Model model, HttpSession session)
 	{   
@@ -143,9 +145,14 @@ public class BackendController {
 				return "report.display";
 			}
 			
-//            if("更改管理者密碼".equals(backendaction)){  //如果是按"會員建議及回報列表"的submit
+//            if("更改管理者密碼".equals(backendaction)){  //如果是按"更改管理者密碼"的submit
 //				
-//				Boolean rs = backendService.changeManagerPwd();
+//				
+//            	MemberBean bean = (MemberBean)session.getAttribute("user");
+//            	
+//            	System.out.println(bean);
+//            	
+//            	Boolean rs = backendService.changeManagerPwd();
 //				
 //				
 //				model.addAttribute("selectreport", rs);
@@ -160,5 +167,63 @@ public class BackendController {
 		
 		return null;
 	}
+	
+	@RequestMapping(path={"/backendchangepwd.controller"},
+			method={RequestMethod.GET, RequestMethod.POST})
+	public String changpwd( 
+			@RequestParam(name="oldpwd") String oldpwd,
+			@RequestParam(name="newpwd1") String newpwd1,
+		    @RequestParam(name="newpwd2") String newpwd2,
+		    @RequestParam(name="backendaction") String backendaction,
+			               Model model, HttpSession session)
+	{   
+		
+		//驗證資料
+		Map<String, String> errors = new HashMap<String, String>();
+		model.addAttribute("errors", errors);
+		
+		MemberBean bean= (MemberBean)session.getAttribute("user");
+		
+		String pwd  = bean.getPwd();
+		
+		System.out.println("session.pwd:"+pwd);
+		System.out.println("oldpwd:"+oldpwd);
+		System.out.println("newpwd1:"+newpwd1);
+		System.out.println("newpwd2:"+newpwd2);
+		
+		
+
+		
+		if(!pwd.equals(oldpwd)||oldpwd.length()==0||oldpwd==null){  
+			System.out.println("舊密碼驗證");
+			errors.put("pwd", "輸入之密碼錯誤,請重新輸入");		
+			
+		}	    
+		if(newpwd1==null||newpwd1.length()==0){
+			errors.put("pwd1", "請輸入新密碼");	
+		}
+		if(newpwd2==null||newpwd2.length()==0){
+			errors.put("pwd2", "請重複新密碼");	
+		}
+		
+		if(!newpwd2.equals(newpwd1)){
+			System.out.println("新密碼驗證");
+			errors.put("pwdnotequal", "輸入之新密碼兩次需相同,請重新輸入");		
+			
+		}		
+		if(!errors.isEmpty()||errors!=null){
+			return "backendpwdchange.error";
+		}
+		
+		System.out.println("changepwd");
+		
+		
+		backendService.changeManagerPwd(bean, newpwd1);
+		
+		
+		return "backendlogin.success";
+		
+	}
+	
 
 }

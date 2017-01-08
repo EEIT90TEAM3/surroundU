@@ -54,22 +54,22 @@
 						<h6>Hello~ ${user.account}  歡迎來到管理者介面</h6>
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
-					<form method="post" action="<c:url value="/backend.controller"/>" > 
+					<form method="post" action="<c:url value="/backendchangepwd.controller"/>" > 
 					  <table  class="table table-bordered table-striped table-hover">		
 						<tr>
 							<th>原密碼</th>
-							<th><input type="password" id="oldpwd" value=""></th>
+							<th><input type="password" name="oldpwd" value="">${errors.pwd}</th>
 						</tr>	
 						<tr>
 							<th>新設定密碼</th>
-							<th><input type="password" id="newpwd1" value=""></th>
+							<th><input type="password" name="newpwd1" value="">${errors.pwd1}</th>
 						</tr>
 						<tr>
 							<th>請重複輸入新密碼</th>
-							<th><input type="password" id="newpwd2" value=""></th>
+							<th><input type="password" name="newpwd2" value="">${errors.pwdnotequal}${errors.pwd2}</th>
 						</tr>
 						<tr>
-							<th><input type="submit" value="更改管理者密碼"></th>
+							<th><input type="submit" value="更改管理者密碼" name="backendaction"></th>
 							<th></th>
 						</tr>
 

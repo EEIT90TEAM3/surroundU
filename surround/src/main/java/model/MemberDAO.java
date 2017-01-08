@@ -11,4 +11,6 @@ public interface MemberDAO {
 	List<MemberBean> selectMemberByAccuseStatus(int account_status);
 	
 	MemberBean update(MemberBean memberbean,int account_status);
+	
+	MemberBean update(MemberBean memberbean,String newpwd);
 }
