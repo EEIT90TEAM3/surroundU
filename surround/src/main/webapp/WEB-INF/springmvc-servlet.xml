@@ -11,8 +11,13 @@
 	
 	<!--  XmlViewResolver:支援將view元件的邏輯名稱及URL等相關資訊的對應關係定義在專屬的Spring組態設定檔中 -->
 	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
- 		<property name="location" value="/WEB-INF/views.xml"></property> 	<!-- 設定檔路徑 -->
-		<property name="order" value="10"></property>                       <!-- 定義優先順序,數值越靠近1越優先-->
+		<property name="location" value="/WEB-INF/xxx.xml"></property>
+		<property name="order" value="10"></property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="/WEB-INF/views.xml"></property>
+		<property name="order" value="15"></property>
 	</bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
