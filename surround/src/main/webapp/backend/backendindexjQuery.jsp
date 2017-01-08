@@ -6,8 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>後台</title>
+
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
 <link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">     
+<!-- lay載入 -->
+<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
+
+<script type="text/javascript">
+layer.alert('歡迎進入Srround YOU管理系統', {icon: 6});
+</script>
+
 <style>
   .thumb{width:120px}
    
@@ -45,7 +54,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">

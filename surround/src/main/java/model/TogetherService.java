@@ -128,7 +128,7 @@ public class TogetherService {
    
    public List<TogetherBean> selectMap(){
 	    
-	   return togetherDao.select();
+	   return togetherDao.selectByStatus(0);
    }
    
    
@@ -185,4 +185,5 @@ public class TogetherService {
 	   result=togetherDao.selectStatus(0);
 	   return result;
    }
+
 }

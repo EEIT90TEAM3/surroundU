@@ -77,7 +77,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -86,7 +86,9 @@
 						<h6>Hello~ ${user.account}  歡迎來到管理者介面</h6>
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
+
 				<form method="GET" action ="<c:url value="/backend.controller"/>">
+
 					  <table >
 					    <tr>
 							<td align="left"><input type="submit" name="backendaction" value="會員列表-全部" class="btn btn-info"></td>
@@ -98,6 +100,7 @@
 					 
 				      </table>
 			   </form>
+			   <br>
 					<c:if test="${not empty selectmember}">
 						<table class="table table-bordered table-striped table-hover">
 							<thead>
@@ -105,8 +108,6 @@
 								<th>編號</th>
 								<th>會員帳號</th>
 								<th>暱稱</th>
-								<th>生日</th>
-								<th>興趣</th>
 								<th>性別</th>
 								<th>電子郵件</th>
 								<th>帳號狀態</th>
@@ -117,21 +118,19 @@
 							<c:forEach var="element" items="${selectmember}">
 								<c:url value="/backend/dealmemberviewjQuery.jsp" var="path">
 									<c:param name="member_no" value="${element.member_no}" />
-									<c:param name="accoount" value="${element.account}" />
+									<c:param name="account" value="${element.account}" />
 									<c:param name="nickname" value="${element.nickname}" />
 									<c:param name="birth" value="${element.birth}" />
 									<c:param name="hobby" value="${element.hobby}" />
 									<c:param name="gender" value="${element.gender}" />
-									<c:param name="account_status" value="${element.member_status}" />
+									<c:param name="member_status" value="${element.member_status}" />
 									<c:param name="account_email" value="${element.account_email}" />
-									<c:param name="member_status" value="${element.account_status}" />
+									<c:param name="account_status" value="${element.account_status}" />
 								</c:url>
 								<tr>
 									<td>${element.member_no}</td>
 									<td>${element.account}</td>
 									<td>${element.nickname}</td>
-									<td>${element.birth}</td>
-									<td>${element.hobby}</td>
 									
 									<c:if test="${element.gender==1}">
 									<td>男</td>
@@ -147,16 +146,16 @@
 									<td>正常</td>
 									</c:if>
 									<c:if test="${element.account_status==1}">
-									<td>暫時停權</td>
+									<td>停權</td>
 									</c:if>
 									<c:if test="${element.account_status==2}">
-									<td>永久停權</td>
+									<td>停權</td>
 									</c:if>
 									<c:if test="${element.account_status==99}">
 									<td>管理者</td>
 									</c:if>
 									
-									<td><a href="${path}"><input type="button" name="doaccuseaction" value="進階" /></a></td>
+									<td><a href="${path}"><input type="button" name="doaccuseaction" value="管理" class="btn btn-primary"/></a></td>
 									
 								</tr>
 							</c:forEach>

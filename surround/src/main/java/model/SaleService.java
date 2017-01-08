@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import org.springframework.context.ConfigurableApplicationContext;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.springframework.context.ConfigurableApplicationContext;
 
 @Service(value="saleService")
@@ -72,4 +75,13 @@ public class SaleService {
 		}
 		return result;
 	}
+
+	@Transactional
+	public List<SaleBean> selectMap(){
+
+		List<SaleBean> rs = saleDAO.selectByStatus(0);
+
+		return rs;
+	}
+	
 }

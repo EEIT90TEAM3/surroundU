@@ -130,6 +130,7 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 	}
 
 
+
 	@Override
 	public List<TogetherMemBean> selectTogetherNo(TogetherBean together_no) {
 		Query query=this.getSession().createQuery("from TogetherMemBean where together_no=? and togethermem_status< ?");
@@ -160,7 +161,6 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 		}
 		return false;
 	}
-
 
 	@Override
 	public List<TogetherMemBean> selectTogetherMemStatus(TogetherBean together_no, MemberBean member_no) {

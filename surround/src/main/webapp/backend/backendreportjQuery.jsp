@@ -77,7 +77,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -98,6 +98,7 @@
 					 
 				      </table>
 				</form>
+				<br>
 				<c:if test="${not empty selectreport}">
 						<table class="table table-bordered table-striped table-hover">
 							<thead>
@@ -113,7 +114,16 @@
 							</thead>
 							<tbody>
 							<c:forEach var="element" items="${selectreport}">
-								<c:url value="/backend/dealreportviewjQuery.jsp" var="path">
+								<c:url value="/backend/dealreportviewjQuery.jsp" var="path1">
+									<c:param name="report_no" value="${element.report_no}" />
+									<c:param name="account" value="${element.member_no.account}" />
+									<c:param name="report_memo" value="${element.report_memo}" />
+									<c:param name="report_time" value="${element.report_time}" />
+									<c:param name="report_status" value="${element.report_status}" />
+									<c:param name="report_status" value="${element.report_deal_memo}" />
+								</c:url>
+								
+								<c:url value="/backend/detailreportviewjQuery.jsp" var="path2">
 									<c:param name="report_no" value="${element.report_no}" />
 									<c:param name="account" value="${element.member_no.account}" />
 									<c:param name="report_memo" value="${element.report_memo}" />
@@ -130,12 +140,20 @@
 									<c:if test="${element.report_status==0}">
 									<td>未處理</td>
 									</c:if>
-									<c:if test="${element.report_status==1}">
-									<td>已處理</td>
+									<c:if test="${element.report_status!=0}">
+                                    <td>已處理</td>
 									</c:if>
 									
 									<td>${element.report_deal_memo}</td>
-									<td><a href="${path}"><input type="button" name="doaccuseaction" value="處理" onclick="location.href='<c:url value="/doaccuse.controller"/>'"/></a></td>
+									
+									<c:if test="${element.report_status==0}">
+									<td><a href="${path1}"><input type="button" name="doaccuseaction" value="處理"  class="btn btn-success"/></a></td>
+									</c:if>
+									<c:if test="${element.report_status!=0}">
+                                    <td><a href="${path2}"><input type="button" name="doaccuseaction" value="明細"  class="btn btn-primary"/></a></td>
+									</c:if>
+									
+									
 									
 								</tr>
 							</c:forEach>

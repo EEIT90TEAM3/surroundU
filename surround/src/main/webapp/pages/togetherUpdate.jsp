@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <html>
@@ -55,14 +56,14 @@
 		<td>${errors.together_locate}</td>
 	</tr>
 	<tr>
-		<td>活動時間 : </td>
-		<td><input type="text" id="datetimepicker1" name="together_when" value="${param.together_when}"></td>
+		<td>活動時間 :
+		<td><input type="text" id="datetimepicker1" name="together_when" value="${fn:substring(param.together_when,0,16)}"></td>
 		<td>${errors.together_when}</td>
 	</tr>	
 		
 	<tr>
 	    <td><span>活動結束時間:</span></td>
-		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${param.together_when_end}"></td>
+		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${fn:substring(param.together_when_end,0,16)}"></td>
 		<td>${errors.together_when_end}</td>
         <script language="JavaScript">
               $(document).ready(function(){ 

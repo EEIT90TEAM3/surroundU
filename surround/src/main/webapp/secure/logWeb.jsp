@@ -44,7 +44,11 @@
    padding:20px;
    width:300px;
 }
-
+.lower-block span{font-size:16px;}
+.lower-block span{margin-left:5px}
+.form-signin2{
+	display:none;
+}
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -130,101 +134,116 @@
 <body>
 
  <div class="full">
- 	<div class="log">
-      <form class="form-signin" action="<c:url value="/secure/login.controller" />">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" name="account" value="${param.account}" class="form-control" placeholder="帳號" required autofocus>
-        ${errors.account}
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="pwd" value="${param.pwd}" class="form-control" placeholder="密碼" required>
-        ${errors.pwd}
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-      </form>
-   </div>
-	<div class="homepage-hero-module">
-	    <div class="video-container">
-	        <div class="filter"></div>
-	        <video autoplay loop class="fillWidth">
-	          <source src="car/MP4/Retro-Volks.mp4" type="video/mp4" />
-		       <source src="car/WEBM/Retro-Volks.webm" type="video/webm" />
-	        </video>
-	        <div class="poster hidden">
-	            
+
+ 	
+	 	<div class="log">
+	 	 <div> 
+ 	<%
+    String fbURL = "https://www.facebook.com/v2.8/dialog/oauth?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/secure/fblogin.controller&scope=email";
+%>
+ 	<a href="<%= fbURL %>"><img src="img/fb.png" onmouseout="this.src='img/fb.png'" onmouseover="this.src='img/fbshow.png'" border="0"  width="260" /></a>
+ 	</div>
+	 	
+	      <form class="form-signin1" action="<c:url value="/secure/login.controller" />">
+	        <h2 class="form-signin-heading" align="center">帳號登入</h2>
+	        <label for="inputEmail" class="sr-only">Email address</label>
+	        <input type="text" id="inputEmail" name="account" value="${param.account}" class="form-control" placeholder="帳號" required autofocus>
+	        ${errors.account}
+	        <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="password" id="inputPassword" name="pwd" value="${param.pwd}" class="form-control" placeholder="密碼" required>
+	        ${errors.pwd}
+	        <div class="checkbox">
+	          <label>
+	            <input type="checkbox" value="remember-me"> Remember me
+	          </label>
 	        </div>
-	    </div>
-	</div>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit" name="prodaction" value="log">登入</button>
+	        <div class="lower-block">還不是會員嗎？<span id="signup1"><a href="#";">立刻註冊新帳號</a></span></div>
+	      </form>
+	      
+	      <form class="form-signin2"  action="<c:url value="" />">
+	        <h2 class="form-signin-heading" align="center">註冊個人帳號</h2>
+	        <label for="inputEmail" class="sr-only">Email address</label>
+	        <input type="text" id="inputEmail" name="account" value="${param.account}" class="form-control" placeholder="帳號" required autofocus>
+	        ${errors.account}
+	        <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="password" id="inputPassword" name="pwd" value="${param.pwd}" class="form-control" placeholder="密碼" required>
+	        ${errors.pwd}
+	         <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="email" id="account_email" name="account_email" value="${param.account_email}" class="form-control" placeholder="Email" required>
+	     	 
+	          <div style="font-size:11px;margin-top:10px;margin-bottom:10px;"> 按下註冊鈕的同時，表示您已詳閱我們的<a href="#";">資料使用政策與使用條款</a>，同意使用 Srround You所提供的服務。</div>
+	          
+	        <button class="btn btn-lg btn-primary btn-block" type="" name="prodaction" value="nolog">註冊</button>
+	        <div class="lower-block">已經有帳號了？<span id="signup2"><a href="#">馬上登入</a></span></div>
+	      </form>
+	   </div>
+		<div class="homepage-hero-module">
+		    <div class="video-container">
+		        <div class="filter"></div>
+		        <video autoplay loop class="fillWidth">
+		          <source src="car/MP4/Retro-Volks.mp4" type="video/mp4" />
+			       <source src="car/WEBM/Retro-Volks.webm" type="video/webm" />
+		        </video>
+		        <div class="poster hidden">
+		            
+		        </div>
+		    </div>
+		</div>
 </div>
 </body>
 <script>
 //影片js
 $( document ).ready(function() {
-
     scaleVideoContainer();
-
     initBannerVideoSize('.video-container .poster img');
     initBannerVideoSize('.video-container .filter');
     initBannerVideoSize('.video-container video');
-
     $(window).on('resize', function() {
         scaleVideoContainer();
         scaleBannerVideoSize('.video-container .poster img');
         scaleBannerVideoSize('.video-container .filter');
         scaleBannerVideoSize('.video-container video');
     });
-
 });
-
 function scaleVideoContainer() {
-
     var height = $(window).height() + 5;
     var unitHeight = parseInt(height) + 'px';
     $('.homepage-hero-module').css('height',unitHeight);
-
 }
-
 function initBannerVideoSize(element){
-
     $(element).each(function(){
         $(this).data('height', $(this).height());
         $(this).data('width', $(this).width());
     });
-
     scaleBannerVideoSize(element);
-
 }
-
 function scaleBannerVideoSize(element){
-
     var windowWidth = $(window).width(),
     windowHeight = $(window).height() + 5,
     videoWidth,
     videoHeight;
-
     console.log(windowHeight);
-
     $(element).each(function(){
         var videoAspectRatio = $(this).data('height')/$(this).data('width');
-
         $(this).width(windowWidth);
-
         if(windowWidth < 1000){
             videoHeight = windowHeight;
             videoWidth = videoHeight / videoAspectRatio;
             $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
-
             $(this).width(videoWidth).height(videoHeight);
         }
-
         $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
-
     });
 }
+$('#signup1').click(function(){
+	$('.form-signin1').hide();
+	$('.form-signin2').show();
+})
+$('#signup2').click(function(){
+	$('.form-signin2').hide();
+	$('.form-signin1').show();
+})
 //影片js end
 </script>
 </html>

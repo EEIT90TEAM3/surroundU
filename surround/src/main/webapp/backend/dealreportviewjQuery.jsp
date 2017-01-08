@@ -77,7 +77,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					
+					<a href="<c:url value=""/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -99,6 +99,7 @@
 					 
 				      </table>
 				</form>
+				<br>
 				<form method="GET" action ="<c:url value="/dealreport.controller"/>">
 		<%-- 		  mothed="get" action="<c:url value="/doaccuse.controller?report_no=${param.report_no}"/>" --%>
 				   <table  class="table table-bordered table-striped table-hover">		
@@ -130,14 +131,10 @@
 							<th>${param.report_time}</th>
 							<input type="hidden" name="report_time" value="${param.report_time}">
 					    </tr>
-					    <tr>
-							<th>文章連結</th>
-							<th><input type="button"  value="觀看文章內容" ></th>
-						</tr>
 						<tr>
 							<th>處理狀態</th>
 							<th><input type="radio" name="reportyesorno" value="1" > 完成處理<br>
-				  		        <input type="radio" name="reportyesorno" value="0"> 未完成處理<br>
+				  		        <input type="radio" name="reportyesorno" value="0" checked> 未完成處理<br>
 				  		    </th>
 						</tr>
 						<tr> 

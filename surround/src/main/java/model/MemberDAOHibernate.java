@@ -22,34 +22,7 @@ public class MemberDAOHibernate implements MemberDAO {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
-	//測試程式
-//	public static void main(String[] args) {
-//		ApplicationContext context =
-//				new ClassPathXmlApplicationContext("beans.config.xml");
-//		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
-//	
-//		try {
-//			sessionFactory.getCurrentSession().beginTransaction();
-//			
-//			MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");		
-//			MemberBean memb = memberDAO.select("Nobi");
-//			System.out.println(memb.getAccount());
-//			System.out.println(memb.getMember_status());
-//			System.out.println(memb.getPwd());
-//			
-//			
-//			sessionFactory.getCurrentSession().getTransaction().commit();
-//		
-//		} finally {
-//			sessionFactory.close();
-//			((ConfigurableApplicationContext) context).close();
-//		}
-//	}
-	
-	
-	
-	
+
 
 	@Override
 	public MemberBean select(String account) {
@@ -65,6 +38,24 @@ public class MemberDAOHibernate implements MemberDAO {
 		}
 		//		return (MemberBean) query.getSingleResult();
 		return null;
+	}
+	public MemberBean insert(MemberBean bean) {
+		if(bean!=null) {
+			MemberBean insert = this.getSession().get(MemberBean.class, bean.getMember_no());
+			if(insert==null) {
+				this.getSession().save(bean);
+				return bean;
+			}
+		}
+		return null;
+	}
+	@Override
+	public MemberBean fbselect(MemberBean bean) {
+		Query query = this.getSession().createQuery("from MemberBean where account_facebook like :name");		
+		query.setParameter("name",bean.getAccount_facebook());
+		return (MemberBean) query.getSingleResult();
+
+	
 	}
 	
 	
@@ -86,6 +77,22 @@ public class MemberDAOHibernate implements MemberDAO {
 		
         return (List<MemberBean>)query.getResultList();
 
+	}
+	
+	
+	@Override
+	public MemberBean update(MemberBean memberbean,int account_status){
+		
+		MemberBean bean = this.getSession().get(MemberBean.class, memberbean.getMember_no());
+		
+		if(bean!=null){
+			bean.setAccount_status(account_status);
+			
+			return bean;
+		}
+		
+		    return null;
+		
 	}
 
 	@Override

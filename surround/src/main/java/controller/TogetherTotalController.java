@@ -24,7 +24,7 @@ import model.TogetherService;
 
 @Controller
 @RequestMapping(
-		path={"TogetherTotal.controller"},
+		path={"/TogetherTotal.controller"},
 		method={RequestMethod.GET, RequestMethod.POST}
 )
 public class TogetherTotalController {

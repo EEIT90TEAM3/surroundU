@@ -68,8 +68,8 @@ public class MyJoinTogetherController {
 //			System.out.println(i.getMember_no());
 //		}
 //		model.addAttribute("selectStatis", togetherBean);
-//		
-		return "login.success";
+		model.addAttribute("togetherType","Nottogether");
+		return "together_end.success";
 		
 		
 	}

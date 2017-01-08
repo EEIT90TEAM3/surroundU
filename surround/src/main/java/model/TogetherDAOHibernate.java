@@ -12,6 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
+
 import model.MemberBean;
 import model.TogetherDAO;
 import model.TogetherBean;
@@ -88,6 +89,9 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		Query query=this.getSession().createQuery("from TogetherBean");
 		return (List<TogetherBean>) query.getResultList();
 	}
+	
+
+	
 
 	@Override
 	public TogetherBean insert(TogetherBean bean) {
@@ -161,5 +165,30 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		return (List<TogetherBean>) query.getResultList();
 	}
 
+	@Override
+	public List<TogetherBean> selectByStatus(int together_status) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=?");
+		query.setParameter(0, together_status);
+		
+		
+		
+		return (List<TogetherBean>) query.getResultList();
+	}
 	
+	public TogetherBean updateStatus(int together_no,int together_status){
+		
+		TogetherBean rs = this.getSession().get(TogetherBean.class, together_no);
+		
+		if(rs!=null){
+			rs.setTogether_status(together_status);
+ 	
+		}
+	    
+		System.out.println("更改後的togetherbean:"+rs);
+		
+				
+		return rs;
+	}
+	
+
 }
