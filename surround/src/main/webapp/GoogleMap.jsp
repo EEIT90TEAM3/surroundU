@@ -54,7 +54,7 @@
           
           <ul>
             <li><a id="updatemen">修改會員資料</a></li>
-            <li><a href="#">回報管理者</a></li>
+            <li><a id="postreport">回報管理者</a></li>
             <li><a href="#">登出</a></li>
           </ul>
         </li>
@@ -367,6 +367,24 @@
  			});
  		});
 // together-----------------------------------------------------------
+
+//postreport--------------------begin---------------------------------
+         $("#postreport").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '回報管理者',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['500px', '300px'],
+ 		        content: '<c:url value="/report/postreport.jsp"/>'
+ 			});
+ 		});
+//postreport--------------------end-----------------------------------
+
+
   </script>
   <script 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Inouuyem3ufRkt0dseRmzUCHtqyhgds&callback=initMap">
