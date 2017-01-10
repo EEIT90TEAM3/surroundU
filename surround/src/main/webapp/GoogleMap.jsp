@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -106,6 +107,10 @@
 	var map;
 	var itemArray = [];
 	var markerArray = [];
+	//together------------------------------
+	var itemTogetherArray=[];
+	var markerTogetherArray=[];
+	//together------------------------------
 	// 地圖初始化
     	function initMap() {
     		  var myLatLng = {lat: 25.045744, lng: 121.543626};
@@ -162,8 +167,11 @@
 				title: sale_topic,
 				position: itemLatLng,
 				map: map,
+
 				icon: "<c:url value="/img/mapicon/sale.png"/>"
+
 			});
+			
 			//裝載maker準備delete用
 			markerArray.push(marker);
 		//資訊視窗
@@ -206,6 +214,94 @@
 		
   		
   	});
+  	
+//together--------------------------------------------
+  	$.getJSON("GoogleTogetherServlet.ajax", {
+  	  	//	"swLat": sw.lat(),
+  		//	"swLng": sw.lng(),
+  		//	"neLat": ne.lat(),
+  		//	"neLng": ne.lng()
+  		}, function(data1){
+  			var count = 1;
+  			$.each(data1, function(index, item){
+  					// 製作物品經緯度陣列
+  				var bItem = [item.together_topic, item.together_name, item.together_lng, item.together_lat ,item.together_locate,item.together_when,item.together_when_end,item.member_no.nickname,item.together_people,item.together_memo,item.together_no];
+  				itemTogetherArray.push(bItem);
+  				count++;
+  			});
+  			for(var i = 0; i < itemTogetherArray.length; i++){
+  				
+  				var together_topic = itemTogetherArray[i][0];
+  				var together_name = itemTogetherArray[i][1];
+  				var latitude = itemTogetherArray[i][2];//經度
+  				var longitude = itemTogetherArray[i][3];//緯度
+  				var together_locate = itemTogetherArray[i][4];
+  				var together_when = itemTogetherArray[i][5];
+  				var together_when_end = itemTogetherArray[i][6];
+  				var nickname = itemTogetherArray[i][7];
+  				var together_people = itemTogetherArray[i][8];
+  				var together_memo = itemTogetherArray[i][9]; 
+  				var together_no=itemTogetherArray[i][10]; 
+
+  				
+  				var itemLatLng = new google.maps.LatLng(latitude, longitude);
+  				
+  				var marker = new google.maps.Marker({
+  					title: together_topic,
+  					position: itemLatLng,
+  					map: map,
+  					icon: "<c:url value="/img/mapicon/together.png"/>"
+  			//		icon: "${root}category-icon/" + class_name + ".png"
+  				});
+  				
+  				//裝載maker準備delete用
+  				markerTogetherArray.push(marker);
+  			//資訊視窗
+  				var contentString1 = '<div id="iw-container">' +
+  				'<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet">'+
+  	            '<div class="iw-title">'+'約團主題:'+together_topic+'</div>' +
+  	            '<div class="iw-content">' +
+  	              '<div class="iw-subTitle">'+' 約團名稱:'+together_name+'</div>' +
+  	            '<p>'+'主揪人:'+nickname+'</p>' +
+  	              '<p>'+'地點:'+together_locate+'</p>' +
+//  	              '<p>'+'活動時間:'+together_when+'</p>' +
+//  	            '<p>'+'活動結束時間:'+together_when_end+'</p>' +
+//  	          '<p>'+'限制人數:'+together_people+'</p>' +
+//  	              '<p>'+'備註:'+together_memo+'</p>' +
+//  	              '<p><br>'+
+
+  	              '<p><button class="btn btn-default" id="togetherMap" type="submit">詳細資料</button></p>'+
+
+  	            '</div>' +
+  	          '</div>';
+  	          addInfoWindow(marker, contentString1);
+  	          function addInfoWindow(marker, message) {
+
+  	              var infoWindow = new google.maps.InfoWindow({
+  	                  content: message
+  	                  
+  	                
+  	              });
+  	            //點擊關閉彈層
+  	              google.maps.event.addListener(map, 'click', function() {
+  	            	  infoWindow.close();
+  	            	  layer.closeAll(); 
+  	            	
+  	            	  });
+  	              //點擊MAKER資訊視窗
+  	              google.maps.event.addListener(marker, 'click', function () {
+  	                  infoWindow.open(map, marker); 
+  	                
+  	              });   
+  	           
+  	         	 }
+  	       
+  			 
+  			}
+  			
+  	  		
+  	  	});
+ //together---------------------------------------------------------------------------
     			  
     		  }
     		  google.maps.event.addListener(map, "rightclick", function (e) {
@@ -271,7 +367,7 @@
         		     
         			});
         		});   
-   
+        		
         		
   //together------------------------------------------------------------------------------ 
       		});

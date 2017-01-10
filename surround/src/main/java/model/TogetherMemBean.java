@@ -22,6 +22,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name="TOGETHERMEM",catalog="EEIT90", schema="DBO")
 @Component(value="togetherMemBean")
@@ -32,18 +34,18 @@ public class TogetherMemBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int togethermem_no;		         /*流水號*/
+	@Expose private int togethermem_no;		         /*流水號*/
 	
-	@ManyToOne(fetch=FetchType.LAZY,targetEntity = TogetherBean.class)
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity = TogetherBean.class)
 	@JoinColumn(name="together_no")
 	private TogetherBean together_no;        /*約團文章編號*/
 	
-	@ManyToOne(fetch=FetchType.LAZY,targetEntity = MemberBean.class)
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity = MemberBean.class)
 	@JoinColumn(name="member_no")
-	private MemberBean member_no;					 /*會員編號*/
-	private int togethermem_status;  		        /*申請狀態(申請中,已加入,拒絕....)*/
-	private java.util.Date togethermem_time;
-	private java.util.Date togethermem_time_okay;   /*確認申請時間*/
+	@Expose private MemberBean member_no;					 /*會員編號*/
+	@Expose private int togethermem_status;  		        /*申請狀態(申請中,已加入,拒絕....)*/
+	@Expose private java.util.Date togethermem_time;
+	@Expose private java.util.Date togethermem_time_okay;   /*確認申請時間*/
 	
     //測試程式
 //	public static void main(String[] args) {

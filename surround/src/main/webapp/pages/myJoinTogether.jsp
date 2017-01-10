@@ -49,6 +49,8 @@ $('#closeIframe').click(function(){
 	      <c:param name="member_no" value=" ${element.member_no.member_no}" />
 			<c:param name="prodaction" value="取消申請" />
 		</c:url>
+		<tr>
+		<c:if test="${element.together_no.together_status == 0}">
 		<td>${element.together_no.together_topic}</td>
 		<td>${element.together_no.member_no.nickname}</td>
 		<td>${element.together_no.together_name}</td>
@@ -72,6 +74,7 @@ $('#closeIframe').click(function(){
           <td></td>
          </c:otherwise>
          </c:choose>
+	</c:if>
 	</tr>
 	</c:forEach>
 	</tbody>
