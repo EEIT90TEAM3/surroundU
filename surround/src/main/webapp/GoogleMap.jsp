@@ -58,7 +58,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:-92px;">
+    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="position:fixed;margin-left:-45px;">
         <div class="col-xs-12 col-md-12">
         	<div class="panel panel-default">
                 <div class="panel-heading top-bar">
@@ -94,7 +94,7 @@
 <div class="content">
     <div class="main">
       <ul class="sm sm-blue">
-        <li><a href="#">${user.name} </a>
+        <li><a href="#">${user.nickname} </a>
          
           
           <ul>
@@ -374,7 +374,7 @@
 	var ws;
 var loginName = "${sessionScope.user.account}";
 var loginNo = "${sessionScope.user.member_no}";
-var memName = "${sessionScope.user.name}";
+var memName = "${sessionScope.user.nickname}";
 var cartWrapper = $('.cd-cart-container');
 		//product id - you don't need a counter in your real project but you can use your real product id
 var productId = 0;
@@ -428,10 +428,10 @@ $("#chatname").text(memName);
 				cartList.find('.deleted').remove();
 				cartList.find('.product').remove();
 				$("#searchID").val("");
-				ws.send(JSON.stringify({
-			        nickname : loginName,
-			        type : "friendlist"
-		   	    }));
+// 				ws.send(JSON.stringify({
+// 			        nickname : loginName,
+// 			        type : "friendlist"
+// 		   	    }));
 
 			} else {
 				var friendArray = [];
@@ -440,8 +440,7 @@ $("#chatname").text(memName);
 
 		  			var count = 1;
 		  			$.each(data, function(index, item){
-		  					// 製作物品經緯度陣列
-		  				var aItem = [item.buddy_no.name,item.buddy_no.account,item.friend_status,item.buddy_no.member_photo_chat];
+		  				var aItem = [item.buddy_no.nickname,item.buddy_no.account,item.friend_status,item.buddy_no.member_photo_chat];
 		  				friendArray.push(aItem);
 		  				count++;
 		  			});
@@ -466,7 +465,7 @@ $("#chatname").text(memName);
 
 		  			var count = 1;
 		  			$.each(data, function(index, item){
-		  				var aItem = [item.member_no.name,item.member_no.account,item.member_no.member_photo_chat];
+		  				var aItem = [item.member_no.nickname,item.member_no.account,item.member_no.member_photo_chat];
 		  				inviteArray.push(aItem);
 		  				count++;
 		  			});
@@ -615,7 +614,7 @@ $("#chatname").text(memName);
 				}
 				if(selectfriend.length>0){
 					<c:forEach var="selectfriend"  items="${sessionScope.selectfriend }">
-						var account = "${selectfriend.buddy_no.name}";
+						var account = "${selectfriend.buddy_no.nickname}";
 
 						if(account==e.nickname){
 							var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="img/'+e.himg+'.png" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+e.nickname+'</a></h3><span class=&nbsp;</span><div class="actions"><a href="#0" class="delete-item" onclick="delfriend(\''+e.name+'\');">刪除</a><div class="quantity"><a href="#0" class="privateTalk" onclick="openbox(\''+e.name+'\',\''+e.nickname+'\',\'friend\');">私訊</a></label></div></div></div></li>');

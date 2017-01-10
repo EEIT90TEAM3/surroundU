@@ -49,7 +49,6 @@ public class FriendServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("name");
 		String join = request.getParameter("join");
-		System.out.println("666666666666666"+request.getParameter("button"));
 //封鎖or解除好友
 		FriendBean bean=new FriendBean();
 		bean.setBuddy_no(memberService.select("1"));

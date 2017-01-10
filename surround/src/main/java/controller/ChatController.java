@@ -206,24 +206,7 @@ public class ChatController{
 			break;
 		}
 
-		//	       for(chatb item: webSocketSet){
-//		try {
-//			broadcast(message);
-//			session.getBasicRemote().sendText(message);
-//			item.sendMessage(message);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	       }
 
-	
-//		// 把客户端的消息解析为JSON对象
-//		JSONObject jsonObject = JSONObject.fromObject(message);
-//		// 获得昵称
-//		String nikename = (String) jsonObject.get("nickname");
-//
-//		connections.put(this, nikename);
-//		broadcast(message);
 	}
     public void sendPrivate(String message) throws IOException{
 
@@ -255,39 +238,7 @@ public class ChatController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		tobn.setPrivatetalk_txt("遊戲");
-//		tobn.setPrivatetalk_time(java.sql.Date.valueOf("2016-12-20"));
-//		tobn.setCatch_id(memberDAOHibernate.selectId(1));
-// 		tobn.setPrivatetalk_status(online);
-// 		System.out.println("---------------2");
-// 		privateTalkService.insert(tobn);
-// 		System.out.println("---------------3");
-//--------------------------------------------------------			
-//			ApplicationContext context =
-//					new ClassPathXmlApplicationContext("beans.config.xml");
-//			SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
-//			try {
-//				sessionFactory.getCurrentSession().beginTransaction();
-//				PrivateTalkDAO dao=(PrivateTalkDAO)context.getBean("privateTalkDAO");
-//
-//			MemberDAO memberDAO = (MemberDAO) context.getBean("memberDAO");
-//			MemberBean memberBean = new MemberBean();
-//			memberBean.setMember_no(2);
-//			PrivateTalkBean tobn=new PrivateTalkBean();
-//		tobn.setMember_no(memberBean);
-//		tobn.setMember_no(memberDAO.selectId(3));
-//		tobn.setPrivatetalk_txt("遊戲");
-//		tobn.setPrivatetalk_time(java.sql.Date.valueOf("2016-12-20"));
-//		tobn.setCatch_id(memberDAO.selectId(1));
-// 		tobn.setPrivatetalk_status(online);
-//		dao.insert(tobn);
-//		
-//			sessionFactory.getCurrentSession().getTransaction().commit();
-//		} finally {
-//				
-//			sessionFactory.close();
-//			((ConfigurableApplicationContext) context).close();
-//		}
+
 	}			
     }
     public void sendAll(String message) throws IOException{
@@ -299,15 +250,6 @@ public class ChatController{
 			String client = iterator.next();
 			synchronized (client) {
 
-				// 把客户端的消息解析为JSON对象
-				// 在消息中添加发送日期
-//				jsonObject.put("date", DATE_FORMAT.format(new Date()));
-//				System.out.println("client="+client);
-				// 添加本条消息是否为当前会话本身发的标志
-//				jsonObject.put("isSelf", client.session.equals(session));
-//				String nickname = (String)jsonObject.get("nickname");
-				// 发送JSON格式的消息
-//					connections.get(client).session.getAsyncRemote().sendText(jsonObject.toString());
 
 				if(connections.get(client)!=null){
 					System.out.println("訊息發送成功");

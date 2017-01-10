@@ -106,7 +106,7 @@ public class MemberDAOHibernate implements MemberDAO {
 	}
 	@Override
 	public MemberBean selectName(String name) {
-		Query query = this.getSession().createQuery("from MemberBean where name like :name");		
+		Query query = this.getSession().createQuery("from MemberBean where nickname like :name");		
 		query.setParameter("name",name);
 		try {
 			MemberBean bean = (MemberBean) query.getSingleResult();
@@ -116,7 +116,6 @@ public class MemberDAOHibernate implements MemberDAO {
 		} catch (Exception e) {
 			return null;
 		}
-		//		return (MemberBean) query.getSingleResult();
 		return null;
 	}
 }
