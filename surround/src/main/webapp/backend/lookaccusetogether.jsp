@@ -18,7 +18,7 @@
       </tr>
       <tr>
         <th>會員</th>
-        <th>${lookaccusetogether.member_no.member_no}</th>
+        <th>${lookaccusetogether.member_no.account}</th>
       </tr>
       <tr>
         <th>約團分類</th>

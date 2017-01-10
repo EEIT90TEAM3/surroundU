@@ -168,6 +168,7 @@ public class BackendController {
 		return null;
 	}
 	
+	
 	@RequestMapping(path={"/backendchangepwd.controller"},
 			method={RequestMethod.GET, RequestMethod.POST})
 	public String changpwd( 
@@ -181,6 +182,9 @@ public class BackendController {
 		//驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
+		
+	
+		
 		
 		MemberBean bean= (MemberBean)session.getAttribute("user");
 		
@@ -211,7 +215,7 @@ public class BackendController {
 			errors.put("pwdnotequal", "輸入之新密碼兩次需相同,請重新輸入");		
 			
 		}		
-		if(!errors.isEmpty()||errors!=null){
+		if(!errors.isEmpty()){
 			return "backendpwdchange.error";
 		}
 		
