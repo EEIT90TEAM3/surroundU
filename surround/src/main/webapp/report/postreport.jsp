@@ -7,33 +7,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>回報功能</title>
 <link rel="stylesheet" href="<c:url value="/css/jquery-ui.min.css"/>">
+
+
+
+ 
+<style>
+  textarea{resize: none; }
+</style>
 </head>
 <body>
-
+<div>
 <form method="GET" action ="<c:url value="/reportpost.controller"/>">
  <table>
-	
+<!-- 	<tr>回報會員編號 :  </tr> -->
+<!-- 	<tr> -->
+<%-- 		<td><input type="text" name="memberno" value="${param.memberno}"></td> --%>
+<%-- 		<td>${errors.memberno}</td>   --%>
+<!--     </tr> -->
+ 	<tr>回報內容或建議：</tr>
 	<tr>
-		<td>回報會員編號 : </td>
-		<td><input type="text" name="memberno" value="${param.memberno}"></td>
-		<td>${errors.memberno}</td>  
-    </tr>
-	<tr>
-		<td>回報內容或建議： </td>
-		<td><input type="text" name="reportmemo" value="${param.reportmemo}"></td>
-		<td>${errors.reportmemo}</td>
+
+		<td><textarea name="reportmemo" value="${param.reportmemo}" cols="60" rows="10" ></textarea></td>
+		
 	</tr>
     <tr>
-		<td></td>
-		<td align="right"><input type="submit" value="確認"></td>
+		<td><input type="submit" value="確認" class="btn btn-info"></td>
+		
+	</tr>
+	<tr>
+	    <td>${errors.reportmemo}</td>
 	</tr>
   </table>
 
 </form>
-
-	<div id="postover" title="回報及建議超過次數">
-	  <p>會員您好,謝謝您的建議及回報,因應網站規定,會員回報及反映待辦事項為五項,請您稍晚再給予我們寶貴的意見及回饋</p>
-	</div>
+</div>
 	
 	<script src="<c:url value="/js/jquery-3.1.1.min.js"/>"></script>  
 	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>   

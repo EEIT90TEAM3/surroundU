@@ -89,7 +89,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					<a href="<c:url value=""/>" class="list-group-item">登出</a>
+					<a href="<c:url value="/backendlogout.controller"/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -168,6 +168,12 @@
 							<th>${param.accuse_deal_memo}</th>
 							
 				 	    </tr> 
+				 	    <c:if test="${param.accuse_status!=0}">
+				 	    <tr> 
+							<th>處理完成時間</th> 
+							<th>${param.accuse_deal_time}</th>
+						 </tr> 
+				 	    </c:if>
 						
 
 					</table>

@@ -48,7 +48,7 @@ public class BackendMemberController {
 						MemberBean bean = backendService.switchAccountStatus(account, 1);
 						
 						if(bean!=null){
-							return "backendlogin.success";
+							return "member.display";
 						}
 						
 					}
@@ -58,7 +58,7 @@ public class BackendMemberController {
 						MemberBean bean = backendService.switchAccountStatus(account, 0);
 						
 						if(bean!=null){
-							return "backendlogin.success";
+							return "member.display";
 						}
 					}
 					
@@ -67,7 +67,7 @@ public class BackendMemberController {
 	                    MemberBean bean = backendService.switchAccountStatus(account, 99);
 						
 						if(bean!=null){
-							return "backendlogin.success";
+							return "member.display";
 						}
 					}
 				    
@@ -76,7 +76,7 @@ public class BackendMemberController {
 	                    MemberBean bean = backendService.switchAccountStatus(account, 0);
 						
 						if(bean!=null){
-							return "backendlogin.success";
+							return "member.display";
 						}
 					}
 				 

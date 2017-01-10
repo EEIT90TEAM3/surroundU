@@ -124,18 +124,20 @@ public class BackendService {
 		}
         
         
-//      public Boolean changeManagerPwd(){ //查詢停權會員
-//    	
-//		
-//	
-//		
-//		return null;
-//		
-//		
-//	 }
+      public MemberBean changeManagerPwd(MemberBean memberBean,String newpwd){ //更改管理員
+    	
+    	 System.out.println("backendService");
+    	  
+    	  MemberBean bean = memberDao.update(memberBean, newpwd);
+	
+		
+		return bean;
+		
+		
+	 }
         
       //處理檢舉文章 
-      public Boolean dealAccuse(int accuse_no,int accuse_status,String accuse_deal_memo){  
+      public AccuseBean dealAccuse(int accuse_no,int accuse_status,String accuse_deal_memo){  
     	  
     	AccuseBean bean = accuseDao.select(accuse_no); //select要處理的文章
     	
@@ -170,7 +172,7 @@ public class BackendService {
 				
 				
 				if(updatebean!=null){
-					return true;
+					return updatebean;
 				}
 				
 
@@ -195,12 +197,12 @@ public class BackendService {
 							
 					 	}
 					
-					return true;
+					return updatebean;
 				}
 			} 
 		}
     	
-		return false;
+		return null;
       }
       
       
