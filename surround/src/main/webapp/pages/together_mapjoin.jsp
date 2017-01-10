@@ -15,7 +15,7 @@
 <table>
     <tr>
 		<td>主揪人 : </td>
-		<td>${param.nickname}</td>
+		<td>${param.name}</td>
 	</tr>
 	<tr>
 		<td>主題 : </td>

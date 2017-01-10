@@ -68,8 +68,6 @@
             
             <li ><a id="mysale">我的擺攤</a>
             </li>
-            <li><a href="#">Time Machines</a></li>
-            
             <!--  together-->
             <li><a id="myJoinTogether">已申請的約團</a></li>
             <!--  together-->
@@ -145,7 +143,7 @@
 		var count = 1;
 		$.each(data, function(index, item){
 				// 製作物品經緯度陣列
-			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.nickname,item.sale_time];
+			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.name,item.sale_time];
 			itemArray.push(aItem);
 			count++;
 		});
@@ -158,7 +156,7 @@
 			var sale_locate = itemArray[i][4];
 			var sale_memo = itemArray[i][5];
 			var productBean = itemArray[i][6];
-			var nickname = itemArray[i][7];
+			var name = itemArray[i][7];
 			var sale_time = itemArray[i][8];
 			for(var o1 in productBean){
 			var itemLatLng = new google.maps.LatLng(latitude, longitude);
@@ -180,7 +178,7 @@
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
             '<div class="iw-content">' +
 //              '<div class="iw-subTitle">'+' 攤位名稱:'+sale_name+'</div>' +
-              '<div class="iw-subTitle">'+'賣家:'+nickname+'</div>' +
+              '<div class="iw-subTitle">'+'賣家:'+name+'</div>' +
               '<p>'+'攤位地點:'+sale_locate+'</p>' +
               '<p>'+'攤位時間:'+sale_time+'</p>' +
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
@@ -225,7 +223,7 @@
   			var count = 1;
   			$.each(data1, function(index, item){
   					// 製作物品經緯度陣列
-  				var bItem = [item.together_topic, item.together_name, item.together_lng, item.together_lat ,item.together_locate,item.together_when,item.together_when_end,item.member_no.nickname,item.together_people,item.together_memo,item.together_no];
+  				var bItem = [item.together_topic, item.together_name, item.together_lng, item.together_lat ,item.together_locate,item.together_when,item.together_when_end,item.member_no.name,item.together_people,item.together_memo,item.together_no];
   				itemTogetherArray.push(bItem);
   				count++;
   			});
@@ -238,7 +236,7 @@
   				var together_locate = itemTogetherArray[i][4];
   				var together_when = itemTogetherArray[i][5];
   				var together_when_end = itemTogetherArray[i][6];
-  				var nickname = itemTogetherArray[i][7];
+  				var name = itemTogetherArray[i][7];
   				var together_people = itemTogetherArray[i][8];
   				var together_memo = itemTogetherArray[i][9]; 
   				var together_no=itemTogetherArray[i][10]; 
@@ -262,7 +260,7 @@
   	            '<div class="iw-title">'+'約團主題:'+together_topic+'</div>' +
   	            '<div class="iw-content">' +
   	              '<div class="iw-subTitle">'+' 約團名稱:'+together_name+'</div>' +
-  	            '<p>'+'主揪人:'+nickname+'</p>' +
+  	            '<p>'+'主揪人:'+name+'</p>' +
   	              '<p>'+'地點:'+together_locate+'</p>' +
 //  	              '<p>'+'活動時間:'+together_when+'</p>' +
 //  	            '<p>'+'活動結束時間:'+together_when_end+'</p>' +
@@ -291,6 +289,7 @@
   	              //點擊MAKER資訊視窗
   	              google.maps.event.addListener(marker, 'click', function () {
   	                  infoWindow.open(map, marker); 
+  	                  
   	                
   	              });   
   	           
@@ -363,7 +362,7 @@
         		        maxmin: true, //开启最大化最小化按钮
         		        area: ['500px', '400px'],
     //傳入經緯度參數iFrame
-        		        content: ['/surround/pages/together.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
+        		        content: ['/surround/pages/together.jsp?lat='+maplat+'&lng='+maplng+'&together_locate='+adlot]
         		     
         			});
         		});   

@@ -71,7 +71,7 @@
 			<c:param name="prodaction" value="拒絕"/>
 		</c:url>
 	<tr>
-		<td>${element.member_no.nickname}</td>
+		<td>${element.member_no.name}</td>
 		<c:choose>
         <c:when test="${element.togethermem_status == 0}">
         <td style="color: red;">申請中，尚未加入</td>

@@ -199,12 +199,13 @@ public class TogetherServlet extends HttpServlet{
 				   if(memberBean!=null) {
 					MemberBean result = memberService.login(memberBean.getAccount(),memberBean.getPwd());
 					List<TogetherBean> togetherBean=togetherService.togetherStatusChange(result);
-				    for(TogetherBean tobean:togetherBean){
-				    	System.out.println("1");
-				    	System.out.println(tobean.getTogether_when());//1
-				    	System.out.println(tobean.getTogether_when_end());//2
-				    	System.out.println(together_when);//3
-				    	System.out.println(together_when_end);//4
+				    if(togetherBean!=null &&togetherBean.size()!=0){
+					for(TogetherBean tobean:togetherBean){
+//				    	System.out.println("1");
+//				    	System.out.println(tobean.getTogether_when());//1
+//				    	System.out.println(tobean.getTogether_when_end());//2
+//				    	System.out.println(together_when);//3
+//				    	System.out.println(together_when_end);//4
 				    	if(tobean.getTogether_status()==0){
 				    		System.out.println(tobean.getTogether_status());
 				    	if((together_when.before(tobean.getTogether_when())&& together_when_end.before(tobean.getTogether_when()))
@@ -216,6 +217,7 @@ public class TogetherServlet extends HttpServlet{
 				    	}
 				    }
 				    }
+				   }
 				}
 				}
 				}
