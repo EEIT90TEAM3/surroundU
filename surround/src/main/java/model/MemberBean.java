@@ -53,7 +53,7 @@ public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int	member_no;	//會員編號
+	@Expose private int	member_no;	//會員編號
 	@Expose private String account;	//*帳號
 	private String pwd;	//*密碼
 	private String name; //*姓名
