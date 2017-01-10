@@ -128,4 +128,23 @@ public class MemberService {
 		}
 		return null;
 	}
+
+	@Transactional
+	public MemberBean select(String account) {
+		System.out.println("memberService--------------------");
+		MemberBean result = null;
+		System.out.println("account--"+account);
+		result = memberDAO.select(account);
+	
+		System.out.println("result= "+result);
+		return result;
+	}	
+	@Transactional
+	public MemberBean selectName(String name) {
+		MemberBean result = null;
+		result = memberDAO.selectName(name);
+	
+		System.out.println("result= "+result);
+		return result;
+	}
 }

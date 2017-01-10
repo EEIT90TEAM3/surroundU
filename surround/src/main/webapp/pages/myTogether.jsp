@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet">
 <script src="src/jquery211.js" type="text/javascript"></script>
 	<script src="src/jquery/bootstrap.min.js"></script>
 	<script src="src/lay/layer.js" type="text/javascript"></script>
@@ -117,6 +116,7 @@ $('#closeIframe').click(function(){
     parent.layer.close(index);
 });
 </script>
+
 
 
 </body>

@@ -73,8 +73,6 @@
          </c:choose>
          </tr>
 	</c:if>
-	
-	
 	</c:forEach>
 	</tbody>
 	</table>

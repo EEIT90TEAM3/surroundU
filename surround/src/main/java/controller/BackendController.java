@@ -186,7 +186,7 @@ public class BackendController {
 	
 		
 		
-		MemberBean bean= (MemberBean)session.getAttribute("user");
+		MemberBean bean= (MemberBean)session.getAttribute("manager");
 		
 		String pwd  = bean.getPwd();
 		

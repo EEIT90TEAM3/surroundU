@@ -41,6 +41,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -53,7 +54,7 @@ public class MemberBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Expose private int	member_no;	//會員編號
+	private int	member_no;	//會員編號
 	@Expose private String account;	//*帳號
 	private String pwd;	//*密碼
 	@Expose private String name; //*姓名
@@ -64,6 +65,7 @@ public class MemberBean implements Serializable{
 	private int gender; //*性別(0為female,1為male)*/ 
 	private int account_status;/*帳號狀態(0為正常,1為暫時停用,2為永久停用,99為管理員)*/ 
 	private byte[] member_photo;//*會員照片*
+	@Expose private String member_photo_chat;//*會員照片*
 	private java.util.Date suspended;//*停權結束日期
 	private String account_email;//*Email帳號
 	private String account_google;//*Google帳號
@@ -325,6 +327,15 @@ public class MemberBean implements Serializable{
 	public void setAccount_facebook(String account_facebook) {
 		this.account_facebook = account_facebook;
 	}
+
+	public String getMember_photo_chat() {
+		return member_photo_chat;
+	}
+
+	public void setMember_photo_chat(String member_photo_chat) {
+		this.member_photo_chat = member_photo_chat;
+	}
+
 
 
 }

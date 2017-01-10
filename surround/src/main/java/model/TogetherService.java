@@ -167,6 +167,7 @@ public class TogetherService {
 	   return result;
    }   
    
+
     
    public TogetherBean togetherStatusDelete(TogetherBean bean){
 	   TogetherBean result=null;

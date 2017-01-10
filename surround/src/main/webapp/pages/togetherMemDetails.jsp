@@ -6,15 +6,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!-- 
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />
+ -->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 
 <title>Insert title here</title>
 </head>
 <body>
 
 <c:if test="${not empty togetherbean}">
-<table>
+<table class="table table-bordered table-striped table-hover">
 	<thead>
 	<tr>
 		<th>主題</th>
@@ -41,7 +44,7 @@
 	</c:if>
 
 <c:if test="${not empty selectTogetherMemDetails}">
-<table>
+<table class="table table-bordered table-striped table-hover">
 	<thead>
 	<tr>
 		<th>申請加入成員</th>
@@ -96,7 +99,7 @@
 
 
 
-<h3><a href="<c:url value="/menu.jsp" />">回首頁</a></h3>
+<h3><a href="<c:url value="/pages/together_end.jsp" />">回首頁</a></h3>
 
 
 </body>

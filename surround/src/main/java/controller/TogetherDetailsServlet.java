@@ -74,6 +74,7 @@ public class TogetherDetailsServlet extends HttpServlet {
 				request.getRequestDispatcher(
 						"/pages/together_end.jsp").forward(request, response);
 			}
+
 		}
 			
 	}

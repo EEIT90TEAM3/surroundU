@@ -51,7 +51,7 @@
 			<div class="col-md-9">
 				<div class="jumbotron">
 					<div class="page-header">
-						<h6>Hello~ ${user.account}  歡迎來到管理者介面</h6>
+						<h6>Hello~ ${manager.account}  歡迎來到管理者介面</h6>
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
 					<form method="post" action="<c:url value="/backendchangepwd.controller"/>" > 
@@ -70,6 +70,7 @@
 						</tr>
 						<tr>
 							<th><input type="submit" value="更改管理者密碼" name="backendaction"></th>
+
 							<th></th>
 						</tr>
 

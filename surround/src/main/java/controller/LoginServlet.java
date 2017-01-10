@@ -69,11 +69,18 @@ public class LoginServlet {
 				model.addAttribute("errors", errors);
 				String account = bean.getAccount();		
 				String pwd = bean.getPwd();
+			    int account_status = bean.getAccount_status();   //取得帳號狀態檢視是否停權    
+			    
+			    if(account_status==1||account_status==2){
+			    	errors.put("account", "Your account is suspended");
+			    }
+			    
+			    
 				if(account==null || account.length()==0) {
-					errors.put("account", "ID is required (mvc)");
+					errors.put("account", "ID is required ");
 				}
 				if(pwd==null || pwd.length()==0) {
-					errors.put("pwd", "PWD is required (mvc)");
+					errors.put("pwd", "PWD is required ");
 				}
 				if(errors!=null && !errors.isEmpty()) {
 					return "login.error";

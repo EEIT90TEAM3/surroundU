@@ -68,6 +68,7 @@ public class ReportPostController {
 //				
 		    //呼叫model
 	         memberBean.setMember_no(member_no);
+
 	         
 	         Boolean rs = reportService.postReport(memberBean, reportmemo, new java.util.Date(), 0,null);
 		    //根據model傳回的值,顯示view

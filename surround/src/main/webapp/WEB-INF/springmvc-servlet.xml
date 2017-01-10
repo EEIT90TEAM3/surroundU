@@ -18,7 +18,7 @@
 	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
 		<property name="location" value="/WEB-INF/views.xml"></property>
 		<property name="order" value="15"></property>
-	</bean>
+    </bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"></property>

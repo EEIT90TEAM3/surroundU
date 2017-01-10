@@ -44,6 +44,7 @@
    padding:20px;
    width:300px;
 }
+<<<<<<< HEAD
 .lower-block span{font-size:16px;}
 .lower-block span{margin-left:5px}
 .form-signin2{
@@ -234,6 +235,7 @@ function scaleBannerVideoSize(element){
             $(this).width(videoWidth).height(videoHeight);
         }
         $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
     });
 }
 $('#signup1').click(function(){
