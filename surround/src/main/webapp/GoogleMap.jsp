@@ -9,26 +9,13 @@
 <title>Surround You</title>
 <!-- jQuery -->
 	<script src="src/jquery211.js" type="text/javascript"></script>
+	<script src="src/jquery/bootstrap.min.js"></script>
 	<script src="src/lay/layer.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
 	<!-- menu -->
 	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
 	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
-	<link rel="stylesheet" href="chat/css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="chat/css/style.css"> <!-- Resource style -->
-    <link type="text/css" href="chat/css/jquery.ui.chatbox.css" rel="stylesheet" />
-    <link rel="stylesheet" href="chat/css/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="chat/js/jquery-ui-1.8.2.custom.min.js"></script>
-    <script type="text/javascript" src="chat/js/chatboxManager.js"></script>
-    <script type="text/javascript" src="chat/js/jquery.ui.chatbox.js"></script>
-
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="chat/css/chats.css">
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/npm.js"></script>
-	<script type="text/javascript" src="chat/js/chats.js"></script>
  <style>
 /*資訊視窗CSS*/
 #iw-container .iw-title {
@@ -91,68 +78,52 @@
     </div>
 </div>
 
+
 <div class="content">
     <div class="main">
       <ul class="sm sm-blue">
-        <li><a href="#">${user.nickname} </a>
+
+        <li><a href="#"><img height='30px' width='30px'
+					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li>
+        <li><a href="#">${user.name} </a>
+
          
           
           <ul>
             <li><a id="updatemen">修改會員資料</a></li>
-            <li><a href="#">回報管理者</a></li>
+            <li><a id="postreport">回報管理者</a></li>
             <li><a href="#">登出</a></li>
           </ul>
         </li>
         <li><a href="#">我的活動</a>
           <ul>
-            <li ><a href="#">我的約團</a>
-              <ul>
-                <li ><a href="#" >Gizmo Basic</a></li>
-                <li><a href="#">Gizmo Standard</a></li>
-                <li><a href="#">Gizmo Supreme</a></li>
-              </ul>
-            </li>
+          
+            <!--  together-->
+            <li ><a id="mytogether">我的約團</a>
+            <!--  together-->
+            
             <li ><a id="mysale">我的擺攤</a>
             </li>
             <li><a href="#">Time Machines</a></li>
+            
+            <!--  together-->
+            <li><a id="myJoinTogether">已申請的約團</a></li>
+            <!--  together-->
+            
           </ul>
           <li><a href="#">我的好友</a>
           <li><a href="#">文章列表</a>
+           <ul>
+          <!--  together-->
+            <li ><a id="togetherTotal">約團列表</a>
+            <!--  together-->
+          </ul>
         </li>
       </ul>
       
     </div>
   </div>
  <div id="map"></div>
- <div class="cd-cart-container empty">
-	<a href="#0" class="cd-cart-trigger">
-		Cart
-
-	</a>
-
-	<div class="cd-cart">
-		<div class="wrapper">
-			<header>
-				<h2 id="chatname"></h2>
-
-			</header>
-			
-			<div class="body">
-				<ul>
-					<!-- products added to the cart will be inserted here using JavaScript -->
-				</ul>
-			</div>
-
-			<footer>
-				<span class="checkout btn"><span style="color:#ffffff">搜尋會員</span><input type="text" id="searchID" maxlength="15" style="width:110px;height:25px" >
-				<button type="button" id="searchMem" style="vertical-align:middle;"><img src="img/search.png" style="width:30px;height:30px"></button></span>			
-			</footer>
-		</div>
-		
-	</div> <!-- .cd-cart -->
-	
-</div> <!-- cd-cart-container -->
- 
   <script> 
   //menu js控制
   $(document).ready(function() {
@@ -228,7 +199,7 @@
 				title: sale_topic,
 				position: itemLatLng,
 				map: map,
-		//		icon: "${root}category-icon/" + class_name + ".png"
+				icon: "<c:url value="/img/mapicon/sale.png"/>"
 			});
 			//裝載maker準備delete用
 			markerArray.push(marker);
@@ -244,7 +215,7 @@
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
 //              '<p><br><br>'+
               '<p>'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
- //             '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
+              '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
 //              '<p>'+'拍賣品價格:'+productBean[0].product_price+'</p>' +
               '<p><button class="btn btn-default" type="submit">詳細資料</button></p>'+
 //              '<p>'+'拍賣品明細:'+productBean[0].product_memo+'</p>' +
@@ -286,12 +257,12 @@
 	      	      if (status === google.maps.GeocoderStatus.OK) {
 	      	      if (results[0]) {
 	      	       adlot = results[0].formatted_address;
-	      	       alert(adlot);
+//	      	       alert(adlot);
 	      	      } 
 	      	     }
 	      	   });
-      		  alert(maplat);
-      		  alert(maplng);
+//      		  alert(maplat);
+//     		  alert(maplng);
       		  layer.open({
       			  type: 1,
       			  title: false,
@@ -300,7 +271,7 @@
    		          shade: false,
    		      	  id: 'sale',
       			  skin: 'yourclass',
-      			  content: '<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet"><button class="btn btn-default" type="submit">擺攤</button></br><button class="btn btn-default" type="submit">約團</button>'
+      			  content: '<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet"><button class="btn btn-default" id="sale" type="submit">擺攤</button></br><button class="btn btn-default" id="together" type="submit">約團</button>'
       			});
   //點擊開啟彈層
       		  $("#sale").click(function(){
@@ -317,8 +288,29 @@
   //傳入經緯度參數iFrame
       		        content: ['/surround/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
       		     
-      			});
+      			});            
       		});   
+  
+//  together-----------------------------------------------------------------
+        		$("#together").click(function(){
+        			layer.closeAll('page');
+        		//	alert(latLng);
+        			layer.open({
+        		        type: 2,
+        		        title: '新增',
+        		        id: 'popup',
+        		        shadeClose: true,
+        		        shade: false,
+        		        maxmin: true, //开启最大化最小化按钮
+        		        area: ['500px', '400px'],
+    //傳入經緯度參數iFrame
+        		        content: ['/surround/pages/together.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
+        		     
+        			});
+        		});   
+   
+        		
+  //together------------------------------------------------------------------------------ 
       		});
     		  
     		}
@@ -366,10 +358,11 @@
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
  		        area: ['500px', '400px'],
- 		        content: ['<c:url value="/secure/updatemember.jsp"/>']
+ 		        content: ['<c:url value="/secure/updateMember.controller"/>']
  		     //
  			});
  		});
+
 // ======================瑞豪=======================	
 	var ws;
 var loginName = "${sessionScope.user.account}";
@@ -538,33 +531,67 @@ $("#chatname").text(memName);
 			   	    }));
 					$("#btn-input").val("");
 				}
- 			});
- 			$('#searchID').on('keypress', function(event){
-				if (event.keyCode == 13) {
-		     		cartList.find('.product').remove();
-					var productAdded = $('<li class="product"><div class="product-details"><h3><a href="#0">無此會員</a></h3><div class="actions"></div></div></div></li>');
-					cartList.prepend(productAdded);
-					ws.send(JSON.stringify({
-				        nickname : $("#searchID").val(),
-				        type : "searchID"
-				    })); 
-				}
-			});
-		function connect(){
-			ws= new WebSocket('ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/websocket/'+loginName);
 
-			//var socket = new WebSocket('ws://http://localhost:8080/webSocket/websocket');
-			ws.onopen=onopen;
-//			ws.onerror=onerror;
-			ws.onmessage=onmessage;
-//			ws.onclose=onclose;
-		}
-		function onopen(){
-			;
-		}
-		function onmessage(e){
-			e = JSON.parse(e.data);
-			if(e.type=="all"){
+		 
+		//together------------------------------------------------------------
+		 $("#mytogether").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '新增',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['700px', '400px'],
+ 		        content: '<c:url value="/TogetherDetailsServlet"/>'
+
+ 			});
+ 		});
+		 $("#myJoinTogether").click(function(){
+	 			layer.closeAll('page');
+	 			layer.open({
+	 		        type: 2,
+	 		        title: '新增',
+	 		        id: 'popup',
+	 		        shadeClose: true,
+	 		        shade: false,
+	 		        maxmin: true, //开启最大化最小化按钮
+	 		        area: ['700px', '400px'],
+	 		        content: '<c:url value="/MyJoinTogether.controller"/>'
+	 			});
+	 		});
+ 		$("#togetherTotal").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '新增',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['700px', '400px'],
+ 		        content: '<c:url value="/TogetherTotal.controller"/>'
+ 			});
+ 		});
+// together-----------------------------------------------------------
+
+//postreport--------------------begin---------------------------------
+         $("#postreport").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '回報管理者',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['450px', '270px'],
+ 		        content: '<c:url value="/report/postreport.jsp"/>'
+ 			});
+ 		});
+//postreport--------------------end-----------------------------------
+
 
 				if(e.nickname==loginName){
 					$("#chatext").append('<div class="row msg_container base_sent">'
@@ -721,6 +748,7 @@ $("#chatname").text(memName);
     		toggleCart();
 	        event.preventDefault();
 	    }
+
   </script>
   <script 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Inouuyem3ufRkt0dseRmzUCHtqyhgds&callback=initMap">

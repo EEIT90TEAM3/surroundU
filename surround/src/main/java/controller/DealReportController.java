@@ -51,7 +51,7 @@ public class DealReportController {
 			
 			if(errors!=null && !errors.isEmpty()) {
 				
-				return "doaccuse.error";
+				return "dealreport.error";
 			}
 	       
 	        //轉換資料

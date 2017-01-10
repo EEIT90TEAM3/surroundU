@@ -1,10 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,6 +15,8 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+
+
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -25,13 +24,10 @@ import chat.GetHttpSessionConfigurator;
 import model.FriendBean;
 import model.FriendService;
 import model.MemberBean;
-import model.MemberDAO;
-import model.MemberDAOHibernate;
 import model.MemberService;
 import model.PrivateTalkBean;
 import model.PrivateTalkDAO;
 import model.PrivateTalkService;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 

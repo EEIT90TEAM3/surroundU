@@ -53,8 +53,8 @@ public class TogetherBean implements Serializable{
 	private java.util.Date together_delete_time; /*刪除時間*/
 	private java.util.Date together_modify_time; /*修改時間*/
 	private int together_status;                 /*文章狀態*/
-	private float together_lng;                 /*經度*/
-	private float together_lat;
+	private String together_lng;                 /*經度*/
+	private String together_lat;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="together_no")
 	private Set<TogetherMemBean> togetherBeanMem=new HashSet<TogetherMemBean>();
 	
@@ -223,16 +223,17 @@ public class TogetherBean implements Serializable{
 		this.together_status = together_status;
 	}
 	
-public float getTogether_lng() {
+public String getTogether_lng() {
 		return together_lng;
 	}
-	public void setTogether_lng(float together_lng) {
+	public void setTogether_lng(String together_lng) {
 		this.together_lng = together_lng;
 	}
-	public float getTogether_lat() {
+	public String getTogether_lat() {
 		return together_lat;
 	}
-	public void setTogether_lat(float together_lat) {
+	public void setTogether_lat(String together_lat) {
+
 		this.together_lat = together_lat;
 	}
 	//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="together_no")

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <html>
@@ -41,6 +42,7 @@
 		<input type="hidden" name="together_status" value="${param.together_status}" />
 		<input type="hidden" name="together_lng" value="${param.together_lng}" />
 		<input type="hidden" name="together_lat" value="${param.together_lat}" />
+		<input type="hidden" name="together_people" value="${param.together_people}" />
 	</tr>
 	<tr>
 		<td>名稱 : </td>
@@ -54,14 +56,14 @@
 		<td>${errors.together_locate}</td>
 	</tr>
 	<tr>
-		<td>活動時間 : </td>
-		<td><input type="text" id="datetimepicker1" name="together_when" value="${param.together_when}"></td>
+		<td>活動時間 :
+		<td><input type="text" id="datetimepicker1" name="together_when" value="${fn:substring(param.together_when,0,16)}"></td>
 		<td>${errors.together_when}</td>
 	</tr>	
 		
 	<tr>
 	    <td><span>活動結束時間:</span></td>
-		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${param.together_when_end}"></td>
+		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${fn:substring(param.together_when_end,0,16)}"></td>
 		<td>${errors.together_when_end}</td>
         <script language="JavaScript">
               $(document).ready(function(){ 
@@ -108,9 +110,9 @@
 	</tr>
 	
 	<tr>
-		<td>限制人數 : </td>
-		<td><input type="text" id="together_people" name="together_people" value="${param.together_people}"></td>
-		<td>${errors.together_people}</td>
+		<td>限制人數 (人數無法修改): </td>
+		<td>${param.together_people}</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>備註 : </td>

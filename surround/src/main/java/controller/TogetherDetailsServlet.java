@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -14,9 +15,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javassist.expr.NewArray;
 import model.MemberBean;
 import model.MemberService;
 import model.TogetherBean;
+import model.TogetherMemBean;
+import model.TogetherMemService;
 import model.TogetherService;
 
 @WebServlet("/TogetherDetailsServlet")
@@ -24,6 +28,7 @@ public class TogetherDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService;
     private TogetherService togetherService;
+    private TogetherMemService togetherMemService;
     public TogetherDetailsServlet() {
         super();
     }
@@ -33,7 +38,7 @@ public class TogetherDetailsServlet extends HttpServlet {
 		ApplicationContext context=WebApplicationContextUtils.getWebApplicationContext(application);
 		memberService = (MemberService) context.getBean("memberService");
 		togetherService = (TogetherService) context.getBean("togetherService");
-		
+		togetherMemService = (TogetherMemService) context.getBean("togetherMemService");
 		
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +46,6 @@ public class TogetherDetailsServlet extends HttpServlet {
 		MemberBean memberBean=null;
 		if(session!=null){
 			memberBean=(MemberBean)session.getAttribute("user");
-			
 		}
 			
 		if(memberBean!=null) {
@@ -61,14 +65,16 @@ public class TogetherDetailsServlet extends HttpServlet {
 //				System.out.println(ccc.getTogether_when_end());
 //				System.out.println(ccc.getTogether_status());
 //			}
-			
-			if(result==null) {
-				;
-			} 
+			if(togetherBean!=null&&togetherBean.size()>0){
 			request.setAttribute("select", togetherBean);
-			
 			request.getRequestDispatcher(
 					"/pages/myTogether.jsp").forward(request, response);
+			}else{
+				request.setAttribute("togetherType","Nottogether");
+				request.getRequestDispatcher(
+						"/pages/together_end.jsp").forward(request, response);
+			}
+
 		}
 			
 	}

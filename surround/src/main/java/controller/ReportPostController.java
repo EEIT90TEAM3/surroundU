@@ -28,16 +28,21 @@ public class ReportPostController {
     private MemberBean memberBean;
 	
 	@RequestMapping
-	public String service(@RequestParam(name="memberno") String memberno,
-			              @RequestParam(name="reportmemo") String reportmemo,
+	public String service(
+		    @RequestParam(name="reportmemo") String reportmemo,
              Model model, HttpSession session)
-	{
+	{          
+		        MemberBean memberBean = (MemberBean)session.getAttribute("user");
+		        
+		     
+		        int member_no = memberBean.getMember_no();   //從session取得登入的會員資料
+		        System.out.println("member_no"+member_no);
 		//驗證資料
 				Map<String, String> errors = new HashMap<String, String>();
 				model.addAttribute("errors", errors);
 			    
 				if(reportmemo==null||reportmemo.length()==0){
-					errors.put("reportmemo", "建議必須輸入");
+					errors.put("reportmemo", "必須輸入您的建議");
 			    }
 				
 				if(reportmemo.length()>250){
@@ -51,18 +56,19 @@ public class ReportPostController {
 				
 			//轉換資料
 				
-				int cmemberno = 0;
-				try {
-					cmemberno = Integer.parseInt(memberno);
-					
-					System.out.println("cmemberno:"+cmemberno);
-				} catch (Exception e) {
-					System.out.println("memberno轉換錯誤");
-					e.printStackTrace();
-				}
-				
+//				int cmemberno = 0;
+//				try {
+//					cmemberno = Integer.parseInt(memberno);
+//					
+//					System.out.println("cmemberno:"+cmemberno);
+//				} catch (Exception e) {
+//					System.out.println("memberno轉換錯誤");
+//					e.printStackTrace();
+//				}
+//				
 		    //呼叫model
-	         memberBean.setMember_no(cmemberno);
+	         memberBean.setMember_no(member_no);
+
 	         
 	         Boolean rs = reportService.postReport(memberBean, reportmemo, new java.util.Date(), 0,null);
 		    //根據model傳回的值,顯示view

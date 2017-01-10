@@ -9,9 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -26,21 +24,13 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.annotations.Expose;
-
-import model.FriendBean;
-import model.FriendService;
 import model.LogupdateBean;
 import model.MemberBean;
 import model.MemberService;
@@ -66,18 +56,6 @@ public class LoginServlet {
     String access_token=null;
 	@Autowired
 	private MemberService memberService;
-	@Autowired
-	private FriendService friendService;
-	@Autowired
-	private SimpleDateFormat sdFormat = null;
-	
-	@InitBinder
-	public void init(WebDataBinder webDataBinder) {
-	//	webDataBinder.registerCustomEditor(int.class, new CustomPrimitiveNumberEditor(java.lang.Integer.class, true));
-	//	webDataBinder.registerCustomEditor(double.class, new CustomPrimitiveNumberEditor(java.lang.Double.class, true));
-		webDataBinder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(sdFormat, true));
-	}
-	
 	@RequestMapping(
 			path={"/secure/login.controller"},
 			method={RequestMethod.GET, RequestMethod.POST}
@@ -91,30 +69,31 @@ public class LoginServlet {
 				model.addAttribute("errors", errors);
 				String account = bean.getAccount();		
 				String pwd = bean.getPwd();
+			    int account_status = bean.getAccount_status();   //取得帳號狀態檢視是否停權    
+			    
+			    if(account_status==1||account_status==2){
+			    	errors.put("account", "Your account is suspended");
+			    }
+			    
+			    
 				if(account==null || account.length()==0) {
-					errors.put("account", "ID is required (mvc)");
+					errors.put("account", "ID is required ");
 				}
 				if(pwd==null || pwd.length()==0) {
-					errors.put("pwd", "PWD is required (mvc)");
+					errors.put("pwd", "PWD is required ");
 				}
 				if(errors!=null && !errors.isEmpty()) {
 					return "login.error";
 				}
 				//呼叫Model
 				MemberBean result = memberService.login(account,pwd);
-
 				System.out.println(result);
 				if(result==null) {
 					
 					errors.put("pwd", "Login fail, please try again.");
 					return "login.error";
 				} else {
-					session.setAttribute("user", result);	
-	    			List<FriendBean> listFriend= friendService.friendList(result.getMember_no()); //取得好友資料
-
-	    			List<FriendBean> listInvite= friendService.inviteList(result.getMember_no()); //取得好友資料  
-
-	    	
+					session.setAttribute("user", result);		
 					return "login.success";
 				}
 				
@@ -231,50 +210,20 @@ public class LoginServlet {
 			method={RequestMethod.GET, RequestMethod.POST}
 	)
 	
-	public String updateMember(LogupdateBean logbean,BindingResult bindingResult,MemberBean bean, Model model,HttpSession session,HttpServletRequest request,@RequestParam ( "file" ) MultipartFile file){
+	public String updateMember(LogupdateBean logbean,MemberBean bean,HttpSession session,HttpServletRequest request){
+		String prodaction = request.getParameter("prodaction");
 		System.out.println("OKKK:"+logbean.getProdaction());
-		String prodaction=logbean.getProdaction();
+		System.out.println("OKKKpp:"+prodaction);
 		session=request.getSession(false);
-
-		if("更新".equals(prodaction)) {
-			
-				MemberBean beansession=(MemberBean)session.getAttribute("user");
-				byte[] b=null;
-			
-			Map<String, String> errors = new HashMap<String, String>();
-			model.addAttribute("errors", errors);
-			if(bindingResult!=null) {
-				if(bindingResult.getFieldError("birth")!=null) {
-					errors.put("birth", "Make must be a date of YYYY-MM-DD");
-					}
-			}
-			
-			if(errors!=null && !errors.isEmpty()) {
-				return "upsatemem";
-			}
-			if  (!file.isEmpty()) {  
-				try {
-					b = file.getBytes();
-					System.out.println(b);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println("beansession"+beansession.getAccount());
-			System.out.println("beansession"+beansession.getAccount_facebook());
-			System.out.println("beansession"+beansession.getName());
-			System.out.println("beansession"+beansession.getName());
-			beansession.setName(bean.getName());
-			beansession.setBirth(bean.getBirth());//日期錯誤
-			System.out.println("bean.getBirth"+bean.getBirth());
-			beansession.setAccount_email(bean.getAccount_email());
-			beansession.setMember_photo(b);
-			memberService.update(beansession);
-			
-			//session.setAttribute("user", bean);
+		if(session!=null){
+			bean=(MemberBean)session.getAttribute("user");
 		}
-		System.out.println("ok:"+prodaction);
-
+//		if("新增".equals(prodaction)) {
+//			System.out.println("bbc");
+//		}
+//		System.out.println("ok:"+prodaction);
+		System.out.println(bean);
+		System.out.println(session);
 		return "upsatemem";
 	}
 }

@@ -109,7 +109,8 @@ public class TogetherDAOHibernate implements TogetherDAO {
 	public TogetherBean update(int together_no, MemberBean member_no, String together_topic, String together_name,
 			String together_locate, Date together_when,Date together_when_end, int together_people, String together_memo,
 			Date together_post_time, Date together_delete_time, Date together_modify_time, int together_status,
-			float together_lng, float together_lat) {
+			String together_lng, String together_lat) {
+
 		    TogetherBean update=this.getSession().get(TogetherBean.class,together_no);
 		    if(update!=null){
 		    	update.setMember_no(member_no);

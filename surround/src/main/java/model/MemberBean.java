@@ -41,6 +41,9 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name="MEMBER",catalog="EEIT90", schema="DBO")
 @Component(value="memberBean")
@@ -332,5 +335,7 @@ public class MemberBean implements Serializable{
 	public void setMember_photo_chat(String member_photo_chat) {
 		this.member_photo_chat = member_photo_chat;
 	}
+
+
 
 }

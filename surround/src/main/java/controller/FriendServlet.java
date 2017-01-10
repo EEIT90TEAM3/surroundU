@@ -50,11 +50,11 @@ public class FriendServlet extends HttpServlet {
 		String id = request.getParameter("name");
 		String join = request.getParameter("join");
 //封鎖or解除好友
-		FriendBean bean=new FriendBean();
-		bean.setBuddy_no(memberService.select("1"));
-		bean.setFriend_status(1);
-		bean.setMember_no(memberService.select("3"));
-		friendService.update(bean);
+//		FriendBean bean=new FriendBean();
+//		bean.setBuddy_no(memberService.select("1"));
+//		bean.setFriend_status(1);
+//		bean.setMember_no(memberService.select("3"));
+//		friendService.update(bean);
 //新增好友
 //		FriendBean bean=new FriendBean();
 //		bean.setBuddy_no(memberService.select(join));
