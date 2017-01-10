@@ -64,7 +64,7 @@ public class BackendLoginController  {
 			return "backendlogin.error";
 		} else {
 			
-			session.setAttribute("user", bean);
+			session.setAttribute("manager", bean);
 			return "backendlogin.success";
 		}
 	}

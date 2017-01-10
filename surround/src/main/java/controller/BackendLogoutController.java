@@ -18,7 +18,7 @@ public class BackendLogoutController {
 					Model model, HttpSession session) {
 		 
 		 if(session!=null){
-			 session.removeAttribute("user");
+			 session.removeAttribute("manager");
 		 }
 		 
 		 

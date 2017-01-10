@@ -178,7 +178,7 @@
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
 //              '<p><br><br>'+
               '<p>'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
- //             '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
+              '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
 //              '<p>'+'拍賣品價格:'+productBean[0].product_price+'</p>' +
               '<p><button class="btn btn-default" type="submit">詳細資料</button></p>'+
 //              '<p>'+'拍賣品明細:'+productBean[0].product_memo+'</p>' +
@@ -220,12 +220,12 @@
 	      	      if (status === google.maps.GeocoderStatus.OK) {
 	      	      if (results[0]) {
 	      	       adlot = results[0].formatted_address;
-	      	       alert(adlot);
+//	      	       alert(adlot);
 	      	      } 
 	      	     }
 	      	   });
-      		  alert(maplat);
-      		  alert(maplng);
+//      		  alert(maplat);
+//     		  alert(maplng);
       		  layer.open({
       			  type: 1,
       			  title: false,
@@ -251,7 +251,7 @@
   //傳入經緯度參數iFrame
       		        content: ['/surround/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
       		     
-      			});
+      			});            
       		});   
   
 //  together-----------------------------------------------------------------
