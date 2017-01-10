@@ -326,4 +326,5 @@ public class MemberBean implements Serializable{
 		this.account_facebook = account_facebook;
 	}
 
+
 }

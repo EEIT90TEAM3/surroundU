@@ -25,6 +25,64 @@ public class MemberDAOHibernate implements MemberDAO {
 
 
 	@Override
+	public List<MemberBean> select() {
+		Query query = this.getSession().createQuery("from MemberBean");
+		return (List<MemberBean>) query.getResultList();
+	}
+
+	
+	
+
+	// 修改密碼
+	@Override
+	public boolean updatePwd(String account, String pwd) {
+		// 查資料庫內帳號(HQL查詢)
+		Query query = this.getSession().createQuery("from MemberBean where account=?");
+		query.setParameter(0, account);
+		// 儲存查詢結果
+		MemberBean bean = (MemberBean) query.getSingleResult();
+		if (bean != null) {
+			// session查詢
+			MemberBean bean2 = this.getSession().get(MemberBean.class, bean.getMember_no());
+			bean2.setPwd(pwd);// 儲存新密碼
+
+			return true;
+
+		}
+		return false;
+
+	}
+
+	// 修改興趣與暱稱
+	@Override
+	public MemberBean update(String nickname, String hobby, String account) {
+		// 查資料庫內暱稱(HQL查詢)
+		Query query = this.getSession().createQuery("from MemberBean where account=?");
+		query.setParameter(0, account);
+		// 儲存查詢結果
+		MemberBean bean = (MemberBean) query.getSingleResult();
+		if (bean != null) {
+			// session查詢
+			MemberBean bean2 = this.getSession().get(MemberBean.class, bean.getMember_no());
+			bean2.setNickname(nickname);// 儲存新暱稱
+			bean2.setHobby(hobby);//儲存興趣
+			return bean2;
+
+		}
+		return bean;
+	}
+
+	// 刪除會員資料
+	@Override
+	public boolean delete(int member_no) {
+		MemberBean delete = this.getSession().get(MemberBean.class, member_no);
+		if (delete != null) {
+			this.getSession().delete(delete);
+			return true;
+		}
+		return false;
+	}
+	@Override
 	public MemberBean select(String account) {
 		Query query = this.getSession().createQuery("from MemberBean where account like :name");		
 		query.setParameter("name",account);
