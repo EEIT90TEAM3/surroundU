@@ -38,7 +38,7 @@ layer.alert('歡迎進入Srround YOU管理系統', {icon: 6});
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">SurroundU管理員介面</a>
+					<a class="navbar-brand" href="#">SurroundU管理員介面 </a>
 				</div>
 
 
@@ -54,7 +54,7 @@ layer.alert('歡迎進入Srround YOU管理系統', {icon: 6});
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					<a href="<c:url value=""/>" class="list-group-item">登出</a>
+					<a href="<c:url value="/backendlogout.controller"/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">

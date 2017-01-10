@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import model.AccuseBean;
 import model.AccuseService;
 import model.BackendService;
 
@@ -85,12 +86,13 @@ public class DealAccuseController {
 			} 
 		
 	 //呼叫Model
-		    Boolean rs = backendService.dealAccuse(caccuse_no, caccuse_status, accuse_deal_memo);
+		    AccuseBean bean = backendService.dealAccuse(caccuse_no, caccuse_status, accuse_deal_memo);
 			
+            model.addAttribute("dealedaccuse", bean);
 	 //依據Model傳回結果,顯示view  
 		 
 		   
 		
-		return "backendlogin.success";
+		return "accuse.display";
 	}
 }

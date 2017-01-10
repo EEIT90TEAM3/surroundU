@@ -45,7 +45,7 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					<a href="<c:url value=""/>" class="list-group-item">登出</a>
+					<a href="<c:url value="/backendlogout.controller"/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">

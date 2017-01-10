@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th>會員</th>
-        <th>${lookaccusesale.member_no.member_no}</th>
+        <th>${lookaccusesale.member_no.account}</th>
       </tr>
       <tr>
         <th>擺攤分類</th>
@@ -74,6 +74,7 @@
 	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>   
 	<script src="<c:url value="/js/lightbox.js"/>"></script>     
 	
+
 
 </body>
 </html>

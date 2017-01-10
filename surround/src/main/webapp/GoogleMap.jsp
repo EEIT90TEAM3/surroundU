@@ -162,7 +162,7 @@
 				title: sale_topic,
 				position: itemLatLng,
 				map: map,
-		//		icon: "${root}category-icon/" + class_name + ".png"
+				icon: "<c:url value="/img/mapicon/sale.png"/>"
 			});
 			//裝載maker準備delete用
 			markerArray.push(marker);
@@ -378,7 +378,7 @@
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['500px', '300px'],
+ 		        area: ['450px', '270px'],
  		        content: '<c:url value="/report/postreport.jsp"/>'
  			});
  		});
