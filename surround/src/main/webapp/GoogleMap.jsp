@@ -473,6 +473,7 @@ var loginName = "${sessionScope.user.account}";
 var loginNo = "${sessionScope.user.member_no}";
 var memName = "${sessionScope.user.name}";
 var cartWrapper = $('.cd-cart-container');
+
 		//product id - you don't need a counter in your real project but you can use your real product id
 var productId = 0;
 $("#chatname").text(memName);
@@ -528,8 +529,9 @@ $("#chatname").text(memName);
 
 
 			} else {
-				var friendArray = [];
+				
 				var inviteArray=[];
+				friendArray = [];
 				$.getJSON("FriendListServlet.ajax",{"loginNo":loginNo,"type":"FriendList"}, function(data){
 
 		  			var count = 1;
@@ -624,6 +626,9 @@ $("#chatname").text(memName);
  			})
 			$("#btn-input").keypress(function(event){
 				if ( event.which == 13 || event.keyCode == 13 ){
+					if($("#btn-input").val()==""){
+						return;
+					}
 					ws.send(JSON.stringify({
 						img:"${sessionScope.user.member_photo_chat}",
 						content : $("#btn-input").val(),
@@ -635,7 +640,7 @@ $("#chatname").text(memName);
 				}
  			});
  			$('#searchID').on('keypress', function(event){
-				if (event.keyCode == 13) {
+				if ( event.which == 13 || event.keyCode == 13 ) {
 		     		cartList.find('.product').remove();
 					var productAdded = $('<li class="product"><div class="product-details"><h3><a href="#0">無此會員</a></h3><div class="actions"></div></div></div></li>');
 					cartList.prepend(productAdded);
@@ -702,21 +707,34 @@ $("#chatname").text(memName);
 			}else if(e.type=="searchID"){
 
 				cartList.find('.product').remove();
-				var selectfriend="${sessionScope.selectfriend[0].buddy_no.account}";
 				var himg ="";
 				if(e.himg==""){
 					himg="product-preview";
 				}
-				if(selectfriend.length>0){
-					<c:forEach var="selectfriend"  items="${sessionScope.selectfriend }">
-						var account = "${selectfriend.buddy_no.name}";
 
-						if(account==e.nickname){
+				if(friendArray.length>0){
+					
+					for(var i = 0; i < friendArray.length; i++){
+		  				
+		  				var Name = friendArray[i][0];
+		  				var Account = friendArray[i][1];
+	 	 				var status = friendArray[i][2];;
+		  				var himg = friendArray[i][3];
+						if(Name==e.nickname){
 							var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="img/'+e.himg+'.png" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+e.nickname+'</a></h3><span class=&nbsp;</span><div class="actions"><a href="#0" class="delete-item" onclick="delfriend(\''+e.name+'\');">刪除</a><div class="quantity"><a href="#0" class="privateTalk" onclick="openbox(\''+e.name+'\',\''+e.nickname+'\',\'friend\');">私訊</a></label></div></div></div></li>');
 							cartList.prepend(productAdded);
-							return;
+							return;							
 						}
-					</c:forEach>
+	 				}				
+// 					<c:forEach var="selectfriend"  items="${sessionScope.selectfriend }">
+// 						var account = "${selectfriend.buddy_no.name}";
+// 						alert(account+"==="+e.nickname);
+// 						if(account==e.nickname){
+// 							var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="img/'+e.himg+'.png" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+e.nickname+'</a></h3><span class=&nbsp;</span><div class="actions"><a href="#0" class="delete-item" onclick="delfriend(\''+e.name+'\');">刪除</a><div class="quantity"><a href="#0" class="privateTalk" onclick="openbox(\''+e.name+'\',\''+e.nickname+'\',\'friend\');">私訊</a></label></div></div></div></li>');
+// 							cartList.prepend(productAdded);
+// 							return;
+// 						}
+// 					</c:forEach>
 				}
 				var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="img/'+e.himg+'.png" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+e.nickname+'</a></h3><span class=&nbsp;</span><div class="actions"><a href="#0" onclick="addfriend(\''+e.name+'\')">新增好友</a><div class="quantity"></div></div></div></li>');
 				cartList.prepend(productAdded);				
@@ -729,9 +747,6 @@ $("#chatname").text(memName);
 						  +'</div></div></div>');				
 			}else if(e.type=="nums"){
 				$("#onlinecount").text(e.num);
-			}else if(e.type=="friendlist"){
-				alert("ssssss");
-				alert(e.listFriend.member_no);
 			}
 		}
 		window.onbeforeunload = function(){
