@@ -24,10 +24,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 import model.MemberBean;
 
 @Entity
-@Table(name="Together",catalog="EEIT90", schema="DBO")
+@Table(name="Together")
 @Component(value="togetherBean")
 public class TogetherBean implements Serializable{
 	/**
@@ -36,27 +38,27 @@ public class TogetherBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int together_no;                 /*約團文章編號*/
+	@Expose private int together_no;                 /*約團文章編號*/
 	
 	//private int member_no;                       /*會員編號*/
-	@ManyToOne(fetch=FetchType.LAZY,targetEntity = MemberBean.class)
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity = MemberBean.class)
 	@JoinColumn(name="member_no")
-	private MemberBean member_no;
-	private String together_topic;               /*主題(唱歌,逛街,運動.....)*/
-	private String together_name;                /*約團名稱*/
-	private String together_locate;              /*地點*/
-	private java.util.Date together_when;        /*活動時間*/
-	private java.util.Date together_when_end;    /*活動時間結束*/
-	private int together_people;                 /*限定人數*/
-	private String together_memo;                /*備註*/
-	private java.util.Date together_post_time;   /*發文時間*/
-	private java.util.Date together_delete_time; /*刪除時間*/
-	private java.util.Date together_modify_time; /*修改時間*/
-	private int together_status;                 /*文章狀態*/
-	private float together_lng;                 /*經度*/
-	private float together_lat;
+	@Expose private MemberBean member_no;
+	@Expose private String together_topic;               /*主題(唱歌,逛街,運動.....)*/
+	@Expose private String together_name;                /*約團名稱*/
+	@Expose private String together_locate;              /*地點*/
+	@Expose private java.util.Date together_when;        /*活動時間*/
+	@Expose private java.util.Date together_when_end;    /*活動時間結束*/
+	@Expose private int together_people;                 /*限定人數*/
+	@Expose private String together_memo;                /*備註*/
+	@Expose private java.util.Date together_post_time;   /*發文時間*/
+	@Expose private java.util.Date together_delete_time; /*刪除時間*/
+	@Expose private java.util.Date together_modify_time; /*修改時間*/
+	@Expose private int together_status;                 /*文章狀態*/
+	@Expose private String together_lng;                 /*經度*/
+	@Expose private String together_lat;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="together_no")
-	private Set<TogetherMemBean> togetherBeanMem=new HashSet<TogetherMemBean>();
+	@Expose private Set<TogetherMemBean> togetherBeanMem=new HashSet<TogetherMemBean>();
 	
 	
 	//測試程式
@@ -223,16 +225,16 @@ public class TogetherBean implements Serializable{
 		this.together_status = together_status;
 	}
 	
-public float getTogether_lng() {
+public String getTogether_lng() {
 		return together_lng;
 	}
-	public void setTogether_lng(float together_lng) {
+	public void setTogether_lng(String together_lng) {
 		this.together_lng = together_lng;
 	}
-	public float getTogether_lat() {
+	public String getTogether_lat() {
 		return together_lat;
 	}
-	public void setTogether_lat(float together_lat) {
+	public void setTogether_lat(String together_lat) {
 		this.together_lat = together_lat;
 	}
 	//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="together_no")

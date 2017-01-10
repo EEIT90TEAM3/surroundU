@@ -74,12 +74,7 @@
 	<bean id="backendlogin.error" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/secure/backendlogingWeb.jsp"></property>
 	</bean>
-	
 
-	<bean id="together.success" class="org.springframework.web.servlet.view.InternalResourceView">
-		<property name="url" value="/pages/togetherTotal.jsp"></property>
-	</bean>
-	
 	<bean id="lookaccusesale.success" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/backend/lookaccusesale.jsp"></property>
 	</bean>
@@ -89,4 +84,22 @@
 	</bean>
 	
 	
+	<!-- together -->
+	<bean id="together.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/togetherTotal.jsp"></property>
+	</bean>
+	<bean id="togetherMem.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/togetherMemDetails.jsp"></property>
+	</bean>
+	
+	<bean id="MytogetherMem.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/myJoinTogether.jsp"></property>
+	</bean>
+	<bean id="together_end.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/together_end.jsp"></property>
+	</bean>
+	<!-- together -->
+	<bean id="reg.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/reg.jsp"></property>
+	</bean>
 </beans>

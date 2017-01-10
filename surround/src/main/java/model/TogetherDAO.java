@@ -10,9 +10,8 @@ public interface TogetherDAO {
 	TogetherBean update(int together_no,MemberBean member_no,String together_topic,String together_name,
 			String together_locate,java.util.Date together_when,java.util.Date together_when_end,int together_people,String together_memo,
 			java.util.Date together_post_time,java.util.Date together_delete_time,java.util.Date together_modify_time,
-			int together_status,float together_lng,float together_lat);
-	
-	
+			int together_status,String together_lng,String together_lat);
+
 	boolean delete(int together_no);
 	TogetherBean updateStatus(int together_no,int together_status);
 	List<TogetherBean> selectStatus(MemberBean member_no,int together_status);

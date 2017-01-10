@@ -74,9 +74,11 @@ public class TogetherServlet extends HttpServlet{
 		String temp6 = request.getParameter("together_delete_time");
 		String temp7 = request.getParameter("together_modify_time");
 		String temp8 = request.getParameter("together_status");
-		String temp9 = request.getParameter("together_lng");
-		String temp10= request.getParameter("together_lat");
-
+		String together_lat = request.getParameter("lat");
+		String together_lng = request.getParameter("lng");
+		System.out.println("choose="+choose);
+		System.out.println(together_lng);
+		System.out.println(together_lat);
 	//驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
@@ -183,24 +185,7 @@ public class TogetherServlet extends HttpServlet{
 				System.out.println("文章狀態號碼有誤");
 			}
 		}
-		float together_lng = 0;
-		if(temp9!=null && temp9.length()!=0) {
-			try {
-				together_lng = Float.parseFloat(temp9);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				System.out.println("經度座標有誤");
-			}
-		}
-		float together_lat = 0;
-		if(temp10!=null && temp10.length()!=0) {
-			try {
-				together_lat = Float.parseFloat(temp10);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				System.out.println("緯度座標有誤");
-			}
-		}
+		
 	
 		
 		//驗證時間
@@ -214,12 +199,13 @@ public class TogetherServlet extends HttpServlet{
 				   if(memberBean!=null) {
 					MemberBean result = memberService.login(memberBean.getAccount(),memberBean.getPwd());
 					List<TogetherBean> togetherBean=togetherService.togetherStatusChange(result);
-				    for(TogetherBean tobean:togetherBean){
-				    	System.out.println("1");
-				    	System.out.println(tobean.getTogether_when());//1
-				    	System.out.println(tobean.getTogether_when_end());//2
-				    	System.out.println(together_when);//3
-				    	System.out.println(together_when_end);//4
+				    if(togetherBean!=null &&togetherBean.size()!=0){
+					for(TogetherBean tobean:togetherBean){
+//				    	System.out.println("1");
+//				    	System.out.println(tobean.getTogether_when());//1
+//				    	System.out.println(tobean.getTogether_when_end());//2
+//				    	System.out.println(together_when);//3
+//				    	System.out.println(together_when_end);//4
 				    	if(tobean.getTogether_status()==0){
 				    		System.out.println(tobean.getTogether_status());
 				    	if((together_when.before(tobean.getTogether_when())&& together_when_end.before(tobean.getTogether_when()))
@@ -231,6 +217,7 @@ public class TogetherServlet extends HttpServlet{
 				    	}
 				    }
 				    }
+				   }
 				}
 				}
 				}
@@ -287,6 +274,8 @@ public class TogetherServlet extends HttpServlet{
 		bean.setTogether_people(together_people);
 		bean.setTogether_memo(together_memo);
 		bean.setTogether_status(0);
+		bean.setTogether_lat(together_lng);
+		bean.setTogether_lng(together_lat);
 		//bean.setTogether_post_time(new java.util.Date());
 		//	request.getRequestDispatcher(
 		//			"/index.jsp").forward(request, response);
@@ -299,8 +288,9 @@ public class TogetherServlet extends HttpServlet{
 			} else {
 				request.setAttribute("insert", result);
 			}
+			request.setAttribute("togetherType","together");
 			request.getRequestDispatcher(
-					"/GoogleMap.jsp").forward(request, response);
+					"/pages/together_end.jsp").forward(request, response);
 			
 		} else if("Update".equals(prodaction)) {
 			int together_no=0;
@@ -324,9 +314,10 @@ public class TogetherServlet extends HttpServlet{
 				errors.put("action", "Update fail");
 			} else {
 				request.setAttribute("update", result);
+				request.setAttribute("togetherType","togetherOkay");
 			}
 			request.getRequestDispatcher(
-					"/GoogleMap.jsp").forward(request, response);
+					"/pages/together_end.jsp").forward(request, response);
 		} else if("Delete".equals(prodaction)) {
 			int together_no=0;
 			if(temp4!=null && temp4.length()!=0){
@@ -351,8 +342,10 @@ public class TogetherServlet extends HttpServlet{
 			} else {
 				request.setAttribute("delete", 1);
 			}
+			request.setAttribute("togetherType","togetherDelete");
 			request.getRequestDispatcher(
-					"/GoogleMap.jsp").forward(request, response);
+					"/pages/together_end.jsp").forward(request, response);
+			
 			
 		} else  {
 			errors.put("action", "Unknown Action:"+prodaction);

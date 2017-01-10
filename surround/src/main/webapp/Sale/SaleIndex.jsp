@@ -9,17 +9,17 @@
 <!-- jQuery -->
 
 	
-	<script src="${request.contextPath}src/jquery111.js" type="text/javascript"></script>
-	<script src="${request.contextPath}src/lay/layer.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="${request.contextPath}src/lay/skin/default/layer.css">
+	<script src="<c:url value="/src/jquery111.js"/>" type="text/javascript"></script>  
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/skin/default/layer.css"/>">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-	<script src="${request.contextPath}src/date/jquery-ui-sliderAccess.js" type="text/javascript"></script>
-	<script src="${request.contextPath}src/date/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="${request.contextPath}src/date/jquery-ui-timepicker-addon.css">
 	<script src="${request.contextPath}src/jquery/bootstrap.min.js"></script>
 	<link href="${request.contextPath}boot/bootstrap.min.css" rel="stylesheet">
+	<script src="<c:url value="/Sale/src/date/jquery-ui-sliderAccess.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/Sale/src/date/jquery-ui-timepicker-addon.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/Sale/src/date/jquery-ui-timepicker-addon.css"/>">
 <style>
     
     body {font: 62.5% "Trebuchet MS", sans-serif; margin: 20px;}
@@ -100,7 +100,6 @@
             		      $("#datetimepicker1").datetimepicker(opt);
             		  
             		      
-
               });
                 </script>
 		<div class="form-group form-group-sm">
@@ -116,6 +115,7 @@
 	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="product_name" value="${param.product_name}">
 	   <font size="-1" color="#FF0000">${errors.product_name}</font>
 	    </div>
+
       
       
       <label class="fontSize" >照片：</label>
@@ -150,6 +150,7 @@
       <br/>
 </form>
 ${errors.action}
+
 	<script>
             function fileViewer(){
                 var theFiles = document.getElementById("file1").files;
@@ -169,5 +170,6 @@ ${errors.action}
             }
 
     </script>
+
 </body>
 </html>

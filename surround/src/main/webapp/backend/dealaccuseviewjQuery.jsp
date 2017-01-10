@@ -87,13 +87,14 @@
 					<a href="<c:url value="/backend/backendreportjQuery.jsp"/>" class="list-group-item">建議及回報</a>
 					<a href="<c:url value="/backend/backendmemberjQuery.jsp"/>" class="list-group-item">會員列表</a>
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
-					<a href="<c:url value=""/>" class="list-group-item">登出</a>
+					<a href="<c:url value="/backendlogout.controller"/>" class="list-group-item">登出</a>
 				</div>
 			</div>
 			<div class="col-md-9">
 				<div class="jumbotron">
 					<div class="page-header">
-						<h6>Hello~ ${user.account}  歡迎來到管理者介面</h6>
+						<h6>Hello~ ${manager.account}  歡迎來到管理者介面</h6>
+
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
 				<form method="GET" action ="<c:url value="/backend.controller"/>">
