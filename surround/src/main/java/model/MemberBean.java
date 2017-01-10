@@ -41,6 +41,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -325,6 +326,7 @@ public class MemberBean implements Serializable{
 	public void setAccount_facebook(String account_facebook) {
 		this.account_facebook = account_facebook;
 	}
+
 
 
 }

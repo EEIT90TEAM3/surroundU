@@ -187,5 +187,4 @@ public class MemberDAOHibernate implements MemberDAO {
 	}
 	
 	
-
 }

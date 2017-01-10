@@ -233,6 +233,7 @@ public String getTogether_lng() {
 		return together_lat;
 	}
 	public void setTogether_lat(String together_lat) {
+
 		this.together_lat = together_lat;
 	}
 	//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="together_no")

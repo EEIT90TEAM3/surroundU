@@ -191,5 +191,6 @@ public class TogetherMemHibernate implements TogetherMemDAO {
 		return (List<TogetherMemBean>) query.getResultList();
 	}
 
+
 	
 }

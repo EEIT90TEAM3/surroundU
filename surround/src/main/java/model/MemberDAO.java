@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 public interface MemberDAO {
+
 	
 
 	boolean updatePwd(String pwd, String account);
@@ -30,7 +31,6 @@ public interface MemberDAO {
 
 	//together要用
 	MemberBean selectMember_no(int member_no);
-
 
 
 }

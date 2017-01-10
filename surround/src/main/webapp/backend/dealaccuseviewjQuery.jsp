@@ -94,6 +94,7 @@
 				<div class="jumbotron">
 					<div class="page-header">
 						<h6>Hello~ ${manager.account}  歡迎來到管理者介面</h6>
+
 					</div>
 					<!-- 每頁不同的內容從這裡開始 -->
 				<form method="GET" action ="<c:url value="/backend.controller"/>">

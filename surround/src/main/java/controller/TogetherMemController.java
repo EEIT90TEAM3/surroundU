@@ -349,5 +349,6 @@ public class TogetherMemController {
 		
 	
 		return "together_end.success";
+
 	}
 	}
