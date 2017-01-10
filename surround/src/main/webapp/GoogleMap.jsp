@@ -9,14 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Surround You</title>
 <!-- jQuery -->
-	<script src="src/jquery211.js" type="text/javascript"></script>
-	<script src="src/jquery/bootstrap.min.js"></script>
-	<script src="src/lay/layer.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>   
+	<script src="<c:url value="/src/jquery/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/skin/default/layer.css"/>">
 	<!-- menu -->
-	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
-	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
  <style>
 /*資訊視窗CSS*/
 #iw-container .iw-title {
@@ -47,7 +47,7 @@
 <body>
 <div class="content">
     <div class="main">
-      <ul class="sm sm-blue">
+      <ul class="sm sm-blue">     
         <li><a href="#"><img height='30px' width='30px'
 					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li>
         <li><a href="#">${user.name} </a>
