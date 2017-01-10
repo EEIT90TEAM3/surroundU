@@ -18,11 +18,11 @@
 .log {
     float: left;
    position: absolute;
-   left: 420px;
-   top: 200px;
+   left: 360px;
+   top: 100px;
    z-index: 1000;
    padding: 5px;
-   margin: auto;
+   margin: 0px auto;;
     border: 1px solid #f2e3d2;
    background: #ffffff;
    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
@@ -161,7 +161,7 @@
 	        <div class="lower-block">還不是會員嗎？<span id="signup1"><a href="#";">立刻註冊新帳號</a></span></div>
 	      </form>
 	      
-	      <form class="form-signin2"  action="<c:url value="" />">
+	      <form class="form-signin2"  action="<c:url value="/pages/reg.controller" />">
 	        <h2 class="form-signin-heading" align="center">註冊個人帳號</h2>
 	        <label for="inputEmail" class="sr-only">Email address</label>
 	        <input type="text" id="inputEmail" name="account" value="${param.account}" class="form-control" placeholder="帳號" required autofocus>

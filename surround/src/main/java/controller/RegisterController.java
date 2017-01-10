@@ -30,31 +30,29 @@ public class RegisterController {
 	@Autowired
 	@Resource(name = "memberBean")
 	private MemberBean bean;
+
 	@InitBinder
-	 public void init(WebDataBinder webDataBinder) {
-	 webDataBinder.registerCustomEditor(int.class, new
-	 CustomPrimitiveNumberEditor(java.lang.Integer.class, true));
-	 webDataBinder.registerCustomEditor(double.class, new
-	 CustomPrimitiveNumberEditor(java.lang.Double.class, true));
-	 webDataBinder.registerCustomEditor(java.util.Date.class, new
-	 CustomDateEditor(sdFormat, true));
-	 }
+	public void init(WebDataBinder webDataBinder) {
+		webDataBinder.registerCustomEditor(int.class, new CustomPrimitiveNumberEditor(java.lang.Integer.class, true));
+		webDataBinder.registerCustomEditor(double.class, new CustomPrimitiveNumberEditor(java.lang.Double.class, true));
+		webDataBinder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(sdFormat, true));
+	}
 
 	@Autowired
 	@Resource(name = "memberService")
 	private MemberService memberService;
 
 	@RequestMapping
-	public String service( String prodaction, String account, String pwd, String name, String nickname, String hobby,
-			String account_email,Model model) {
+	public String service(String prodaction, String account, String pwd, String name, String nickname, String hobby,
+			String account_email, Model model) {
 		// 接收資料
-		
+
 		// 驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 		if (account != null && account.length() != 0) {
 			bean.setAccount(account);
-			
+
 		} else {
 			errors.put("account", "帳號不能為空");
 		}
@@ -79,26 +77,26 @@ public class RegisterController {
 			errors.put("account_email", "請輸入Email");
 		}
 
-		 //轉換資料
-//		 if(bindingResult!=null) {
-//		 if(bindingResult.getFieldError("account")!=null) {
-//		 errors.put("account", "ID must be an integer");
-//		 }
-//		 if(bindingResult.getFieldError("pwd")!=null) {
-//		 System.out.println(bindingResult.getFieldError("pwd"));
-//		 errors.put("pwd", "Price must be a number");
-//		 }
-//		 if(bindingResult.getFieldError("nickname")!=null) {
-//		 errors.put("nickname", "Make must be a date of YYYY-MM-DD");
-//		 }
-//		 if(bindingResult.getFieldError("email")!=null) {
-//		 errors.put("email", "Expire must be an integer");
-//		 }
-//		 }
-		
-		 if(errors!=null && !errors.isEmpty()) {
-		 return "reg.error";
-		 }
+		// 轉換資料
+		// if(bindingResult!=null) {
+		// if(bindingResult.getFieldError("account")!=null) {
+		// errors.put("account", "ID must be an integer");
+		// }
+		// if(bindingResult.getFieldError("pwd")!=null) {
+		// System.out.println(bindingResult.getFieldError("pwd"));
+		// errors.put("pwd", "Price must be a number");
+		// }
+		// if(bindingResult.getFieldError("nickname")!=null) {
+		// errors.put("nickname", "Make must be a date of YYYY-MM-DD");
+		// }
+		// if(bindingResult.getFieldError("email")!=null) {
+		// errors.put("email", "Expire must be an integer");
+		// }
+		// }
+
+		if (errors != null && !errors.isEmpty()) {
+			return "reg.error";
+		}
 
 		// 呼叫Model
 		// 根據Model的執行結果，顯示View
@@ -125,6 +123,7 @@ public class RegisterController {
 				errors.put("action", "Update fail");
 			} else {
 				model.addAttribute("update", result);
+				return "reg.update";
 			}
 			return "reg.error";
 		} else if ("刪除".equals(prodaction)) {
