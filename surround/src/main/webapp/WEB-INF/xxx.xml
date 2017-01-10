@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="login.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/secure/logWeb.jsp"></property>
+	</bean>
+	<bean id="login.success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/GoogleMap.jsp"></property>
+	</bean>
+	<bean id="Fblogin.success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/GoogleMap.jsp"></property>
+	</bean>
+	<bean id="upsatemem" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/secure/updatemember.jsp"></property>
+	</bean>
+	
+	
+	<!-- new-->
+	   <bean id="postaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/postaccuse.jsp"></property>
+	</bean>
+	
+	<bean id="postaccuse.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/accusesuccess.jsp"></property>
+	</bean>
+	
+	<bean id="postaccuse.already" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/accuse/accusealready.jsp"></property>
+	</bean>
+	
+	<bean id="postreport.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/postreport.jsp"></property>
+	</bean>
+	
+	<bean id="postreport.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/reportsuccess.jsp"></property>
+	</bean>
+
+    <bean id="postreport.exceed" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/report/reportexceed.jsp"></property>
+	</bean>	
+
+    <bean id="accuse.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendaccusejQuery.jsp"></property>
+	</bean>
+	
+	<bean id="report.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendreportjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="member.display" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendmemberjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="doaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/doaccuseview.jsp"></property>
+	</bean>
+	
+	<bean id="dealaccuse.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/dealaccuseviewjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="backendlogin.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/backendindexjQuery.jsp"></property>
+	</bean>
+	
+	<bean id="backendlogin.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/secure/backendlogingWeb.jsp"></property>
+	</bean>
+	
+
+	<bean id="together.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/togetherTotal.jsp"></property>
+	</bean>
+	
+	<bean id="lookaccusesale.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/lookaccusesale.jsp"></property>
+	</bean>
+	
+	<bean id="lookaccusetogether.success" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/backend/lookaccusetogether.jsp"></property>
+	</bean>
+	
+	
+</beans>

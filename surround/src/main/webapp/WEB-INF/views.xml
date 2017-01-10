@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 	<bean id="postaccuse.error" class="org.springframework.web.servlet.view.RedirectView"> 此種傳遞方式為新開網頁,不會傳遞session資料  -->
+<!-- 		<property name="contextRelative" value="true"></property> -->
+<!-- 		<property name="url" value="/postaccuse.jsp"></property> -->
+<!-- 	</bean> -->
+	
+ 
+
+
+</beans>
