@@ -85,13 +85,13 @@ div {
 		<div>
 			<label for="pwd" class="title">密碼：</label> <input type="password"
 				id="pwd" name="pwd" required="required" maxlength="12" size="14"
-				placeholder="6~12英數字組合" value="${param.pwd}" /> <label for="error"
+				placeholder="6~12英數字組合" required pattern="[A-Za-z0-9]{6,12}" value="${param.pwd}" /> <label for="error"
 				class="error">${errors.pwd}</label>
 		</div>
 		<div>
-			<label for="pwd2" class="title">確認密碼：</label> <input type="password"
-				id="pwd2" name="pwd2" required="required" maxlength="12" size="14"
-				placeholder="6~12英數字組合" value="${param.pwd}" onchange="checkpwd()" />
+			<label for="pwd2" class="title">確認密碼：</label> 
+			<input type="password"id="pwd2" name="pwd2" required="required"  maxlength="12" size="14"
+				placeholder="6~12英數字組合" value="${param.pwd}" required pattern="[A-Za-z0-9]{6,12}" onchange="checkpwd()" />
 			<label for="error" class="error">${errors.pwd}</label>
 		</div>
 		<div id="msg" style="color: red;"></div>
@@ -133,7 +133,7 @@ div {
 
 	</form>
 	<c:if test="${not empty insert}">
-		<h3>Insert Product Table Success</h3>
+		<h3>註冊失敗</h3>
 	</c:if>
 </body>
 </html>

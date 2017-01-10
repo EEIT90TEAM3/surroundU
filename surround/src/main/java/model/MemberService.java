@@ -22,19 +22,30 @@ import model.dao.MemberDao;
 @Transactional(transactionManager = "transactionManager")
 public class MemberService {
 	@Autowired
-	private ImemberDao memberDao;
-
+	private MemberDAO memberDAO;
+	public MemberBean fblogin(MemberBean bean) {
+		 		MemberBean bean1=null;
+		 		try {
+		 			bean1 = memberDAO.fbselect(bean);
+		 		} catch (Exception e) {
+		 			System.out.println("aa");
+		 			memberDAO.insert(bean);
+		 			bean1 = memberDAO.fbselect(bean);
+		 		}
+		 		
+		 		return bean1;
+		 	}
 	@Transactional
 	public List<MemberBean> select(MemberBean bean) {
 		List<MemberBean> result = null;
 		if (bean != null && bean.getAccount() != null) {
-			MemberBean temp = memberDao.select(bean.getAccount());
+			MemberBean temp = memberDAO.select(bean.getAccount());
 			if (temp != null) {
 				result = new ArrayList<MemberBean>();
 				result.add(temp);
 			}
 		} else {
-			result = memberDao.select();
+			result = memberDAO.select();
 		}
 		return result;
 	}
@@ -44,7 +55,7 @@ public class MemberService {
 		MemberBean result = null;
 		if (bean != null) {
 
-			result = memberDao.insert(bean);
+			result = memberDAO.insert(bean);
 		}
 		return result;
 
@@ -54,7 +65,7 @@ public class MemberService {
 	public MemberBean update(MemberBean bean) {
 		MemberBean result = null;
 		if (bean != null) {
-			result = memberDao.update(bean.getNickname(), bean.getHobby(), bean.getAccount());
+			result = memberDAO.update(bean.getNickname(), bean.getHobby(), bean.getAccount());
 		}
 		return result;
 
@@ -64,7 +75,7 @@ public class MemberService {
 	public boolean delete(MemberBean bean) {
 		boolean result = false;
 		if (bean != null) {
-			result = memberDao.delete(bean.getMember_no());
+			result = memberDAO.delete(bean.getMember_no());
 
 		}
 		return result;
@@ -73,7 +84,7 @@ public class MemberService {
 
 	@Transactional(readOnly = true)
 	public MemberBean login(String account, String pwd) {
-		MemberBean bean = memberDao.select(account);
+		MemberBean bean = memberDAO.select(account);
 		if (bean != null) {
 			if (pwd != null && pwd.length() != 0) {
 				String pass = bean.getPwd();
@@ -95,11 +106,26 @@ public class MemberService {
 			if (newPwd != null && newPwd.length() != 0) {
 				String temp = newPwd;
 
-				return memberDao.updatePwd(account, temp);
+				return memberDAO.updatePwd(account, temp);
 			}
 		}
 		return false;
 
 	}
-
+	@Transactional
+	public MemberBean backendlogin(String account, String pwd) {  //後台登錄
+		MemberBean bean = memberDAO.select(account);
+		if (bean != null) {
+			if (pwd != null && pwd.length() != 0) {
+				String pass = bean.getPwd();  //取得密碼
+				
+				 int  status = bean.getAccount_status(); //取得權限
+				
+				 if (pass.equals(pwd) && status==99) {
+					return bean;
+				}
+			}
+		}
+		return null;
+	}
 }

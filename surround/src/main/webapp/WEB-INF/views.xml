@@ -70,7 +70,18 @@
 		<property name="url" value="/secure/login.jsp"></property>
 	</bean>
 	
+	<bean id="reg.success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/menu.jsp"></property>
+	</bean>
+
+	<bean id="reg.select" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/regsuccess.jsp"></property>
+	</bean>
 	
+	<bean id="reg.error" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/pages/regsuccess.jsp"></property>
+	</bean>
 	
 	
 	

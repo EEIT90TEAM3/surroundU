@@ -116,7 +116,7 @@ public class RegisterController {
 			} else {
 
 				model.addAttribute("insert", result);
-
+				return "reg.success";
 			}
 			return "reg.error";
 		} else if ("更新".equals(prodaction)) {
