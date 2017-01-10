@@ -18,7 +18,7 @@
 .log {
     float: left;
    position: absolute;
-   left: 360px;
+   left: 370px;
    top: 100px;
    z-index: 1000;
    padding: 5px;
