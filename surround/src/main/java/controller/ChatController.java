@@ -73,7 +73,6 @@ public class ChatController{
 	}
     @OnClose
     public void onClose(){
-    	System.out.println("this--------------"+nickname);
     	connections.remove(nickname);  //從set中删除
     	subOnlineCount();
     	System.out.println("有一連線關閉！目前在線人數為:" + getOnlineCount());
@@ -102,7 +101,6 @@ public class ChatController{
 		FriendBean bean;
 		switch (type) {
 		case "searchID":
-
 			MemberBean memberBean=memberService.selectName(nickname);
 			if(memberBean!=null){
 				jsonObject.put("himg", memberBean.getMember_photo_chat());
@@ -205,21 +203,20 @@ public class ChatController{
 
 	}
     public void sendPrivate(String message) throws IOException{
-
     	JSONObject jsonObject = JSONObject.fromObject(message);
 		String to = (String)jsonObject.get("to"); 
 		String content = (String)jsonObject.get("content");
-		
+
 		int online = 0;
 		if(to!=null && to!="" && to.length()!=0){
 //			System.out.println(connections.get(to));
 			to = memberService.selectName(to).getAccount();
+			
 			if(connections.get(to)!=null ){
 				online = 1;
 				connections.get(to).session.getBasicRemote().sendText(jsonObject.toString());
 				System.out.println("私訊");
 			}
-			System.out.println("---------------0");
 
 			PrivateTalkBean tobn=new PrivateTalkBean();
 			tobn.setMember_no(memberService.select(nickname));
@@ -227,7 +224,6 @@ public class ChatController{
 			tobn.setPrivatetalk_status(online);
 			tobn.setPrivatetalk_txt(content);
 			tobn.setPrivatetalk_time(new java.util.Date());
-
 		try {
 			System.out.println("---------------4"+Integer.toString(1));
 			System.out.println(privateTalkService.insert(tobn));////////////////

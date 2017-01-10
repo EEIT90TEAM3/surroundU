@@ -25,6 +25,8 @@
         <mapping class="model.SaleBean" />
         <mapping class="model.TogetherBean" />
         <mapping class="model.TogetherMemBean" />
+        <mapping class="model.FriendBean" />
+        <mapping class="model.PrivateTalkBean" />
         
     </session-factory>
 

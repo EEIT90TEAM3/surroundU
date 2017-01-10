@@ -173,7 +173,7 @@ public class MemberDAOHibernate implements MemberDAO {
 	@Override
 
 	public MemberBean selectName(String name) {
-		Query query = this.getSession().createQuery("from MemberBean where nickname like :name");		
+		Query query = this.getSession().createQuery("from MemberBean where name like :name");		
 		query.setParameter("name",name);
 		try {
 			MemberBean bean = (MemberBean) query.getSingleResult();

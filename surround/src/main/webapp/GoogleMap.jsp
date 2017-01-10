@@ -9,13 +9,27 @@
 <title>Surround You</title>
 <!-- jQuery -->
 	<script src="src/jquery211.js" type="text/javascript"></script>
-	<script src="src/jquery/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="src/lay/layer.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
 	<!-- menu -->
 	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
 	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
+		<link rel="stylesheet" href="chat/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="chat/css/style.css"> <!-- Resource style -->
+    <link type="text/css" href="chat/css/jquery.ui.chatbox.css" rel="stylesheet" />
+    <link rel="stylesheet" href="chat/css/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="chat/js/jquery-ui-1.8.2.custom.min.js"></script>
+    <script type="text/javascript" src="chat/js/chatboxManager.js"></script>
+    <script type="text/javascript" src="chat/js/jquery.ui.chatbox.js"></script>
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="chat/css/chats.css">
+
+	<script type="text/javascript" src="bootstrap/js/npm.js"></script>
+	<script type="text/javascript" src="chat/js/chats.js"></script>
  <style>
 /*資訊視窗CSS*/
 #iw-container .iw-title {
@@ -83,8 +97,8 @@
     <div class="main">
       <ul class="sm sm-blue">
 
-        <li><a href="#"><img height='30px' width='30px'
-					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li>
+<!--         <li><a href="#"><img height='30px' width='30px' -->
+<%-- 					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li> --%>
         <li><a href="#">${user.name} </a>
 
          
@@ -124,6 +138,34 @@
     </div>
   </div>
  <div id="map"></div>
+  <div class="cd-cart-container empty">
+	<a href="#0" class="cd-cart-trigger">
+		Cart
+
+	</a>
+
+	<div class="cd-cart">
+		<div class="wrapper">
+			<header>
+				<h2 id="chatname"></h2>
+
+			</header>
+			
+			<div class="body">
+				<ul>
+					<!-- products added to the cart will be inserted here using JavaScript -->
+				</ul>
+			</div>
+
+			<footer>
+				<span class="checkout btn"><span style="color:#ffffff">搜尋會員</span><input type="text" id="searchID" maxlength="15" style="width:110px;height:25px" >
+				<button type="button" id="searchMem" style="vertical-align:middle;"><img src="img/search.png" style="width:30px;height:30px"></button></span>			
+			</footer>
+		</div>
+		
+	</div> <!-- .cd-cart -->
+	
+</div> <!-- cd-cart-container -->
   <script> 
   //menu js控制
   $(document).ready(function() {
@@ -363,11 +405,73 @@
  			});
  		});
 
+
+
+		 
+		//together------------------------------------------------------------
+		 $("#mytogether").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '新增',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['700px', '400px'],
+ 		        content: '<c:url value="/TogetherDetailsServlet"/>'
+
+ 			});
+ 		});
+		 $("#myJoinTogether").click(function(){
+	 			layer.closeAll('page');
+	 			layer.open({
+	 		        type: 2,
+	 		        title: '新增',
+	 		        id: 'popup',
+	 		        shadeClose: true,
+	 		        shade: false,
+	 		        maxmin: true, //开启最大化最小化按钮
+	 		        area: ['700px', '400px'],
+	 		        content: '<c:url value="/MyJoinTogether.controller"/>'
+	 			});
+	 		});
+ 		$("#togetherTotal").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '新增',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['700px', '400px'],
+ 		        content: '<c:url value="/TogetherTotal.controller"/>'
+ 			});
+ 		});
+// together-----------------------------------------------------------
+
+//postreport--------------------begin---------------------------------
+         $("#postreport").click(function(){
+ 			layer.closeAll('page');
+ 			layer.open({
+ 		        type: 2,
+ 		        title: '回報管理者',
+ 		        id: 'popup',
+ 		        shadeClose: true,
+ 		        shade: false,
+ 		        maxmin: true, //开启最大化最小化按钮
+ 		        area: ['450px', '270px'],
+ 		        content: '<c:url value="/report/postreport.jsp"/>'
+ 			});
+ 		});
+//postreport--------------------end-----------------------------------
+
 // ======================瑞豪=======================	
 	var ws;
 var loginName = "${sessionScope.user.account}";
 var loginNo = "${sessionScope.user.member_no}";
-var memName = "${sessionScope.user.nickname}";
+var memName = "${sessionScope.user.name}";
 var cartWrapper = $('.cd-cart-container');
 		//product id - you don't need a counter in your real project but you can use your real product id
 var productId = 0;
@@ -421,10 +525,7 @@ $("#chatname").text(memName);
 				cartList.find('.deleted').remove();
 				cartList.find('.product').remove();
 				$("#searchID").val("");
-// 				ws.send(JSON.stringify({
-// 			        nickname : loginName,
-// 			        type : "friendlist"
-// 		   	    }));
+
 
 			} else {
 				var friendArray = [];
@@ -433,7 +534,8 @@ $("#chatname").text(memName);
 
 		  			var count = 1;
 		  			$.each(data, function(index, item){
-		  				var aItem = [item.buddy_no.nickname,item.buddy_no.account,item.friend_status,item.buddy_no.member_photo_chat];
+		  					// 製作物品經緯度陣列
+		  				var aItem = [item.buddy_no.name,item.buddy_no.account,item.friend_status,item.buddy_no.member_photo_chat];
 		  				friendArray.push(aItem);
 		  				count++;
 		  			});
@@ -458,7 +560,7 @@ $("#chatname").text(memName);
 
 		  			var count = 1;
 		  			$.each(data, function(index, item){
-		  				var aItem = [item.member_no.nickname,item.member_no.account,item.member_no.member_photo_chat];
+		  				var aItem = [item.member_no.name,item.member_no.account,item.member_no.member_photo_chat];
 		  				inviteArray.push(aItem);
 		  				count++;
 		  			});
@@ -531,67 +633,33 @@ $("#chatname").text(memName);
 			   	    }));
 					$("#btn-input").val("");
 				}
-
-		 
-		//together------------------------------------------------------------
-		 $("#mytogether").click(function(){
- 			layer.closeAll('page');
- 			layer.open({
- 		        type: 2,
- 		        title: '新增',
- 		        id: 'popup',
- 		        shadeClose: true,
- 		        shade: false,
- 		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['700px', '400px'],
- 		        content: '<c:url value="/TogetherDetailsServlet"/>'
-
  			});
- 		});
-		 $("#myJoinTogether").click(function(){
-	 			layer.closeAll('page');
-	 			layer.open({
-	 		        type: 2,
-	 		        title: '新增',
-	 		        id: 'popup',
-	 		        shadeClose: true,
-	 		        shade: false,
-	 		        maxmin: true, //开启最大化最小化按钮
-	 		        area: ['700px', '400px'],
-	 		        content: '<c:url value="/MyJoinTogether.controller"/>'
-	 			});
-	 		});
- 		$("#togetherTotal").click(function(){
- 			layer.closeAll('page');
- 			layer.open({
- 		        type: 2,
- 		        title: '新增',
- 		        id: 'popup',
- 		        shadeClose: true,
- 		        shade: false,
- 		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['700px', '400px'],
- 		        content: '<c:url value="/TogetherTotal.controller"/>'
- 			});
- 		});
-// together-----------------------------------------------------------
+ 			$('#searchID').on('keypress', function(event){
+				if (event.keyCode == 13) {
+		     		cartList.find('.product').remove();
+					var productAdded = $('<li class="product"><div class="product-details"><h3><a href="#0">無此會員</a></h3><div class="actions"></div></div></div></li>');
+					cartList.prepend(productAdded);
+					ws.send(JSON.stringify({
+				        nickname : $("#searchID").val(),
+				        type : "searchID"
+				    })); 
+				}
+			});
+		function connect(){
+			ws= new WebSocket('ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/websocket/'+loginName);
 
-//postreport--------------------begin---------------------------------
-         $("#postreport").click(function(){
- 			layer.closeAll('page');
- 			layer.open({
- 		        type: 2,
- 		        title: '回報管理者',
- 		        id: 'popup',
- 		        shadeClose: true,
- 		        shade: false,
- 		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['450px', '270px'],
- 		        content: '<c:url value="/report/postreport.jsp"/>'
- 			});
- 		});
-//postreport--------------------end-----------------------------------
-
+			//var socket = new WebSocket('ws://http://localhost:8080/webSocket/websocket');
+			ws.onopen=onopen;
+//			ws.onerror=onerror;
+			ws.onmessage=onmessage;
+//			ws.onclose=onclose;
+		}
+		function onopen(){
+			;
+		}
+		function onmessage(e){
+			e = JSON.parse(e.data);
+			if(e.type=="all"){
 
 				if(e.nickname==loginName){
 					$("#chatext").append('<div class="row msg_container base_sent">'
@@ -641,7 +709,7 @@ $("#chatname").text(memName);
 				}
 				if(selectfriend.length>0){
 					<c:forEach var="selectfriend"  items="${sessionScope.selectfriend }">
-						var account = "${selectfriend.buddy_no.nickname}";
+						var account = "${selectfriend.buddy_no.name}";
 
 						if(account==e.nickname){
 							var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="img/'+e.himg+'.png" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+e.nickname+'</a></h3><span class=&nbsp;</span><div class="actions"><a href="#0" class="delete-item" onclick="delfriend(\''+e.name+'\');">刪除</a><div class="quantity"><a href="#0" class="privateTalk" onclick="openbox(\''+e.name+'\',\''+e.nickname+'\',\'friend\');">私訊</a></label></div></div></div></li>');
@@ -748,8 +816,8 @@ $("#chatname").text(memName);
     		toggleCart();
 	        event.preventDefault();
 	    }
-
   </script>
+ 
   <script 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Inouuyem3ufRkt0dseRmzUCHtqyhgds&callback=initMap">
     </script>
