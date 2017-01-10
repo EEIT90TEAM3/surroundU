@@ -18,33 +18,51 @@
 	<script src="${request.contextPath}src/date/jquery-ui-sliderAccess.js" type="text/javascript"></script>
 	<script src="${request.contextPath}src/date/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="${request.contextPath}src/date/jquery-ui-timepicker-addon.css">
+	<script src="${request.contextPath}src/jquery/bootstrap.min.js"></script>
+	<link href="${request.contextPath}boot/bootstrap.min.css" rel="stylesheet">
 <style>
     
     body {font: 62.5% "Trebuchet MS", sans-serif; margin: 20px;}
+    .thumb {
+            height: 75px;
+            margin: 5px;
+        }
 </style>
 </head>
 <body>
 
 
 <form enctype="multipart/form-data" method="POST" action="<c:url value="/SaleIndex/SaleServlet" />">
-
-      <label class="fontSize" >擺攤類別：</label>
-      <input type="text" name="sale_topic" value="${param.sale_topic}" class="fieldWidth" style="width: 180px;">
-      <font size="-1" color="#FF0000">${errors.sale_topic}</font>
-      <br/>
+	
+	 
+	  <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">擺攤類別：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="sale_topic" value="${param.sale_topic}">
+	   <font size="-1" color="#FF0000">${errors.sale_topic}</font>
+	    </div>
+	    
+	    <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">擺攤名稱：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="sale_name" value="${param.sale_name}">
+	   <font size="-1" color="#FF0000">${errors.sale_name}</font>
+	    </div>
+	    
+	    <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">地點：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="sale_locate" value="${param.add}">
+	   <font size="-1" color="#FF0000">${errors.sale_locate}</font>
+	    </div>
+	    
+	    <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">時間：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="datetimepicker1" placeholder="" name="sale_time" value="${param.sale_time}">
+	   <font size="-1" color="#FF0000">${errors.sale_time}</font>
+	    </div>
       
-      <label class="fontSize" >擺攤名稱：</label>
-      <input type="text" name="sale_name" value="${param.sale_name}" class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${errors.sale_name}</font>      
-      <br/>
-      
-      <label class="fontSize" >地點：</label>
-      <input type="text" name="sale_locate" value="${param.add}"   class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${errors.sale_locate}</font>            
-      <br/>
-      
-      <label class="fontSize" >時間：</label>
-      <input type="text" name="sale_time" id="datetimepicker1" value="${param.sale_time}"  class="fieldWidth" style="width: 180px;">
       <script language="JavaScript">
               $(document).ready(function(){ 
             	  var opt={
@@ -85,42 +103,71 @@
 
               });
                 </script>
-
-      <font color="red" size="-1">${errors.sale_time}</font>
-      <br/>
+		<div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">描述：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="sale_memo" value="${param.sale_memo}">
+	   <font size="-1" color="#FF0000">${errors.sale_memo}</font>
+	    </div>
+	    
+	    <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">賣品名稱：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="product_name" value="${param.product_name}">
+	   <font size="-1" color="#FF0000">${errors.product_name}</font>
+	    </div>
       
-      <label class="fontSize" >描述：</label>
-      <input type="text" name="sale_memo" value="${param.sale_memo}"  class="fieldWidth" style="width: 320px;">
-      <font color="red" size="-1">${errors.sale_memo}</font>
-      <br/>
-      
-      <label class="fontSize" >賣品名稱：</label>
-      <input type="text" name="product_name" value="${param.product_name}"  class="fieldWidth" style="width: 320px;">
-      <font color="red" size="-1">${errors.product_name}</font>
-      <br/>
       
       <label class="fontSize" >照片：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="photo"><BR>
+      <div id="dropZone"></div>
+      <input Type="file" id="file1" size="40" class="fieldWidth" style="width: 480px;"  name="photo" onchange="fileViewer()"><BR>
       <font color="red" size="-1">${errors.photo}</font>
       <br/>
       
-      <label class="fontSize" >賣品價格：</label>
-      <input type="text" name="product_price" value="${param.product_price}"  class="fieldWidth" style="width: 320px;">
-      <font color="red" size="-1">${errors.product_price}</font>
-      <br/>
+    <div id="dropZone"></div>
       
-      <label class="fontSize" >賣品描述：</label>
-      <input type="text" name="product_memo" value="${param.product_memo}"  class="fieldWidth" style="width: 320px;">
-      <font color="red" size="-1">${errors.product_memo}</font>
-      <br/>
+      <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">賣品價格：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="product_price" value="${param.product_price}">
+	   <font size="-1" color="#FF0000">${errors.product_price}</font>
+	    </div>
+      
+       <div class="form-group form-group-sm">
+	    <label class="col-sm-2 control-label" for="formGroupInputSmall">賣品描述：</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="" name="product_memo" value="${param.product_memo}">
+	   <font size="-1" color="#FF0000">${errors.product_memo}</font>
+	    </div>
+	    
+
       <input type=hidden name="lat" value="${param.lat}"  class="fieldWidth" style="width: 320px;">
       <input type=hidden name="lng" value="${param.lng}"  class="fieldWidth" style="width: 320px;">
       <div id="btnArea" align="center">
-         <input type="submit" name="sale" id="submit" value="新增"/>
-         <input type="reset" name="cancel" id="cancel" value="cancel">
+         <input class="btn btn-default" type="submit" name="sale" id="submit" value="新增">
+         <input class="btn btn-default" type="reset" id="cancel" value="取消">
       </div>
       <br/>
 </form>
 ${errors.action}
+	<script>
+            function fileViewer(){
+                var theFiles = document.getElementById("file1").files;
+                for (var i = 0; i < theFiles.length; i++) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(theFiles[i]);
+
+                    reader.onload = function (e) {
+                        //alert(e.target.result);
+                        var fileContent = e.target.result;
+                        var imgObj = document.createElement("img");  //<img>
+                        imgObj.setAttribute("src", fileContent);  //<img src="...
+                        imgObj.setAttribute("class", "thumb"); //<img src=".. class="....
+                        document.getElementById("dropZone").appendChild(imgObj);
+                    }
+                }
+            }
+
+    </script>
 </body>
 </html>

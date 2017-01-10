@@ -67,5 +67,13 @@ public class MemberService {
 		}
 		return null;
 	}
+	@Transactional
+	public MemberBean update(MemberBean bean) {
+		MemberBean result = null;
+		if (bean != null) {
+			result = memberDAO.update(bean);
+		}
+		return result;
+	}
 
 }

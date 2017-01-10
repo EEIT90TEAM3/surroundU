@@ -182,7 +182,7 @@ public class updatedel extends HttpServlet {
 						errors.put("action", "Update fail");
 					} 
 					request.getRequestDispatcher(
-							"/Sale/sucess.jsp").forward(request, response);
+							"/Sale/update.jsp").forward(request, response);
 				}
 				if("刪除".equals(sale)) {
 					

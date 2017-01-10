@@ -47,9 +47,10 @@
 <div class="content">
     <div class="main">
       <ul class="sm sm-blue">
-        <li><a href="#"><img height='30px' width='30px'
+  <!--        <li><a href="#"><img height='30px' width='30px'
 					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li>
-        <li><a href="#">${user.name} </a>
+        -->
+        <li><a href="#">會員專區</a>
          
           
           <ul>
@@ -132,7 +133,7 @@
 		var count = 1;
 		$.each(data, function(index, item){
 				// 製作物品經緯度陣列
-			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.nickname,item.sale_time];
+			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.name,item.sale_time];
 			itemArray.push(aItem);
 			count++;
 		});
@@ -147,7 +148,7 @@
 			var productBean = itemArray[i][6];
 			var nickname = itemArray[i][7];
 			var sale_time = itemArray[i][8];
-			for(var o1 in productBean){
+		for(var o1 in productBean){
 			var itemLatLng = new google.maps.LatLng(latitude, longitude);
 			
 			var marker = new google.maps.Marker({
@@ -159,6 +160,8 @@
 			//裝載maker準備delete用
 			markerArray.push(marker);
 		//資訊視窗
+		
+		if (o1==0){
 			var contentString = '<div id="iw-container">' +
 			'<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet">'+
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
@@ -169,18 +172,26 @@
               '<p>'+'攤位時間:'+sale_time+'</p>' +
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
 //              '<p><br><br>'+
-              '<p>'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
- //             '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
-//              '<p>'+'拍賣品價格:'+productBean[0].product_price+'</p>' +
+				'<div id="pro">'+
+              '<p id="pp">'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
+              '<img src="'+'/surround'+productBean[o1]['product_pic']+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
+              '<p>'+'拍賣品價格:'+productBean[o1]['product_price']+'</p>' +
+              '</div>'+
               '<p><button class="btn btn-default" type="submit">詳細資料</button></p>'+
-//              '<p>'+'拍賣品明細:'+productBean[0].product_memo+'</p>' +
+  //            '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
             '</div>' +
           '</div>';
+          
+          }else{
+        	  $("#pro").append("<b>Hello world!</b>");
+        
+          }
           addInfoWindow(marker, contentString);
           function addInfoWindow(marker, message) {
 
               var infoWindow = new google.maps.InfoWindow({
                   content: message
+                  
               });
             //點擊關閉彈層
               google.maps.event.addListener(map, 'click', function() {
@@ -190,6 +201,8 @@
               //點擊MAKER資訊視窗
               google.maps.event.addListener(marker, 'click', function () {
                   infoWindow.open(map, marker); 
+         //         var input2=document.getElementById("pp").innerText
+      	//		 alert(input2);
               });   
 
          	 }
@@ -212,12 +225,12 @@
 	      	      if (status === google.maps.GeocoderStatus.OK) {
 	      	      if (results[0]) {
 	      	       adlot = results[0].formatted_address;
-	      	       alert(adlot);
+//      	       alert(adlot);
 	      	      } 
 	      	     }
 	      	   });
-      		  alert(maplat);
-      		  alert(maplng);
+//      		  alert(maplat);
+//      		  alert(maplng);
       		  layer.open({
       			  type: 1,
       			  title: false,
@@ -239,7 +252,7 @@
       		        shadeClose: true,
       		        shade: false,
       		        maxmin: true, //开启最大化最小化按钮
-      		        area: ['500px', '400px'],
+      		        area: ['500px', '600px'],
   //傳入經緯度參數iFrame
       		        content: ['/surround/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
       		     
@@ -272,12 +285,12 @@
     			layer.closeAll('page');
     			layer.open({
     		        type: 2,
-    		        title: '新增',
+    		        title: '擺攤',
     		        id: 'popup',
     		        shadeClose: true,
     		        shade: false,
     		        maxmin: true, //开启最大化最小化按钮
-    		        area: ['500px', '400px'],
+    		        area: ['500px', '500px'],
     		        content: ['<c:url value="/SaleSearchServlet"/>']
     		     //
     			});
@@ -291,8 +304,8 @@
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['500px', '400px'],
- 		        content: ['<c:url value="/secure/updateMember.controller"/>']
+ 		        area: ['500px', '500px'],
+ 		        content: ['<c:url value="/secure/updatemember.jsp"/>']
  		     //
  			});
  		});
