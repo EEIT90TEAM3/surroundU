@@ -13,7 +13,8 @@
   <link href='../css/jquery-ui-timepicker-addon.css' rel='stylesheet'>
   <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
   <script type='text/javascript' src='../js/jquery-ui-sliderAccess.js'></script>
-
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 
 <title>編輯</title>
 
@@ -25,15 +26,20 @@
 
 </head>
 <body>
-<p style="font-size: 30px ;color: orange;">修改揪團資料</p>
 
 <form action="<c:url value="/pages/together.controller" />" method="get">
 
 
-<table>
+<table class="table table-bordered table-striped table-hover" style="font-size: 13px">
+<thead>
 	<tr>
-		<td>主題 : </td>
-		<td><input type="text" id="together_topic" name="together_topic" value="${param.together_topic}"></td>
+		<th style="color: black; " colspan="3">編輯資料</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td Width="100">主題 : </td>
+		<td><input type="text" id="together_topic" name="together_topic" size="45"  style="border-color: white;" value="${param.together_topic}"></td>
 		<td>${errors.together_topic}</td>
 		<input type="hidden" name="together_no" value="${param.together_no}"/>
 		<input type="hidden" name="together_post_time" value="${param.together_post_time}" />
@@ -46,24 +52,24 @@
 	</tr>
 	<tr>
 		<td>名稱 : </td>
-		<td><input type="text" id="together_name" name="together_name" value="${param.together_name}"></td>
+		<td><input type="text" id="together_name" name="together_name" size="45"  style="border-color: white;" value="${param.together_name}"></td>
 		<td>${errors.together_name}</td>
 	</tr>
 
 	<tr>
 		<td>地點 : </td>
-		<td><input type="text" id="together_locate" name="together_locate" value="${param.together_locate}"></td>
+		<td><input type="text" id="together_locate" name="together_locate" size="45"  style="border-color: white;" value="${param.together_locate}"></td>
 		<td>${errors.together_locate}</td>
 	</tr>
 	<tr>
 		<td>活動時間 :
-		<td><input type="text" id="datetimepicker1" name="together_when" value="${fn:substring(param.together_when,0,16)}"></td>
+		<td><input type="text" id="datetimepicker1" name="together_when" size="45"  style="border-color: white;" value="${fn:substring(param.together_when,0,16)}"></td>
 		<td>${errors.together_when}</td>
 	</tr>	
 		
 	<tr>
 	    <td><span>活動結束時間:</span></td>
-		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${fn:substring(param.together_when_end,0,16)}"></td>
+		<td><input type="text" id="datetimepicker2" name="together_when_end" size="45"  style="border-color: white;" value="${fn:substring(param.together_when_end,0,16)}"></td>
 		<td>${errors.together_when_end}</td>
         <script language="JavaScript">
               $(document).ready(function(){ 
@@ -116,14 +122,18 @@
 	</tr>
 	<tr>
 		<td>備註 : </td>
-		<td><input type="text" id="together_memo" name="together_memo" value="${param.together_memo}"></td>
+		<td><input type="text" id="together_memo" name="together_memo" size="45"  style="border-color: white;" value="${param.together_memo}"></td>
 		<td>${errors.together_memo}</td>
 	</tr>
 	<tr>
+	<td></td>
 		<td>
 			<input type="submit" id="buttonGET" name="prodaction" value="儲存">
 		</td>
+		<td></td>
+		
 	</tr>
+	</tbody>
 </table>
 
 

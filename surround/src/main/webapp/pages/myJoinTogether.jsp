@@ -77,6 +77,7 @@
 	</tbody>
 	</table>
 	</c:if>
+	
 	<input type="submit" id="closeIframe" value="回首頁">
 <script>
 var index = parent.layer.getFrameIndex(window.name);
