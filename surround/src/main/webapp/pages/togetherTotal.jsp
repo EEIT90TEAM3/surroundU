@@ -34,7 +34,6 @@
 		<th>限定人數</th>
 		<th>備註</th>
 		<th></th>
-		<th></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -67,7 +66,6 @@
 		<td>${element.together_people}</td>
 		<td>${element.together_memo}</td>
 		<td><a href="${path}" ><input type="submit" name="prodaction" value="加入"></a></td>
-		<td></td>
 	</tr>
 	</c:forEach>
 	</tbody>

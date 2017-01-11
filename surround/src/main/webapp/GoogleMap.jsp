@@ -543,12 +543,12 @@
 	 			layer.closeAll('page');
 	 			layer.open({
 	 		        type: 2,
-	 		        title: '新增',
+	 		        title: '申請的約團',
 	 		        id: 'popup',
 	 		        shadeClose: true,
 	 		        shade: false,
 	 		        maxmin: true, //开启最大化最小化按钮
-	 		        area: ['700px', '400px'],
+	 		        area: ['720px', '400px'],
 	 		        content: '<c:url value="/MyJoinTogether.controller"/>'
 	 			});
 	 		});
@@ -556,12 +556,12 @@
  			layer.closeAll('page');
  			layer.open({
  		        type: 2,
- 		        title: '新增',
+ 		        title: '約團列表',
  		        id: 'popup',
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['700px', '400px'],
+ 		        area: ['700px', '460px'],
  		        content: '<c:url value="/TogetherTotal.controller"/>'
  			});
  		});
