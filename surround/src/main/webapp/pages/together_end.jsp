@@ -43,6 +43,8 @@ case "member_no_error" :layer.alert('此團您是主揪，不用在加入', {ico
 case "no_MemDetails_error" :layer.alert('尚未有任何成員', {icon: 6});break;
 case "Nottogether" :layer.alert('尚未有任何您的約團', {icon: 6});break;
 case "togetherJoinOver" :layer.alert('此揪團人數已超過上限', {icon: 6});break;
+case "searchNoData" :layer.alert('查無資料', {icon: 6});break;
+case "noSearch" :layer.alert('請輸入查詢字串(非空白)', {icon: 6});break;
 default:layer.alert('歡迎進入Srround YOU', {icon: 6});
 
 }

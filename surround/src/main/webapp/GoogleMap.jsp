@@ -307,8 +307,8 @@
               //點擊MAKER資訊視窗
               google.maps.event.addListener(marker, 'click', function () {
                   infoWindow.open(map, marker); 
-         //         var input2=document.getElementById("pp").innerText
-      	//		 alert(input2);
+                  var input2=document.getElementById("pp").innerText
+      			 alert(input2);
               });   
 
          	 }
@@ -471,7 +471,7 @@
         		        shadeClose: true,
         		        shade: false,
         		        maxmin: true, //开启最大化最小化按钮
-        		        area: ['500px', '400px'],
+        		        area: ['600px', '460px'],
     //傳入經緯度參數iFrame
         		        content: ['/surround/pages/together.jsp?lat='+maplat+'&lng='+maplng+'&together_locate='+adlot]
         		     
@@ -540,12 +540,12 @@
  			layer.closeAll('page');
  			layer.open({
  		        type: 2,
- 		        title: '新增',
+ 		        title: '約團',
  		        id: 'popup',
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['700px', '400px'],
+ 		        area: ['750px', '460px'],
  		        content: '<c:url value="/TogetherDetailsServlet"/>'
 
  			});

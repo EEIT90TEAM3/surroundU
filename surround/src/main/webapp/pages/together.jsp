@@ -10,11 +10,12 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-  <link href='../css/jquery-ui-timepicker-addon.css' rel='stylesheet'>
+  
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
+<link href='../css/jquery-ui-timepicker-addon.css' rel='stylesheet'>
   <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
   <script type='text/javascript' src='../js/jquery-ui-sliderAccess.js'></script>
-
-
 <title>揪團</title>
 
 <style>
@@ -31,39 +32,43 @@ function clearForm() {
 	}
 }
 </script>
-
 </head>
 <body>
-<p style="font-size: 30px ;color: orange;">開團</p>
 
 <form action="<c:url value="/pages/together.controller" />" method="get">
 
-<table>
+<table class="table table-bordered table-striped table-hover" style="font-size: 13px">
+<thead>
 	<tr>
-		<td>主題 : </td>
-		<td><input type="text" name="together_topic" value="${param.together_topic}"></td>
+		<th style="color: black; " colspan="3">開團資料</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td Width="100"	>主題 : </td>
+		<td ><input type="text" name="together_topic" size="45"  style="border-color: white;" value="${param.together_topic}"></td>
 		<td>${errors.together_topic}</td>
 	</tr>
 	<tr>
-		<td>名稱 : </td>
-		<td><input type="text" name="together_name" value="${param.together_name}"></td>
+		<td >名稱 : </td>
+		<td ><input type="text" name="together_name" size="45"  style="border-color: white;" value="${param.together_name}"></td>
 		<td>${errors.together_name}</td>
 	</tr>
 
 	<tr>
 		<td>地點 : </td>
-		<td><input type="text" name="together_locate" value="${param.together_locate}"></td>
+		<td ><input type="text" name="together_locate" size="45"  style="border-color: white;"" value="${param.together_locate}"></td>
 		<td>${errors.together_locate}</td>
 	</tr>
 	<tr>
 		<td>活動時間 : </td>
-		<td><input type="text" id="datetimepicker1" name="together_when" value="${param.together_when}"></td>
+		<td ><input type="text" id="datetimepicker1" size="45"  style="border-color: white;"" name="together_when" value="${param.together_when}"></td>
 		<td>${errors.together_when}</td>
 	</tr>	
 		
 	<tr>
 	    <td><span>活動結束時間:</span></td>
-		<td><input type="text" id="datetimepicker2" name="together_when_end" value="${param.together_when_end}"></td>
+		<td ><input type="text" id="datetimepicker2" size="45"  style="border-color: white;"" name="together_when_end" value="${param.together_when_end}"></td>
 		<td>${errors.together_when_end}</td>
         <script language="JavaScript">
               $(document).ready(function(){ 
@@ -110,27 +115,28 @@ function clearForm() {
 	
 	<tr>
 		<td>限制人數 : </td>
-		<td><input type="text" name="together_people" value="${param.together_people}"></td>
+		<td style="color: red;"><input type="text" name="together_people" size="20"  style="border-color: white;" value="${param.together_people}">新增後，人數將無法修改</td>
 		<td>${errors.together_people}</td>
 	</tr>
 	<tr>
-	    <td>(新增後，人數將無法修改)</td>
-	</tr>
-	<tr>
 		<td>備註 : </td>
-		<td><input type="text" name="together_memo" value="${param.together_memo}"></td>
+		<td><input type="text" name="together_memo" size="45"  style="border-color: white;" value="${param.together_memo}"></td>
 		<td>${errors.together_memo}</td>
 	</tr>
 	<input type=hidden name="lat" value="${param.lat}"  class="fieldWidth" style="width: 320px;">
       <input type=hidden name="lng" value="${param.lng}"  class="fieldWidth" style="width: 320px;">
 	<tr>
-		<td>
-			<input type="submit" id="closeIframe" name="prodaction" value="送出">
+	<td></td>
+	<td>
+			<input type="button" value="清除所有欄位資料" size="45"   onclick="clearForm()">
 		</td>
 		<td>
-			<input type="button" value="清除所有欄位資料" onclick="clearForm()">
+			<input type="submit" id="closeIframe" size="45"   name="prodaction" value="送出">
 		</td>
+		
+		
 	</tr>
+	</tbody>
 </table>
 
 <h3><span class="error">${errors.action}</span></h3>

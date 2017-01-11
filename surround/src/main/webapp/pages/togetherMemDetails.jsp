@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="src/jquery211.js" type="text/javascript"></script>
+	<script src="src/jquery/bootstrap.min.js"></script>
+	<script src="src/lay/layer.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
 <!-- 
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />
  -->
@@ -97,10 +101,14 @@
 	</c:if>
 
 
-
-
-<h3><a href="<c:url value="/pages/together_end.jsp" />">回首頁</a></h3>
-
+<input type="submit" id="closeIframe" value="回首頁">
+<script>
+var index = parent.layer.getFrameIndex(window.name);
+$('#closeIframe').click(function(){
+	
+    parent.layer.close(index);
+});
+</script>
 
 </body>
 </html>

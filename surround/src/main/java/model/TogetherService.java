@@ -187,4 +187,11 @@ public class TogetherService {
 	   return result;
    }
 
+   public List<TogetherBean> searchTogether(String searchtogether) {
+	   List<TogetherBean> result=null;
+	   if(searchtogether!=null){
+		   result=togetherDao.searchTogether(searchtogether);
+	   }
+	   return result;
+   }
 }

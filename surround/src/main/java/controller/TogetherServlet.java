@@ -133,8 +133,10 @@ public class TogetherServlet extends HttpServlet{
 				together_when=sdFormat.parse(temp1);
 				Date today=Calendar.getInstance().getTime();
 				System.out.println(today);
+				if("Insert".equals(prodaction)){
 				if(together_when.before(today)){
 					errors.put("together_when", "請輸入晚於現在的時間");
+				}
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();

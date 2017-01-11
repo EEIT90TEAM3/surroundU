@@ -1,24 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />
-<title>編輯</title>
-
+<!--  <link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />-->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
+<title></title>
+<style>
+input{
+border-bottom-color: white;
+}
+</style>
 </head>
 <body>
-<p style="font-size: 30px ;color: orange;">刪除揪團資料</p>
 
 <form action="<c:url value="/pages/together.controller" />" method="get">
 
 
-<table>
+<table class="table table-bordered table-striped table-hover">
+<thead>
+	<tr>
+		<th>刪除揪團資料</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
 	<tr>
 		<td>主題 : </td>
 		<td>${param.together_topic}</td>
@@ -70,6 +81,7 @@
 			<input type="submit" id="buttonGET" name="prodaction" value="刪除">
 		</td>
 	</tr>
+	</tbody>
 </table>
 </form>
 

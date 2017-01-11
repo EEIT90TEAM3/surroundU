@@ -6,15 +6,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 <title>Insert title here</title>
 </head>
 <body>
-<p style="font-size: 30px ;color: orange;">加入揪團</p>
 
 <form action="<c:url value="/togethermem.controller" />" method="post">
 
 
-<table>
+<table class="table table-bordered table-striped table-hover">
+<thead>
+	<tr>
+		<th>加入揪團</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
     <tr>
 		<td>主揪人 : </td>
 		<td>${param.name}</td>
@@ -71,6 +79,7 @@
 		    <input type="submit" id="buttonGET" name="prodaction" value="加入">
 		</td>
 	</tr>
+	</tbody>
 </table>
 </form>
 </body>
