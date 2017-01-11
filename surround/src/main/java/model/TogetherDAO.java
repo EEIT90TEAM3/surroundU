@@ -18,6 +18,7 @@ public interface TogetherDAO {
 	TogetherBean selectStatus(int together_no,int together_status);
 	List<TogetherBean> selectStatus(int together_status);
 	
+	List<TogetherBean> searchTogether(String searchtogether);
 
 
 }

@@ -190,6 +190,14 @@ public class TogetherDAOHibernate implements TogetherDAO {
 				
 		return rs;
 	}
+	//Search
+	@Override
+	public List<TogetherBean> searchTogether(String searchtogether) {
+		System.out.println(searchtogether);
+		Query query=this.getSession().createQuery("from TogetherBean where together_status=0 and (together_locate LIKE:searchtogether or together_topic LIKE:searchtogether )");
+		query.setParameter("searchtogether","%"+searchtogether+"%");
+		return (List<TogetherBean>) query.getResultList();
+	}
 	
 
 }

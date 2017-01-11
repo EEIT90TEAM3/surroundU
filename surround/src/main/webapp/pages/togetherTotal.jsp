@@ -16,7 +16,7 @@
 <body>
 <table>
 <form action="<c:url value="/togetherSearch.controller" />" method="get">
-<td>尋找地點：<input type="text" name="search" placeholder="Search.."></td>
+<td>搜尋：<input type="text" name="search" placeholder="Search.."></td>
 </form>
 
 </table>

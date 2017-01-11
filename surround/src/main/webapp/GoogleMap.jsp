@@ -296,8 +296,8 @@
               //點擊MAKER資訊視窗
               google.maps.event.addListener(marker, 'click', function () {
                   infoWindow.open(map, marker); 
-         //         var input2=document.getElementById("pp").innerText
-      	//		 alert(input2);
+                  var input2=document.getElementById("pp").innerText
+      			 alert(input2);
               });   
 
          	 }

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -27,13 +29,33 @@ public class togetherSearchController {
 	private TogetherDAO togetherDao;
 	@Autowired
 	@Resource(name="togetherService")
-	private TogetherService togetheService;
+	private TogetherService togetherService;
 	
 	@RequestMapping
 	public String service(String search,Model model,HttpSession session) {
 		
+		System.out.println("===search====="+search);
 		
+		if(!search.trim().isEmpty()){
+			String searchTogether=search.trim();
+			System.out.println("===searchIn====="+search);
+			System.out.println("=====searchTogether===="+searchTogether);
+			List<TogetherBean> togetherBean=togetherService.searchTogether(searchTogether);
+			if(!togetherBean.isEmpty()){
+				model.addAttribute("selectStatis", togetherBean);
+				return "together.success";
+			}else{
+				model.addAttribute("togetherType","searchNoData");
+				System.out.println("查無資料");
+				return "together_end.success";
+			}
+		}else{
+			System.out.println("請輸入查詢字串(非空白)");
+			model.addAttribute("togetherType","noSearch");
+			return "together_end.success";
+			
+		}
 		
-		return null;
+	
 	}
 }
