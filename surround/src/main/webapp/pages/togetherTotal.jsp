@@ -14,6 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table>
+<form action="<c:url value="/togetherSearch.controller" />" method="get">
+<td>尋找地點：<input type="text" name="search" placeholder="Search.."></td>
+</form>
+
+</table>
 
 <c:if test="${not empty selectStatis}">
 <table class="table table-bordered table-striped table-hover">
@@ -49,12 +55,12 @@
 			<c:param name="together_lng" value="${element.together_lng}" />
 			<c:param name="together_lat" value="${element.together_lat}" />
 			<c:param name="member_no" value="${element.member_no.member_no}" />
-			<c:param name="nickname" value="${element.member_no.nickname}" />
+			<c:param name="name" value="${element.member_no.name}" />
 		</c:url>
 	<tr>
 		<td>${element.together_topic}</td>
 		<td>${element.together_name}</td>
-		<td>${element.member_no.nickname}</td>
+		<td>${element.member_no.name}</td>
 		<td>${element.together_locate}</td>
 		<td>${fn:substring(element.together_when,0,19)}</td>
 		<td>${fn:substring(element.together_when_end,0,19)}</td>

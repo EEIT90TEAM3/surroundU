@@ -145,7 +145,7 @@
  	<a href="<%= fbURL %>"><img src="img/fb.png" onmouseout="this.src='img/fb.png'" onmouseover="this.src='img/fbshow.png'" border="0"  width="260" /></a>
  	</div>
 	 	
-	      <form class="form-signin1" action="<c:url value="/secure/login.controller" />">
+	      <form class="form-signin1" action="<c:url value="/secure/login.controller" />" method="post">
 	        <h2 class="form-signin-heading" align="center">帳號登入</h2>
 	        <label for="inputEmail" class="sr-only">Email address</label>
 	        <input type="text" id="inputEmail" name="account" value="${param.account}" class="form-control" placeholder="帳號" required autofocus>

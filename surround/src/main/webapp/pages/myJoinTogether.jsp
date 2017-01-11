@@ -6,27 +6,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />
+-->
 <script src="src/jquery211.js" type="text/javascript"></script>
 	<script src="src/jquery/bootstrap.min.js"></script>
 	<script src="src/lay/layer.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
-
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 
 <title>Insert title here</title>
 </head>
 <body>
-<input type="submit" id="closeIframe" value="回首頁">
-<script>
-var index = parent.layer.getFrameIndex(window.name);
-$('#closeIframe').click(function(){
-	
-    parent.layer.close(index);
-});
-</script>
+
 
 <c:if test="${not empty selecttogetherMemBean}">
-<table>
+<table class="table table-bordered table-striped table-hover">
 	<thead>
 	<tr>
 		<th>主題</th>
@@ -49,8 +45,11 @@ $('#closeIframe').click(function(){
 	      <c:param name="member_no" value=" ${element.member_no.member_no}" />
 			<c:param name="prodaction" value="取消申請" />
 		</c:url>
+		
+		<c:if test="${element.together_no.together_status == 0}">
+		<tr>
 		<td>${element.together_no.together_topic}</td>
-		<td>${element.together_no.member_no.nickname}</td>
+		<td>${element.together_no.member_no.name}</td>
 		<td>${element.together_no.together_name}</td>
 		<td>${element.together_no.together_locate}</td>
 		<td>${fn:substring(element.together_no.together_when,0,19)}</td>
@@ -72,12 +71,20 @@ $('#closeIframe').click(function(){
           <td></td>
          </c:otherwise>
          </c:choose>
-	</tr>
+         </tr>
+	</c:if>
 	</c:forEach>
 	</tbody>
 	</table>
 	</c:if>
+	<input type="submit" id="closeIframe" value="回首頁">
+<script>
+var index = parent.layer.getFrameIndex(window.name);
+$('#closeIframe').click(function(){
 	
+    parent.layer.close(index);
+});
+</script>
 
 
 </body>

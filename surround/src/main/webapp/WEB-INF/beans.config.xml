@@ -42,8 +42,14 @@
   <constructor-arg value="yyyy-MM-dd HH:mm"></constructor-arg>
  </bean>
 
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> 
+
 	<bean id="sdFormat" class="java.text.SimpleDateFormat">
 		<constructor-arg value="yyyy-MM-dd"></constructor-arg>
+
 	</bean>
+	
+	
+	
 
 </beans>

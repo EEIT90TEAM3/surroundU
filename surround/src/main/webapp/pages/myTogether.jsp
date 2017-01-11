@@ -10,8 +10,9 @@
 	<script src="src/jquery/bootstrap.min.js"></script>
 	<script src="src/lay/layer.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />
-
+<!--  <link rel="stylesheet" type="text/css" href="<c:url value="/css/table.css"/>" />-->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 
 <title>Insert title here</title>
 </head>
@@ -23,7 +24,7 @@
   
 <div>
 <c:if test="${not empty select}">
-<table>
+<table class="table table-bordered table-striped table-hover">
 	<thead>
 	<tr>
 		<th>主題</th>
