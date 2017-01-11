@@ -48,6 +48,7 @@ public class BackendMemberController {
 						MemberBean bean = backendService.switchAccountStatus(account, 1);
 						
 						if(bean!=null){
+							model.addAttribute("memberstatus", bean);
 							return "member.display";
 						}
 						
@@ -58,6 +59,7 @@ public class BackendMemberController {
 						MemberBean bean = backendService.switchAccountStatus(account, 0);
 						
 						if(bean!=null){
+							model.addAttribute("memberstatus", bean);
 							return "member.display";
 						}
 					}
@@ -67,6 +69,7 @@ public class BackendMemberController {
 	                    MemberBean bean = backendService.switchAccountStatus(account, 99);
 						
 						if(bean!=null){
+							model.addAttribute("managerstatus", bean);
 							return "member.display";
 						}
 					}
@@ -76,6 +79,7 @@ public class BackendMemberController {
 	                    MemberBean bean = backendService.switchAccountStatus(account, 0);
 						
 						if(bean!=null){
+							model.addAttribute("managerstatus", bean);
 							return "member.display";
 						}
 					}

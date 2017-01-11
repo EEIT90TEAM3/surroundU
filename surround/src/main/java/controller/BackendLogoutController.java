@@ -23,7 +23,7 @@ public class BackendLogoutController {
 		 
 		 
 		 
-		 return "logout.display";
+		 return "backendlogout.display";
 	 }
 	
 }

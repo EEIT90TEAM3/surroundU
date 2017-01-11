@@ -8,6 +8,17 @@
 <title>SurrounU管理系統</title>
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
 <link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">   
+
+     <!-- jQuery -->
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus jQuery plugin -->
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus core CSS (required) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
 <style>
   .thumb{width:120px}
   
@@ -48,7 +59,13 @@
 /* 		}   */
 </style>
 
+<!-- 檢舉處理完成 -->
+<c:if test="${not empty dealedaccuse}">
 
+	<script>
+	layer.alert('檢舉已處理完成', {icon: 6});
+	</script>
+</c:if>
 
 
 </head>
@@ -83,7 +100,7 @@
 					<a href="<c:url value="/backend/backendchangepwdjQuery.jsp"/>" class="list-group-item">更改密碼</a>
 					<a href="<c:url value="/backendlogout.controller"/>" class="list-group-item">登出</a>
 				</div>
-			</div>
+			</div>         
 			<div class="col-md-9">
 				<div class="jumbotron">
 					<div class="page-header">
@@ -188,6 +205,12 @@
 	<script src="<c:url value="/js/jquery-3.1.1.min.js"/>"></script>  
 	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>   
 	<script src="<c:url value="/js/lightbox.js"/>"></script> 
+	
+	<!-- 訊息顯示 -->
+	<script type="text/javascript">
+	
+	
+	</script>
 	
 <footer> 
 <div id="id_footer" class="panel-footer" style="margin-top:30px;background-color:white">

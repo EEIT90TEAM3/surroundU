@@ -12,10 +12,19 @@
 <!-- lay載入 -->
 <script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
 <link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
+     
+     <!-- jQuery -->
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus jQuery plugin -->
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus core CSS (required) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
 
-<script type="text/javascript">
-layer.alert('歡迎進入Srround YOU管理系統', {icon: 6});
-</script>
+
 
 <style>
   .thumb{width:120px}
@@ -23,6 +32,17 @@ layer.alert('歡迎進入Srround YOU管理系統', {icon: 6});
     textarea{resize: none;}
   		
 </style>
+
+
+<c:if test="${not empty changesuccess}">
+<script>
+
+layer.alert('已變更管理者密碼', {icon: 6});
+
+</script>
+</c:if>
+
+
 </head>
 <body>
    <div class="container">

@@ -75,9 +75,10 @@ public class ReportPostController {
 	         
 	         System.out.println("boolean:"+rs);
 	         if(rs){
+	        	 
 	        	 return "postreport.success";
 	         }
-	        	 
+	             
 	         return "postreport.exceed";
 	         
 	         

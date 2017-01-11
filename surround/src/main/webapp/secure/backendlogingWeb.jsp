@@ -176,8 +176,8 @@
 		    <div class="video-container">
 		        <div class="filter"></div>
 		        <video autoplay loop class="fillWidth">
-		          <source src="<c:url value="/secure/car/MP4/Retro-Volks.mp4s"/>" type="video/mp4" />  
-			       <source src="<c:url value="/secure/car/WEBM/Retro-Volks.webm"/>" type="video/webm" />
+		          <source src="<c:url value="/secure/car/MP4/Retro-Volks.mp4"/>" type="video/mp4" />  
+			       <source src="<c:url value="/secure/car/WEBM/Retro-Volks.web"/>" type="video/webm" />
 		        </video>
 		        <div class="poster hidden">       
 		            

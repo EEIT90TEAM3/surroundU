@@ -7,7 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SurrounU管理系統</title>
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
-<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">            
+<link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">     
+
+     <!-- jQuery -->
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus jQuery plugin -->
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus core CSS (required) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">       
 <style> 
   .thumb{width:120px}
   
@@ -47,6 +58,15 @@
 /* 			color: #339; */
 /* 		}   */
 </style>
+<!-- 處理回報  -->
+<c:if test="${not empty reportcommit}">
+
+	<script>
+	layer.alert('處理已完成', {icon: 6});
+	</script>
+	
+</c:if>
+
 </head>
 <body>
    <div class="container">

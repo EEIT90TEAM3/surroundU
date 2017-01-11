@@ -222,11 +222,14 @@ public class BackendController {
 		System.out.println("changepwd");
 		
 		
-		backendService.changeManagerPwd(bean, newpwd1);
+		MemberBean bean1 = backendService.changeManagerPwd(bean, newpwd1);
 		
+		if(bean1!=null){
+			model.addAttribute("changesuccess", bean1);
+			return "backendlogin.success";
+		}
 		
-		return "backendlogin.success";
-		
+		return null;
 	}
 	
 

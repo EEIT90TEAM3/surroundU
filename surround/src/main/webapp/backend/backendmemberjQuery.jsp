@@ -8,6 +8,17 @@
 <title>SurrounU管理系統</title>
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
 <link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">   
+
+     <!-- jQuery -->
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus jQuery plugin -->
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<!-- SmartMenus core CSS (required) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/layer.css"/>">
 <style>
   .thumb{width:120px}
   
@@ -47,7 +58,31 @@
 /* 			color: #339; */
 /* 		}   */
 </style>
+
+
+<!-- 狀態處以alert -->
+<c:if test="${not empty memberstatus}">
+<script>
+
+
+layer.alert('已變更帳號狀態', {icon: 6});
+
+</script>
+</c:if>
+
+<c:if test="${not empty managerstatus}">
+<script>
+
+
+layer.alert('已變更管理者權限', {icon: 6});
+
+</script>
+</c:if>
+
 </head>
+
+
+
 <body>
    <div class="container">
 		<nav class="navbar navbar-default">

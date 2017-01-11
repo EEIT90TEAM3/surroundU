@@ -111,11 +111,14 @@
 		<property name="url" value="/backend/dealreportviewjQuery.jsp"></property>
 	</bean>
 	
-	<bean id="logout.display" class="org.springframework.web.servlet.view.RedirectView">
+	<bean id="backendlogout.display" class="org.springframework.web.servlet.view.RedirectView">
 		<property name="contextRelative" value="true"></property>
 		<property name="url" value="/secure/backendlogingWeb.jsp"></property>
 	</bean>
 
-
+    <bean id="logout.display" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/secure/logWeb.jsp"></property>
+	</bean>
 
 </beans>

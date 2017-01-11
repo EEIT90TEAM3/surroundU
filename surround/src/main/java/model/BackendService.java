@@ -208,7 +208,7 @@ public class BackendService {
       
       
       //處理回報文章
-      public Boolean dealReport(int report_no,int report_status,String report_deal_memo){
+      public ReportBean dealReport(int report_no,int report_status,String report_deal_memo){
     	  
     	  ReportBean bean = reportDao.select(report_no);
     	  
@@ -216,10 +216,10 @@ public class BackendService {
     			  report_status, report_deal_memo, report_no);
     	  
     	  if(rs!=null){
-    		  return true; 
+    		  return bean; 
     	  }
     	  
-    	  return false;
+    	  return null;
       }
       
       //依檢舉文章編號查詢文章編號,後以查詢擺攤文章內容

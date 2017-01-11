@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.BackendService;
+import model.ReportBean;
 
 @Controller
 @RequestMapping(path={"/dealreport.controller"},
@@ -75,16 +76,19 @@ public class DealReportController {
 					e.printStackTrace();
 			} 
 			//呼叫Model
-			Boolean rs = backendService.dealReport(creport_no, creport_status, report_deal_memo);
+			ReportBean bean = backendService.dealReport(creport_no, creport_status, report_deal_memo);
+			model.addAttribute("reportcommit", bean);
 			
+			System.out.println(bean);
 			//根據Model傳回值,顯示View
-			if(rs){
+			if(bean!=null){
+				
 				
 				return "report.display";
 			
 			}
 			
-
+   
 			return "report.display";
 
 		    

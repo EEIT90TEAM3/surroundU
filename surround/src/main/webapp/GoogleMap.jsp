@@ -58,6 +58,16 @@
       }
 
     </style>
+    
+ <script type="text/javascript">
+		 function openWindow()
+		 {
+		 mynewwindow = window.open('<c:url value="/lookAccuse.controller?accuse_topic='+name+'"/>','_new','scrollbars=yes,status=yes,width=600,height=400,dependent=no,directories=no,menubar=yes,personalbar=no'); 
+		 } 
+ 
+ 
+ </script>
+     
 </head>
 <body>
 <div class="container">
@@ -109,7 +119,7 @@
           <ul>
             <li><a id="updatemen">修改會員資料</a></li>
             <li><a id="postreport">回報管理者</a></li>
-            <li><a href="#">登出</a></li>
+            <li><a href=#>登出</a></li>  
           </ul>
         </li>
         <li><a href="#">我的活動</a>
@@ -261,7 +271,8 @@
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
             '<div class="iw-content">' +
 //              '<div class="iw-subTitle">'+' 攤位名稱:'+sale_name+'</div>' +
-              '<div class="iw-subTitle">'+'賣家:'+name+'</div>' +
+              '<div class="iw-subTitle">'+'賣家:'+name+'</div>' + 
+              '<input type="hidden" name="name" value="'+name+'">'+
               '<p>'+'攤位地點:'+sale_locate+'</p>' +
               '<p>'+'攤位時間:'+sale_time+'</p>' +
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
@@ -272,7 +283,7 @@
               '<p>'+'拍賣品價格:'+productBean[o1]['product_price']+'</p>' +
               '</div>'+
 
-              '<p><button class="btn btn-default" type="submit">詳細資料</button></p>'+
+              '<p><button class="btn btn-default" type="submit" onclick=openWindow()>詳細資料</button></p>'+
   //            '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
             '</div>' +
           '</div>';
@@ -582,6 +593,13 @@
  			});
  		});
 //postreport--------------------end-----------------------------------
+
+//logouot----------------------begin----------------------------------
+
+
+
+//logouot-----------------------end-----------------------------------
+
 
 // ======================瑞豪=======================	
 	var ws;

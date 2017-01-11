@@ -140,7 +140,7 @@ public class ReportDAOHibernate implements ReportDAO {
         bean.setReport_status(report_status);
         bean.setReport_deal_memo(report_deal_memo);
 		} 
-		return null;
+		return bean;
 	}
 
 	@Override

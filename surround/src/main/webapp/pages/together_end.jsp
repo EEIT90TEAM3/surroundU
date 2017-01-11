@@ -48,7 +48,7 @@ default:layer.alert('歡迎進入Srround YOU', {icon: 6});
 }
 window.onload = function ()
 {
-	setTimeout("parent.layer.close(index);", 1*1000);
+	setTimeout("parent.layer.close(index);", 3*1000);
 	
 }
 </script>
