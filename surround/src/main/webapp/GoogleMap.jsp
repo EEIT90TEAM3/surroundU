@@ -460,7 +460,7 @@
         		        shadeClose: true,
         		        shade: false,
         		        maxmin: true, //开启最大化最小化按钮
-        		        area: ['600px', '460px'],
+        		        area: ['600px', '500px'],
     //傳入經緯度參數iFrame
         		        content: ['/surround/pages/together.jsp?lat='+maplat+'&lng='+maplng+'&together_locate='+adlot]
         		     

@@ -49,7 +49,7 @@ public class TogetherDetailsServlet extends HttpServlet {
 		}
 			
 		if(memberBean!=null) {
-			MemberBean result = memberService.login(memberBean.getAccount(),memberBean.getPwd());
+			//MemberBean result = memberService.login(memberBean.getAccount(),memberBean.getPwd());
 //			Set<TogetherBean> togetherBean=result.getTogetherBean();
 //			Calendar date = Calendar.getInstance();
 //			Date today = date.getTime();
@@ -60,7 +60,8 @@ public class TogetherDetailsServlet extends HttpServlet {
 //				     }
 //				}
 //			}
-			List<TogetherBean> togetherBean=togetherService.togetherStatusChange(result);
+			System.out.println(memberBean.getMember_no()+"===============memberBean============");
+			List<TogetherBean> togetherBean=togetherService.togetherStatusChange(memberBean);
 //			for(TogetherBean ccc : togetherBean){
 //				System.out.println(ccc.getTogether_when_end());
 //				System.out.println(ccc.getTogether_status());
