@@ -144,7 +144,6 @@ layer.alert('已變更管理者權限', {icon: 6});
 								<th>編號</th>
 								<th>會員帳號</th>
 								<th>暱稱</th>
-								<th>性別</th>
 								<th>電子郵件</th>
 								<th>帳號狀態</th>
 								<th></th>
@@ -168,12 +167,7 @@ layer.alert('已變更管理者權限', {icon: 6});
 									<td>${element.account}</td>
 									<td>${element.nickname}</td>
 									
-									<c:if test="${element.gender==1}">
-									<td>男</td>
-									</c:if>
-									<c:if test="${element.gender==0}">
-									<td>女</td>
-									</c:if>
+
 																		
 									<td>${element.account_email}</td>
 									

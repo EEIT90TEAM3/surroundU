@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -142,12 +143,12 @@
 							<input type="hidden" name="accuse_type" value="${param.accuse_type}">
 					    </tr>
 						<tr>
-							<th>檢舉時間</th>
+							<th>檢舉時間</th>                                
 							<th>${param.accuse_post_time}</th>
-							<input type="hidden" name="accuse_post_time" value="${param.accuse_post_time}">
+							<input type="hidden" name="accuse_post_time" value="${fn:substring(param.accuse_post_time,0,19)}">
 						</tr>
 						<tr>		
-				
+				                           
 						<tr>
 						   <th>查看文章</th>
 						   <th><input type="button"  value="觀看文章內容" id="buttonLook" class="btn btn-danger" onclick="openWindow()"></th>
@@ -171,7 +172,7 @@
 				 	    <c:if test="${param.accuse_status!=0}">
 				 	    <tr> 
 							<th>處理完成時間</th> 
-							<th>${param.accuse_deal_time}</th>
+							<th>${fn:substring(param.accuse_deal_time,0,19)}</th>    
 						 </tr> 
 				 	    </c:if>
 						

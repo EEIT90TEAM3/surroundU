@@ -59,14 +59,7 @@
 
     </style>
     
- <script type="text/javascript">
-		 function openWindow()
-		 {
-		 mynewwindow = window.open('<c:url value="/lookAccuse.controller?accuse_topic='+name+'"/>','_new','scrollbars=yes,status=yes,width=600,height=400,dependent=no,directories=no,menubar=yes,personalbar=no'); 
-		 } 
- 
- 
- </script>
+
      
 </head>
 <body>
@@ -119,9 +112,9 @@
           <ul>
             <li><a id="updatemen">修改會員資料</a></li>
             <li><a id="postreport">回報管理者</a></li>
-            <li><a href=#>登出</a></li>  
+            <li><a href="<c:url value="/logout.controller"/>">登出</a></li>  
           </ul>
-        </li>
+        </li>                               
         <li><a href="#">我的活動</a>
           <ul>
           
@@ -141,6 +134,7 @@
            <ul>
           <!--  together-->
             <li ><a id="togetherTotal">約團列表</a>
+            <li ><a>擺攤列表</a>
             <!--  together-->
           </ul>
         </li>
@@ -270,21 +264,21 @@
 			'<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet">'+
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
             '<div class="iw-content">' +
-//              '<div class="iw-subTitle">'+' 攤位名稱:'+sale_name+'</div>' +
+              '<div class="iw-subTitle">'+' 攤位名稱:'+sale_name+'</div>' +
               '<div class="iw-subTitle">'+'賣家:'+name+'</div>' + 
               '<input type="hidden" name="name" value="'+name+'">'+
               '<p>'+'攤位地點:'+sale_locate+'</p>' +
               '<p>'+'攤位時間:'+sale_time+'</p>' +
-//              '<p>'+'攤位說明:'+sale_memo+'</p>' +
-//              '<p><br><br>'+
+             '<p>'+'攤位說明:'+sale_memo+'</p>' +
+              '<p><br><br>'+
 				'<div id="pro">'+
               '<p id="pp">'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
               '<img src="'+'/surround'+productBean[o1]['product_pic']+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
               '<p>'+'拍賣品價格:'+productBean[o1]['product_price']+'</p>' +
               '</div>'+
 
-              '<p><button class="btn btn-default" type="submit" onclick=openWindow()>詳細資料</button></p>'+
-  //            '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
+//              '<p><button class="btn btn-default" type="submit" onclick=openWindow()>詳細資料</button></p>'+
+             '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
             '</div>' +
           '</div>';
           
@@ -308,7 +302,7 @@
               google.maps.event.addListener(marker, 'click', function () {
                   infoWindow.open(map, marker); 
                   var input2=document.getElementById("pp").innerText
-      			 alert(input2);
+//    			 alert(input2);
               });   
 
          	 }
@@ -567,7 +561,7 @@
  			layer.closeAll('page');
  			layer.open({
  		        type: 2,
- 		        title: '新增',
+ 		        title: "&nbsp;",
  		        id: 'popup',
  		        shadeClose: true,
  		        shade: false,

@@ -107,7 +107,7 @@ public class updatedel extends HttpServlet {
 							this.filename=filename;
 							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("C:/EEIT/EEIT90Project/repository/surround/src/main/webapp/img/" + filename);
+							FileOutputStream out = new FileOutputStream("D:/專題/workspace/Repository/surround/src/main/webapp/img/" + filename);
 							byte[] buffer = new byte[1024];
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {

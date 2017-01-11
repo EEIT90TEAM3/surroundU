@@ -219,6 +219,8 @@ public class LoginServlet {
 		  inputStream.close();
 		  return data;
 		 }
+	
+	
 	@RequestMapping(
 			path={"/secure/updateMember.controller"},
 			method={RequestMethod.GET, RequestMethod.POST}

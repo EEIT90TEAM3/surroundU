@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -158,14 +159,14 @@
 									<c:param name="accuse_deal_memo" value="${element.accuse_deal_memo}" />
 									<c:param name="accuse_deal_time" value="${element.accuse_deal_time}" />
 								</c:url>
-								
+								                          
 								
 								<tr>
 									<td>${element.accuse_no}</td>
 									<td>${element.member_no.account}</td>
 									<td>${element.accuse_topic}</td>
-									<td>${element.accuse_type}</td>
-									<td>${element.accuse_post_time}</td>
+									<td>${element.accuse_type}</td>    
+									<td>${fn:substring(element.accuse_post_time,0,19)}</td>  
 									
 									<c:if test="${element.accuse_status==0}">
 									<td>未處理</td>

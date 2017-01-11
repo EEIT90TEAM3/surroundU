@@ -11,7 +11,10 @@
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
 <link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">
 
-<title>Insert title here</title>
+<title>約團列表</title>
+
+
+
 </head>
 <body>
 <table>
@@ -57,6 +60,19 @@
 			<c:param name="member_no" value="${element.member_no.member_no}" />
 			<c:param name="name" value="${element.member_no.name}" />
 		</c:url>
+		 <c:url value="/accuse/postaccuse.jsp" var="path1">
+	        <c:param name="together_no" value="${element.together_no}" />
+	         <c:param name="sale_no" value="0" />
+			<c:param name="together_topic" value="${element.together_topic}" />
+			<c:param name="member_no" value="${element.member_no.name}" />
+			<c:param name="together_name" value="${element.together_name}" />
+		    <c:param name="together_when" value="${fn:substring(element.together_when,0,19)}" />
+			<c:param name="together_when_end" value="${fn:substring(element.together_when_end,0,19)}" />	
+					
+		
+			
+			
+		</c:url>
 	<tr>
 		<td>${element.together_topic}</td>
 		<td>${element.together_name}</td>
@@ -67,9 +83,12 @@
 		<td>${element.together_people}</td>
 		<td>${element.together_memo}</td>
 		<td><a href="${path}" ><input type="submit" name="prodaction" value="加入"></a></td>
-		<td></td>
+		<td><a href="${path1}" ><input type="button" name="prodaction" value="檢舉"></a></td>
 	</tr>
 	</c:forEach>
+	
+	
+	
 	</tbody>
 	</table>
 	</c:if>
