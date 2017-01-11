@@ -79,6 +79,7 @@ public class TogetherServlet extends HttpServlet{
 		System.out.println("choose="+choose);
 		System.out.println(together_lng);
 		System.out.println(together_lat);
+		System.out.println(together_topic);
 	//驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);

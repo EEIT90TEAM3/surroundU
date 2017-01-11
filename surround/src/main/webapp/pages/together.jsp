@@ -46,7 +46,19 @@ function clearForm() {
 	<tbody>
 	<tr>
 		<td Width="100"	>主題 : </td>
-		<td ><input type="text" name="together_topic" size="45"  style="border-color: white;" value="${param.together_topic}"></td>
+		
+		<td width="1px">
+		<div >
+		<select id="selectedMap" name="together_topic" class="form-control">
+								<option value="運動" ${param.together_topic == '運動' ? 'selected' : ''}>運動</option>
+								<option value="看電影" ${param.together_topic == '看電影' ? 'selected' : ''}>看電影</option>
+								<option value="玩桌遊" ${param.together_topic == '玩桌遊' ? 'selected' : ''}>玩桌遊</option>
+								<option value="嘗美食" ${param.together_topic == '嘗美食' ? 'selected' : ''}>嘗美食</option>
+								<option value="爬山" ${param.together_topic == '爬山' ? 'selected' : ''}>爬山</option>
+								<option>--自行輸入--</option>
+							</select>	
+		</div>
+		</td>
 		<td>${errors.together_topic}</td>
 	</tr>
 	<tr>
