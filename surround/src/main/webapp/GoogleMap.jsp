@@ -534,7 +534,7 @@
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['600px', '460px'],
+ 		        area: ['750px', '460px'],
  		        content: '<c:url value="/TogetherDetailsServlet"/>'
 
  			});
