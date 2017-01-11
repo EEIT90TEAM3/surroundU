@@ -382,9 +382,24 @@
   	            	
   	            	  });
   	              //點擊MAKER資訊視窗
-  	              google.maps.event.addListener(marker, 'click', function () {
-  	                  infoWindow.open(map, marker); 
-  	                  
+  	              google.maps.event.addListener(marker, 'click', function (e) {
+  	                  infoWindow.open(map, marker);
+  	                $("#togetherMap").click(function(){
+  	        			layer.closeAll('page');
+  	        		//	alert(latLng);
+  	        			layer.open({
+  	        		        type: 2,
+  	        		        title: '約團',
+  	        		        id: 'popup',
+  	        		        shadeClose: true,
+  	        		        shade: false,
+  	        		        maxmin: true, //开启最大化最小化按钮
+  	        		        area: ['600px', '500px'],
+  	    //傳入經緯度參數iFrame
+  	        		        content: ['<c:url value="/markerMapTogether.controller"/>?lat='+e.latLng.lat()+'&lng='+e.latLng.lng()]
+  	        		     
+  	        			});
+  	        		});   
   	                
   	              });   
   	           
@@ -466,6 +481,7 @@
         		     
         			});
         		});   
+        		
         		
         		
   //together------------------------------------------------------------------------------ 

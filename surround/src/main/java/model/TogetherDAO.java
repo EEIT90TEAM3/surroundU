@@ -19,6 +19,8 @@ public interface TogetherDAO {
 	List<TogetherBean> selectStatus(int together_status);
 	
 	List<TogetherBean> searchTogether(String searchtogether);
+	
+	List<TogetherBean> markerMapTogether(String together_lng,String together_lat);
 
 
 }

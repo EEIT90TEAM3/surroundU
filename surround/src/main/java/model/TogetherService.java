@@ -194,4 +194,13 @@ public class TogetherService {
 	   }
 	   return result;
    }
+   
+   public List<TogetherBean> markerMapTogether(String together_lng, String together_lat) {
+	   List<TogetherBean> result=null;
+	   if(together_lng!=null&&together_lat!=null){
+		   result=togetherDao.markerMapTogether(together_lng, together_lat);
+	   }
+	   return result;
+   }
+   
 }

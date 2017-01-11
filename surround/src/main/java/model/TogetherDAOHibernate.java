@@ -198,6 +198,13 @@ public class TogetherDAOHibernate implements TogetherDAO {
 		query.setParameter("searchtogether","%"+searchtogether+"%");
 		return (List<TogetherBean>) query.getResultList();
 	}
+	@Override
+	public List<TogetherBean> markerMapTogether(String together_lng, String together_lat) {
+		Query query=this.getSession().createQuery("from TogetherBean where together_lng=? and together_lat=?");
+		query.setParameter(0,together_lng);
+		query.setParameter(1, together_lat);
+		return (List<TogetherBean>) query.getResultList();
+	}
 	
 
 }
