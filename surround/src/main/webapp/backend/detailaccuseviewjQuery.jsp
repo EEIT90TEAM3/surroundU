@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>後台</title>
+<title>SurrounU管理系統</title>
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">       
 <link rel="stylesheet" href="<c:url value="/css/lightbox.css"/>">            
 <style> 
@@ -102,9 +102,9 @@
 					<table >
 						<tr>
 							<td align="left"><input type="submit" name="backendaction" value="檢舉列表-全部" class="btn btn-info"></td>
-							
+							 <td>&nbsp;&nbsp;</td>
 							<td align="left"><input type="submit" name="backendaction" value="檢舉列表-未處理" class="btn btn-info"></td>
-							
+							 <td>&nbsp;&nbsp;</td>
 							<td align="left"><input type="submit" name="backendaction" value="檢舉列表-已處理" class="btn btn-info"></td>
 							
 						</tr>
@@ -187,10 +187,7 @@
 
 		
 
-		<!-- Site footer -->
-		<footer class="footer">
-			<p>&copy; SurroundU</p>
-		</footer>
+
 
 	</div>
 	<!-- /container -->
@@ -199,7 +196,39 @@
 	<script src="<c:url value="/js/jquery-3.1.1.min.js"/>"></script>  
 	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>   
 	<script src="<c:url value="/js/lightbox.js"/>"></script>   
-	
+<footer> 
+<div id="id_footer" class="panel-footer" style="margin-top:30px;background-color:white">
+<div class="container-fluid" >
+<div class="row">
+<div class="col-lg-3 col-sm-3 text-center">
+<h4 style="margin:15px 0 20px 0"></h4>
+<p><a href="<c:url value='/index.jsp'/>"></a></p>
+<p><a href="<c:url value='/index.jsp'/>"></a></p>
+</div>
+<div class="col-lg-3 col-sm-3 text-center">
+<h4 style="margin:15px 0 20px 0"></h4>
+<div>
+<p><a href="<c:url value='/index.jsp'/>"></a></p>
+<p><a href="<c:url value='/index.jsp'/>"></a></p>
+</div>
+</div>
+<div class="col-lg-3 col-sm-3 text-center">
+<h4 style="margin:15px 0 20px 0"></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="panel-footer" style="background-color:#DDDDDD;height:60px;">
+<div class="container">
+<div class="pull-left">
+Copyright 2017 © 
+<strong>SurroundU</strong>
+</div>
+<div class="pull-right">
+</div>
+</div>
+</div>
+</footer>
 	
 </body>
 </html>

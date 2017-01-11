@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SurrounYou</title>
 <script src="src/jquery180.js" type="text/javascript"></script>
  <link href="${root}boot/bootstrap.min.css" rel="stylesheet">
  <style>
