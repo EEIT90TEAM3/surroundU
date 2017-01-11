@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,28 +9,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Surround You</title>
 <!-- jQuery -->
-	<script src="src/jquery211.js" type="text/javascript"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="src/lay/layer.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="src/lay/skin/default/layer.css">
-	<!-- menu -->
-	<script src="src/smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="src/smartmenus/sm-core-css.css">
-	<link rel="stylesheet" href="src/smartmenus/sm-blue.css">
-		<link rel="stylesheet" href="chat/css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="chat/css/style.css"> <!-- Resource style -->
-    <link type="text/css" href="chat/css/jquery.ui.chatbox.css" rel="stylesheet" />
-    <link rel="stylesheet" href="chat/css/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="chat/js/jquery-ui-1.8.2.custom.min.js"></script>
-    <script type="text/javascript" src="chat/js/chatboxManager.js"></script>
-    <script type="text/javascript" src="chat/js/jquery.ui.chatbox.js"></script>
 
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="chat/css/chats.css">
+	<script src="<c:url value="/src/jquery211.js"/>" type="text/javascript"></script>   
+	<script type="text/javascript" src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/src/lay/layer.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/lay/skin/default/layer.css"/>">
+	<!-- menu -->                                         
+	<script src="<c:url value="/src/smartmenus/jquery.smartmenus.min.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-core-css.css"/>">
+	<link rel="stylesheet" href="<c:url value="/src/smartmenus/sm-blue.css"/>">
+		<link rel="stylesheet" href="<c:url value="/chat/css/reset.css"/>"> <!-- CSS reset -->
+	<link rel="stylesheet" href="<c:url value="/chat/css/style.css"/>"> <!-- Resource style -->
+    <link type="text/css" href="<c:url value="/chat/css/jquery.ui.chatbox.css"/>" rel="stylesheet" />
+    <link rel="stylesheet" href="<c:url value="/chat/css/jquery-ui-1.8.2.custom.css"/>" type="text/css" media="screen" />
+    <script type="text/javascript" src="<c:url value="/chat/js/jquery-ui-1.8.2.custom.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/chat/js/chatboxManager.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/chat/js/jquery.ui.chatbox.js"/>"></script>
 
-	<script type="text/javascript" src="bootstrap/js/npm.js"></script>
-	<script type="text/javascript" src="chat/js/chats.js"></script>
+	<link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.css"/>">
+	<link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap-theme.min.css"/>">
+	<link rel="stylesheet" href=" <c:url value="/chat/css/chats.css"/>">
+
+	<script type="text/javascript" src=" <c:url value="/bootstrap/js/npm.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/chat/js/chats.js"/>"></script>
  <style>
 /*資訊視窗CSS*/
 #iw-container .iw-title {
@@ -97,9 +99,10 @@
     <div class="main">
       <ul class="sm sm-blue">
 
-<!--         <li><a href="#"><img height='30px' width='30px' -->
-<%-- 					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li> --%>
-        <li><a href="#">${user.name} </a>
+  <!--        <li><a href="#"><img height='30px' width='30px'
+					src="<c:url value='${request.contextPath}/secure/logWeb.controller?id=${user.account_facebook}&type=MEMBER'/>"></a></li>
+        -->
+        <li><a href="#">會員專區</a>
 
          
           
@@ -123,7 +126,7 @@
             <!--  together-->
             
           </ul>
-          <li><a href="#">我的好友</a>
+          
           <li><a href="#">文章列表</a>
            <ul>
           <!--  together-->
@@ -236,18 +239,23 @@
 			var productBean = itemArray[i][6];
 			var name = itemArray[i][7];
 			var sale_time = itemArray[i][8];
-			for(var o1 in productBean){
+		for(var o1 in productBean){
 			var itemLatLng = new google.maps.LatLng(latitude, longitude);
 			
 			var marker = new google.maps.Marker({
 				title: sale_topic,
 				position: itemLatLng,
 				map: map,
+
 				icon: "<c:url value="/img/mapicon/sale.png"/>"
+
 			});
+			
 			//裝載maker準備delete用
 			markerArray.push(marker);
 		//資訊視窗
+		
+		if (o1==0){
 			var contentString = '<div id="iw-container">' +
 			'<link href="${root}src/boot/bootstrap.min.css" rel="stylesheet">'+
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
@@ -258,18 +266,27 @@
               '<p>'+'攤位時間:'+sale_time+'</p>' +
 //              '<p>'+'攤位說明:'+sale_memo+'</p>' +
 //              '<p><br><br>'+
-              '<p>'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
-              '<img src="'+'/WebSurroundSpring/'+productBean[0].product_pic+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
-//              '<p>'+'拍賣品價格:'+productBean[0].product_price+'</p>' +
+				'<div id="pro">'+
+              '<p id="pp">'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
+              '<img src="'+'/surround'+productBean[o1]['product_pic']+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
+              '<p>'+'拍賣品價格:'+productBean[o1]['product_price']+'</p>' +
+              '</div>'+
+
               '<p><button class="btn btn-default" type="submit">詳細資料</button></p>'+
-//              '<p>'+'拍賣品明細:'+productBean[0].product_memo+'</p>' +
+  //            '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
             '</div>' +
           '</div>';
+          
+          }else{
+        	  $("#pro").append("<b>Hello world!</b>");
+        
+          }
           addInfoWindow(marker, contentString);
           function addInfoWindow(marker, message) {
 
               var infoWindow = new google.maps.InfoWindow({
                   content: message
+                  
               });
             //點擊關閉彈層
               google.maps.event.addListener(map, 'click', function() {
@@ -279,6 +296,8 @@
               //點擊MAKER資訊視窗
               google.maps.event.addListener(marker, 'click', function () {
                   infoWindow.open(map, marker); 
+         //         var input2=document.getElementById("pp").innerText
+      	//		 alert(input2);
               });   
 
          	 }
@@ -286,6 +305,7 @@
 		}
 		
   		
+
   	});
   	
 //together--------------------------------------------
@@ -376,6 +396,7 @@
   	  		
   	  	});
  //together---------------------------------------------------------------------------
+
     			  
     		  }
     		  google.maps.event.addListener(map, "rightclick", function (e) {
@@ -389,13 +410,17 @@
 	     	      geocoder.geocode({ 'location': latLng }, function(results, status) {
 	      	      if (status === google.maps.GeocoderStatus.OK) {
 	      	      if (results[0]) {
+
 	      	       adlot = results[0].formatted_address;
-//	      	       alert(adlot);
+//      	       alert(adlot);
 	      	      } 
 	      	     }
 	      	   });
+
 //      		  alert(maplat);
-//     		  alert(maplng);
+//      		  alert(maplng);
+
+
       		  layer.open({
       			  type: 1,
       			  title: false,
@@ -417,11 +442,11 @@
       		        shadeClose: true,
       		        shade: false,
       		        maxmin: true, //开启最大化最小化按钮
-      		        area: ['500px', '400px'],
+      		        area: ['500px', '600px'],
   //傳入經緯度參數iFrame
       		        content: ['/surround/Sale/SaleIndex.jsp?lat='+maplat+'&lng='+maplng+'&add='+adlot]
       		     
-      			});            
+      			});
       		});   
   
 //  together-----------------------------------------------------------------
@@ -441,7 +466,7 @@
         		     
         			});
         		});   
-   
+        		
         		
   //together------------------------------------------------------------------------------ 
       		});
@@ -471,12 +496,12 @@
     			layer.closeAll('page');
     			layer.open({
     		        type: 2,
-    		        title: '新增',
+    		        title: '擺攤',
     		        id: 'popup',
     		        shadeClose: true,
     		        shade: false,
     		        maxmin: true, //开启最大化最小化按钮
-    		        area: ['500px', '400px'],
+    		        area: ['500px', '500px'],
     		        content: ['<c:url value="/SaleSearchServlet"/>']
     		     //
     			});
@@ -490,8 +515,8 @@
  		        shadeClose: true,
  		        shade: false,
  		        maxmin: true, //开启最大化最小化按钮
- 		        area: ['500px', '400px'],
- 		        content: ['<c:url value="/secure/updateMember.controller"/>']
+ 		        area: ['500px', '500px'],
+ 		        content: ['<c:url value="/secure/updatemember.jsp"/>']
  		     //
  			});
  		});

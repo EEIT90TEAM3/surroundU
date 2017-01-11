@@ -42,6 +42,7 @@ public class GoogleAllServlet extends HttpServlet {
 		SaleBean bean = new SaleBean();
 		bean.setSale_no(1);
 		List<SaleBean> result = saleService.select();
+
 //		System.out.println("fff");
 //		System.out.println(result);
 		for(SaleBean bb:result){
@@ -55,13 +56,16 @@ public class GoogleAllServlet extends HttpServlet {
 				
 			}
 		}
+		
+	
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonStr = gson.toJson(result);
 //		  final GsonBuilder builder = new GsonBuilder();
 //		    builder.excludeFieldsWithoutExposeAnnotation();
 //		    final Gson gson = builder.create();
 //		    String jsonStr = gson.toJson(result);
-		    System.out.println(jsonStr);
+		  
+		    
 		response.getWriter().write(jsonStr);
 		
 	}

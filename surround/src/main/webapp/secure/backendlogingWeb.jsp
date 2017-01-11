@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SurrounU管理系統</title>
 <script src="<c:url value="/secure/src/jquery180.js"/>" type="text/javascript"></script>    
  <link href="<c:url value="/secure/boot/bootstrap.min.css"/>" rel="stylesheet">   
  <style>

@@ -152,6 +152,16 @@ public class MemberDAOHibernate implements MemberDAO {
 		    return null;
 		
 	}
+
+	@Override
+	public MemberBean update(MemberBean bean){
+			MemberBean update = this.getSession().get(MemberBean.class, bean.getMember_no());
+			if(update!=null) {
+				this.getSession().merge(bean);
+
+			}
+			return update;
+	}
 	
 	@Override
 	public MemberBean update(MemberBean memberbean,String newpwd){
@@ -167,11 +177,11 @@ public class MemberDAOHibernate implements MemberDAO {
 		}
 		
 		    return null;
+
 		
 	}
 
 	@Override
-
 	public MemberBean selectName(String name) {
 		Query query = this.getSession().createQuery("from MemberBean where name like :name");		
 		query.setParameter("name",name);

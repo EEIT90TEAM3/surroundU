@@ -65,10 +65,9 @@ public class MemberService {
 	public MemberBean update(MemberBean bean) {
 		MemberBean result = null;
 		if (bean != null) {
-			result = memberDAO.update(bean.getNickname(), bean.getHobby(), bean.getAccount());
+			result = memberDAO.update(bean);
 		}
 		return result;
-
 	}
 
 	@Transactional
@@ -128,6 +127,7 @@ public class MemberService {
 		}
 		return null;
 	}
+
 
 	@Transactional
 	public MemberBean select(String account) {
