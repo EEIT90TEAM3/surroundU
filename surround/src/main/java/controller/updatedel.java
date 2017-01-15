@@ -107,7 +107,10 @@ public class updatedel extends HttpServlet {
 							this.filename=filename;
 							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("D:/專題/workspace/Repository/surround/src/main/webapp/img/" + filename);
+							FileOutputStream out = new FileOutputStream("C:/img/" + filename);
+							
+		//					 C:/surround/apache-tomcat-8.0.39/webapps/surround/img/
+							
 							byte[] buffer = new byte[1024];
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {
@@ -172,7 +175,7 @@ public class updatedel extends HttpServlet {
 					salebean.setSale_locate(sale_locate);
 					salebean.setSale_time(date);
 					salebean.setSale_memo(sale_memo);
-					salebean.setSale_status(1);//讓擺攤狀態存在
+					salebean.setSale_status(0);//讓擺攤狀態存在
 					salebean.setProductBean(product);
 
 				if("更新".equals(sale)) {

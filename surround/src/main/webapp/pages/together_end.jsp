@@ -31,7 +31,7 @@
 	<script>
 var togetherType ="${togetherType}";
 var index = parent.layer.getFrameIndex(window.name);
-var timein=2*1000;
+var timein=1.5*1000;
 switch(togetherType){
 case "togetherJoinOkay":layer.alert('你已成功申請', {icon: 6});break;
 case "togetherJoinerror" :layer.alert('您加入過了', {icon: 6});break;
@@ -50,7 +50,7 @@ default:layer.alert('歡迎進入Srround YOU', {icon: 6});
 }
 window.onload = function ()
 {
-	setTimeout("parent.layer.close(index);", 3*1000);
+	setTimeout("parent.layer.close(index);", 2*1000);
 	
 }
 </script>

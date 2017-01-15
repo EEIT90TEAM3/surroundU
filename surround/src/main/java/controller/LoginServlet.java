@@ -76,9 +76,13 @@ public class LoginServlet {
 				model.addAttribute("errors", errors);
 				String account = bean.getAccount();		
 				String pwd = bean.getPwd();
-			     
+			    int account_status = bean.getAccount_status(); 
 			    
-			   
+			    System.out.println("account_status:"+account_status);
+			    
+			    if(account_status==1||account_status==2){
+			    	errors.put("account", "your account is  ");
+			    }
 			    			    
 				if(account==null || account.length()==0) {
 					errors.put("account", "ID is required ");
@@ -92,22 +96,16 @@ public class LoginServlet {
 				//呼叫Model
 				MemberBean result = memberService.login(account,pwd);
 				
-//				//檢查是否停權-begin
-//				int account_status = result.getAccount_status();   //取得帳號狀態檢視是否停權   
-//				   
-//				if(account_status==1||account_status==2){
-//				    	errors.put("account", "Your account is suspended");
-//				    	return "login.error";
-//				}
-//				//檢查是否停權-end
+
 				
-				System.out.println(result);
-				if(result==null) {
+				MemberBean result1 = memberService.login(account,pwd);
+
+				if(result1==null) {
 					
 					errors.put("pwd", "Login fail, please try again.");
 					return "login.error";
 				} else {
-					session.setAttribute("user", result);		
+					session.setAttribute("user", result1);		
 					return "login.success";
 				}
 				
@@ -126,7 +124,7 @@ public class LoginServlet {
 		 String token = null;
 		 try {
 			    //拿到一個長授權
-	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/secure/fblogin.controller&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
+	            String g = "https://graph.facebook.com/v2.8/oauth/access_token?client_id=275346536213447&redirect_uri=http://surroundu.southeastasia.cloudapp.azure.com:8080/surround/secure/fblogin.controller&client_secret=aaa57fedfe73c488731999c3f028b3cf&code=" + code;
 	            URL u = new URL(g);
 	            URLConnection c = u.openConnection();
 	            System.out.println(c);

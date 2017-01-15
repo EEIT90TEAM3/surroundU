@@ -119,8 +119,9 @@ public class SaleServlet extends HttpServlet {
 							this.filename=filename;
 							
 							InputStream in = part.getInputStream();
-							FileOutputStream out = new FileOutputStream("D:/專題/workspace/Repository/surround/src/main/webapp/img/" + filename);
-							byte[] buffer = new byte[1024];
+							FileOutputStream out = new FileOutputStream("C:/img/" + filename);
+					//		"C:/surround/apache-tomcat-8.0.39/webapps/surround/img/"
+							byte[] buffer = new byte[1024];   
 							int length = -1;
 							while ((length = in.read(buffer)) != -1) {
 								out.write(buffer, 0, length);
@@ -192,7 +193,7 @@ public class SaleServlet extends HttpServlet {
 					bean.setSale_lng(lat);
 					bean.setSale_lat(lng);
 					bean.setSale_memo(sale_memo);
-					bean.setSale_status(1);//讓擺攤狀態存在
+					bean.setSale_status(0);//讓擺攤狀態存在
 					bean.setProductBean(product);
 		//根據Model的執行結果，顯示View
 					

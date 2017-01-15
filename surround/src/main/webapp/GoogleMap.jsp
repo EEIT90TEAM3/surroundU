@@ -69,7 +69,7 @@
         	<div class="panel panel-default">
                 <div class="panel-heading top-bar">
                     <div class="col-md-8 col-xs-8">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> 在線人數:<span id="onlinecount"></span></h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span><span id="chatcall"></span><br>在線人數:<span id="onlinecount"></span></h3>
                     </div>
                     <div class="col-md-4 col-xs-4" style="text-align: right;">
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
@@ -228,7 +228,7 @@
 		var count = 1;
 		$.each(data, function(index, item){
 				// 製作物品經緯度陣列
-			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.name,item.sale_time];
+			var aItem = [item.sale_topic, item.sale_name, item.sale_lng, item.sale_lat ,item.sale_locate,item.sale_memo,item.productBean,item.member_no.name,item.sale_time,item.member_no.account];
 			itemArray.push(aItem);
 			count++;
 		});
@@ -243,6 +243,7 @@
 			var productBean = itemArray[i][6];
 			var name = itemArray[i][7];
 			var sale_time = itemArray[i][8];
+			var account = itemArray[i][9];
 		for(var o1 in productBean){
 			var itemLatLng = new google.maps.LatLng(latitude, longitude);
 			
@@ -265,18 +266,17 @@
             '<div class="iw-title">'+'攤位標題:'+sale_topic+'</div>' +
             '<div class="iw-content">' +
               '<div class="iw-subTitle">'+' 攤位名稱:'+sale_name+'</div>' +
-              '<div class="iw-subTitle">'+'賣家:'+name+'</div>' + 
+              '<div class="iw-subTitle">'+'賣家:'+name+'<a style="color:#46A3FF;float:right" onclick="addfriend(\''+account+'\',\'chat\')">加好友</a><span style="float:right">&nbsp &nbsp</span><a style="color:#46A3FF;float:right" onclick="openbox(\''+account+'\',\''+name+'\',\'chat\')">私訊</a></time></div>'+ 
               '<input type="hidden" name="name" value="'+name+'">'+
               '<p>'+'攤位地點:'+sale_locate+'</p>' +
               '<p>'+'攤位時間:'+sale_time+'</p>' +
              '<p>'+'攤位說明:'+sale_memo+'</p>' +
-              '<p><br><br>'+
 				'<div id="pro">'+
               '<p id="pp">'+'拍賣品名稱:'+productBean[o1]['product_name']+'</p>' +
-              '<img src="'+'/surround'+productBean[o1]['product_pic']+'" alt="Porcelain Factory of Vista Alegre" height="100" width="80">' +
+              '<img src="'+'/surround'+productBean[o1]['product_pic']+'" style="height:150;width:150">' +
               '<p>'+'拍賣品價格:'+productBean[o1]['product_price']+'</p>' +
               '</div>'+
-
+//alt="Porcelain Factory of Vista Alegre"
 //              '<p><button class="btn btn-default" type="submit" onclick=openWindow()>詳細資料</button></p>'+
              '<p>'+'拍賣品明細:'+productBean[o1]['product_memo']+'</p>' +
             '</div>' +
@@ -323,7 +323,7 @@
   			var count = 1;
   			$.each(data1, function(index, item){
   					// 製作物品經緯度陣列
-  				var bItem = [item.together_topic, item.together_name, item.together_lng, item.together_lat ,item.together_locate,item.together_when,item.together_when_end,item.member_no.name,item.together_people,item.together_memo,item.together_no];
+  				var bItem = [item.together_topic, item.together_name, item.together_lng, item.together_lat ,item.together_locate,item.together_when,item.together_when_end,item.member_no.name,item.together_people,item.together_memo,item.together_no,item.member_no.account];
   				itemTogetherArray.push(bItem);
   				count++;
   			});
@@ -340,7 +340,7 @@
   				var together_people = itemTogetherArray[i][8];
   				var together_memo = itemTogetherArray[i][9]; 
   				var together_no=itemTogetherArray[i][10]; 
-
+  				var account = itemTogetherArray[i][11];
   				
   				var itemLatLng = new google.maps.LatLng(latitude, longitude);
   				
@@ -360,7 +360,7 @@
   	            '<div class="iw-title">'+'約團主題:'+together_topic+'</div>' +
   	            '<div class="iw-content">' +
   	              '<div class="iw-subTitle">'+' 約團名稱:'+together_name+'</div>' +
-  	            '<p>'+'主揪人:'+name+'</p>' +
+  	            '<p>'+'主揪人:'+name+'<a style="color:#46A3FF;float:right" onclick="addfriend(\''+account+'\',\'chat\')">加好友</a><span style="float:right">&nbsp &nbsp</span><a style="color:#46A3FF;float:right" onclick="openbox(\''+account+'\',\''+name+'\',\'chat\')">私訊</a></time></p>'+
   	              '<p>'+'地點:'+together_locate+'</p>' +
 //  	              '<p>'+'活動時間:'+together_when+'</p>' +
 //  	            '<p>'+'活動結束時間:'+together_when_end+'</p>' +
@@ -617,7 +617,7 @@ var loginName = "${sessionScope.user.account}";
 var loginNo = "${sessionScope.user.member_no}";
 var memName = "${sessionScope.user.name}";
 var cartWrapper = $('.cd-cart-container');
-
+$("#chatcall").text(memName);
 		//product id - you don't need a counter in your real project but you can use your real product id
 var productId = 0;
 $("#chatname").text(memName);

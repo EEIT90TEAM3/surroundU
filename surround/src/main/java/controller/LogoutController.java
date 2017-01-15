@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(path={"/logout.controller"},
 method={RequestMethod.GET, RequestMethod.POST})
-public class LogOutController {
+public class LogoutController {
 
-	
+	@RequestMapping
 	public String service(
 						Model model, HttpSession session) {
 			 

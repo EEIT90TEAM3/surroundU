@@ -78,8 +78,7 @@ public class LookAcuseController {
 	    	   
 	    	    return "lookaccusesale.success";
 	    	}
-	    	
-            if("約團".equals(accuse_topic)){  //如果檢舉文章違約團
+	    	else{  //如果檢舉文章違約團
                 System.out.println("呼叫約團Model");
             	TogetherBean bean = backendService.lookAccuseOfTogether(caccuseno);
             	System.out.println(bean);

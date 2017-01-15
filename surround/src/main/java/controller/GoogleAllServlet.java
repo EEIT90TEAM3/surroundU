@@ -64,7 +64,7 @@ public class GoogleAllServlet extends HttpServlet {
 //		    builder.excludeFieldsWithoutExposeAnnotation();
 //		    final Gson gson = builder.create();
 //		    String jsonStr = gson.toJson(result);
-		  
+		 System.out.println("jsonStr:"+jsonStr);
 		    
 		response.getWriter().write(jsonStr);
 		

@@ -44,7 +44,6 @@
    padding:20px;
    width:300px;
 }
-<<<<<<< HEAD
 .lower-block span{font-size:16px;}
 .lower-block span{margin-left:5px}
 .form-signin2{
@@ -140,7 +139,7 @@
 	 	<div class="log">
 	 	 <div> 
  	<%
-    String fbURL = "https://www.facebook.com/v2.8/dialog/oauth?client_id=275346536213447&redirect_uri=http://localhost:8080/surround/secure/fblogin.controller&scope=email";
+    String fbURL = "https://www.facebook.com/v2.8/dialog/oauth?client_id=275346536213447&redirect_uri=http://surroundu.southeastasia.cloudapp.azure.com:8080/surround/secure/fblogin.controller&scope=email";
 %>
  	<a href="<%= fbURL %>"><img src="img/fb.png" onmouseout="this.src='img/fb.png'" onmouseover="this.src='img/fbshow.png'" border="0"  width="260" /></a>
  	</div>

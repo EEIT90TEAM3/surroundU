@@ -31,7 +31,7 @@ public class ProductBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Expose private int product_no;/*擺攤物品編號*/
-	 private SaleBean sale_no;/*擺攤文章編號*/
+	private SaleBean sale_no;/*擺攤文章編號*/
 	@Expose private String product_name;/*商品*/
 	@Expose private String product_memo;/*描述*/
 	@Expose private int product_price;/*價格*/

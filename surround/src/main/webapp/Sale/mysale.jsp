@@ -30,13 +30,13 @@
 								<table>
 								<thead></thead>
 								<tbody>
-								<tr><td><img src="<c:url value="${PP.product_pic}" />"><td><tr>
+								<tr><td><img src="<c:url value="${PP.product_pic}"/>"><td><tr>
 								<tr><td>賣品名稱:${PP.product_name}<td><tr>
 								<tr><td>賣品價格:${PP.product_price}<td><tr>
 								<tr><td>賣品描述${PP.product_memo}<td><tr>
 								
 								<tbody>
-								</table>
+								</table>    
 								</c:forEach>
 							</h4>
 							<p class="list-group-item-text">

@@ -51,6 +51,7 @@ function clearForm() {
 		<div >
 		<select id="selectedMap" name="together_topic" class="form-control">
 								<option value="運動" ${param.together_topic == '運動' ? 'selected' : ''}>運動</option>
+								<option value="唱歌" ${param.together_topic == '唱歌' ? 'selected' : ''}>唱歌</option>
 								<option value="看電影" ${param.together_topic == '看電影' ? 'selected' : ''}>看電影</option>
 								<option value="玩桌遊" ${param.together_topic == '玩桌遊' ? 'selected' : ''}>玩桌遊</option>
 								<option value="嘗美食" ${param.together_topic == '嘗美食' ? 'selected' : ''}>嘗美食</option>

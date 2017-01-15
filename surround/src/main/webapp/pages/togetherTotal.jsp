@@ -37,6 +37,7 @@
 		<th>限定人數</th>
 		<th>備註</th>
 		<th></th>
+		<th></th>
 	</tr>
 	</thead>
 	<tbody>
